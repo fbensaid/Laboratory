@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@id/laboratoryFragment">
+
+    <fragment
+        android:id="@+id/laboratoryFragment"
+        android:name="com.mtp.laboproject.view.ui.LaboratoryFragment"
+        android:label="laboratory_fragment"
+        tools:layout="@layout/laboratory_fragment" />
+
+
+</navigation>

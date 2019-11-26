@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LaboProject</string>
+    <string name="home_porte_ouverte">X porte ouverte</string>
+    <string name="home_laboratory_string">Laborartoires</string>
+    <string name="home_porte_string">Portes</string>
+    <string name="home_clapet_string">Clapet</string>
+
+
+</resources>
