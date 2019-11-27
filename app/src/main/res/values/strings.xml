@@ -4,6 +4,7 @@
     <string name="home_laboratory_string">Laborartoires</string>
     <string name="home_porte_string">Portes</string>
     <string name="home_clapet_string">Clapet</string>
+    <string name="msg_token_fmt">testNotification</string>
 
 
 </resources>

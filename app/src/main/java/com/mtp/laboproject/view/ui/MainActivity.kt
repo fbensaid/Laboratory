@@ -2,7 +2,11 @@ package com.mtp.laboproject.view.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 import com.mtp.laboproject.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -27,6 +31,11 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+    }
+
+    override fun onBackPressed() {
+        finish()
     }
 
     private fun replaceMainLayout(fragment: Fragment) {
@@ -36,6 +45,9 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
+    companion object {
 
+        private const val TAG = "MainActivity"
+    }
 
 }

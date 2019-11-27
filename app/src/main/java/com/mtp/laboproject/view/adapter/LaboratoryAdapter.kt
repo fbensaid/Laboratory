@@ -13,7 +13,8 @@ import com.squareup.picasso.Picasso
 
 
 class LaboratoryAdapter (
-    private val listofLaboratory:List<LaboratoryResponse>
+    private val listofLaboratory:List<LaboratoryResponse>,
+    private val listner:LaboratoryClickListener
 
 ): RecyclerView.Adapter<LaboratoryAdapter.LaboratoryViewHolder>() {
 
@@ -38,6 +39,12 @@ class LaboratoryAdapter (
 
     override fun onBindViewHolder(holder: LaboratoryViewHolder, position: Int) {
         holder.recycleviewLaboratoryBinding.laboratoryData=listofLaboratory[position]
+
+        holder.recycleviewLaboratoryBinding.cardView.setOnClickListener {
+            listner.onRecyclerViewItemClick(holder.recycleviewLaboratoryBinding.cardView,
+                listofLaboratory[position])
+        }
+
     }
 
 

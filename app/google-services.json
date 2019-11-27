@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "162086501639",
+    "firebase_url": "https://laboratory-iff.firebaseio.com",
+    "project_id": "laboratory-iff",
+    "storage_bucket": "laboratory-iff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162086501639:android:3406a7094bbca6c763d9a2",
+        "android_client_info": {
+          "package_name": "com.mtp.laboproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162086501639-b1lmrfa829gtvmklvgcd08ecg9dcm3pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxgF0bWFvsd3Updx3y9HQYg5eShFuq7SQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162086501639-b1lmrfa829gtvmklvgcd08ecg9dcm3pn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
