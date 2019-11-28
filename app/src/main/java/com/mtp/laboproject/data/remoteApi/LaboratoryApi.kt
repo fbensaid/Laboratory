@@ -10,6 +10,8 @@ interface LaboratoryApi{
 
 @GET("movies")
 suspend fun getLabo(): Response<List<LaboratoryResponse>>
+    @GET("lab/list")
+    suspend fun getLaboList(): Response<List<LaboratoryResponse>>
 
 
 
@@ -18,8 +20,8 @@ suspend fun getLabo(): Response<List<LaboratoryResponse>>
 
             return Retrofit.Builder().
                 addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://api.simplifiedcoding.in/course-apis/recyclerview/")
-                .build()
+                //.baseUrl("https://api.simplifiedcoding.in/course-apis/recyclerview/")
+                .baseUrl("http://172.16.1.12:3000/api/").build()
                 .create(LaboratoryApi::class.java)
         }
     }

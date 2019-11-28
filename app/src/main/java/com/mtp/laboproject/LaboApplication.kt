@@ -15,8 +15,6 @@ class LaboApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-
-
     }
 
     override fun onTerminate() {
