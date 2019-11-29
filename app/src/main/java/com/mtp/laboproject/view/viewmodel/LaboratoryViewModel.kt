@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mtp.laboproject.Utils.Coroutine
 import com.mtp.laboproject.data.repository.LaboratoryRepository
-import com.mtp.laboproject.data.rest.LaboratoryResponse
+import com.mtp.laboproject.data.model.LaboratoryResponse
 import kotlinx.coroutines.Job
 
 class LaboratoryViewModel(
@@ -19,10 +19,10 @@ class LaboratoryViewModel(
     get() =_laboratoryMutibaleLiveData
 
      fun getLaboratory(){
-        job=Coroutine.ioThenMain(
-            {laboratoryRepository.getLaboratory()},
+       /* job=Coroutine.ioThenMain(
+            {laboratoryRepository.getLabos()},
             {_laboratoryMutibaleLiveData.value=it}
-        )
+        )*/
     }
 
     override fun onCleared() {
