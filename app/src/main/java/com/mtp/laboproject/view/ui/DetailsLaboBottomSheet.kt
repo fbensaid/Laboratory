@@ -9,7 +9,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mtp.laboproject.R
 
 
-class DetailsLaboBottomShit : BottomSheetDialogFragment() {
+class DetailsLaboBottomSheet : BottomSheetDialogFragment() {
 
     @Nullable
     override fun onCreateView(
@@ -28,8 +28,8 @@ class DetailsLaboBottomShit : BottomSheetDialogFragment() {
     }
 
     companion object {
-        fun newInstance(): DetailsLaboBottomShit {
-            return DetailsLaboBottomShit()
+        fun newInstance(): DetailsLaboBottomSheet {
+            return DetailsLaboBottomSheet()
         }
     }
 }

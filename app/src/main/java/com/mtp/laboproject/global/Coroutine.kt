@@ -1,4 +1,4 @@
-package com.mtp.laboproject.Utils
+package com.mtp.laboproject.global
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

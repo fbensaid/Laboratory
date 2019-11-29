@@ -1,4 +1,4 @@
-package com.mtp.laboproject.Utils
+package com.mtp.laboproject.global
 
 import android.util.Log
 import androidx.work.OneTimeWorkRequest

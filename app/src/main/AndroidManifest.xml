@@ -10,21 +10,22 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:name=".LaboApplication"
+        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:name=".view.ui.AuthentificationActivity">
+            android:name=".view.ui.activity.AuthentificationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.ui.MainActivity"/>
+        <activity android:name=".view.ui.activity.MainActivity"/>
         <service
-            android:name=".Utils.FirebaseMessagingService"
+            android:name=".global.FirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

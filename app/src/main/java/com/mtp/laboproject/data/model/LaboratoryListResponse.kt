@@ -1,6 +1,6 @@
-package com.mtp.laboproject.data.rest
+package com.mtp.laboproject.data.model
 
-data class Laboratory(
+data class LaboratoryListResponse(
     val __v: Int,
     val _id: String,
     val clapet: Int,

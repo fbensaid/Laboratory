@@ -1,4 +1,4 @@
-package com.mtp.laboproject.data.global
+package com.mtp.laboproject.global
 
 
 class Constants {
@@ -6,7 +6,7 @@ class Constants {
 
     companion object {
 
-        const val BASE_URL: String = "https://api.simplifiedcoding.in/course-apis/recyclerview/"
+        const val BASE_URL: String = "http://172.16.1.12:3000/api/"
 
     }
 
@@ -18,6 +18,7 @@ class Constants {
 
     object EndPoints {
         const  val LABORATORY: String = "movies"
+        const  val LABORATORY_ENDPOINT: String = "lab/list"
 
     }
 

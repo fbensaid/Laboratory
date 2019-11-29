@@ -3,7 +3,6 @@ package com.mtp.laboproject.data.repository
 import android.util.Log
 import com.mtp.laboproject.data.remoteApi.Output
 
-import com.mtp.laboproject.data.remoteApi.Result
 import retrofit2.Response
 import java.io.IOException
 

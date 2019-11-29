@@ -1,20 +1,18 @@
-package com.mtp.laboproject.view.ui
+package com.mtp.laboproject.view.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.iid.FirebaseInstanceId
 import com.mtp.laboproject.R
+import com.mtp.laboproject.view.ui.fragment.HomeFragment
+import com.mtp.laboproject.view.ui.fragment.LaboratoryFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private val fragmentManager = supportFragmentManager
-    private var laboratoryFragment=LaboratoryFragment()
-    private var homeFragment=HomeFragment()
+    private var laboratoryFragment= LaboratoryFragment()
+    private var homeFragment= HomeFragment()
 
 
 

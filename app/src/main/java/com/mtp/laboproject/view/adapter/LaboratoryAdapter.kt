@@ -7,14 +7,15 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mtp.laboproject.R
-import com.mtp.laboproject.data.model.LaboratoryResponse
+import com.mtp.laboproject.listener.LaboratoryClickListener
+import com.mtp.laboproject.data.model.LaboratoryListResponse
 import com.mtp.laboproject.databinding.RecycleviewLaboratoryBinding
 import com.squareup.picasso.Picasso
 
 
-class LaboratoryAdapter (
-    private val listofLaboratory:List<LaboratoryResponse>,
-    private val listner:LaboratoryClickListener
+class LaboratoryAdapter  (
+    private val listofLaboratory:List<LaboratoryListResponse>,
+    private val listner: LaboratoryClickListener
 
 ): RecyclerView.Adapter<LaboratoryAdapter.LaboratoryViewHolder>() {
 

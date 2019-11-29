@@ -1,7 +1,7 @@
 package com.mtp.laboproject.data.remoteApi
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.mtp.laboproject.data.global.Constants
+import com.mtp.laboproject.global.Constants
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -31,7 +31,7 @@ object Apifactory{
 
 
     fun retrofit() : Retrofit = Retrofit.Builder()
-        .client(tmdbClient)
+      //  .client(tmdbClient)
         .baseUrl(Constants.BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())

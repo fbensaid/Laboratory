@@ -5,8 +5,8 @@
     <data>
         <import type="android.view.View" />
         <variable
-            name="laboratoryData"
-            type="com.mtp.laboproject.data.model.LaboratoryResponse" />
+            name="laboratoryListResponseData"
+            type="com.mtp.laboproject.data.model.LaboratoryListResponse" />
     </data>
 
 
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@{laboratoryData.title}"
+                android:text="@{laboratoryListResponseData.nom}"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
 
