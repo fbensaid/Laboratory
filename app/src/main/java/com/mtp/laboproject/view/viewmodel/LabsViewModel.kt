@@ -40,6 +40,6 @@ class LabsViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
 
-        parentJob?.cancel()
+        this.parentJob.cancel()
     }
 }
