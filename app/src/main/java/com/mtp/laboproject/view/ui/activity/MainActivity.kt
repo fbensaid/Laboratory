@@ -15,11 +15,11 @@ class MainActivity : AppCompatActivity() {
     private var homeFragment= HomeFragment()
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         replaceMainLayout(homeFragment)
+
         bottomNavigationViewHome.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> replaceMainLayout(homeFragment)
@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         finish()
     }
+
 
     private fun replaceMainLayout(fragment: Fragment) {
         fragmentManager.beginTransaction()

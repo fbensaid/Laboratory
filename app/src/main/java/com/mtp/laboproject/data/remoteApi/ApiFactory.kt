@@ -31,7 +31,7 @@ object Apifactory{
 
 
     fun retrofit() : Retrofit = Retrofit.Builder()
-      //  .client(tmdbClient)
+        .client(tmdbClient)
         .baseUrl(Constants.BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
