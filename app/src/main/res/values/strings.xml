@@ -6,7 +6,7 @@
     <string name="home_clapet_string">Clapet</string>
     <string name="msg_token_fmt">testNotification</string>
     <string name="action_search">search</string>
-    <string name="search_hint">Rechercher un Laboratoire</string>
+    <string name="search_hint">Chercher un Laboratoire</string>
 
 
 </resources>
