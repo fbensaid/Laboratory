@@ -1,23 +1,251 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_secondary</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
-    <style name="TextInputType" parent="TextAppearance.AppCompat">
-        <!-- Hint color and label color in FALSE state -->
-        <item name="android:textColorHint">@android:color/white</item>
-        <item name="android:textSize">20sp</item>
-        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
-        <item name="colorAccent">@android:color/white</item>
-        <item name="colorControlNormal">@android:color/white</item>
-        <item name="colorControlActivated">@android:color/white</item>
-        <item name="android:layout_marginTop">@dimen/dimen_8dp</item>
-        <item name="android:layout_marginBottom">@dimen/dimen_8dp</item>
+    <style name="TimePickerTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/color_primary</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
+
+
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
+
+        <item name="android:background">@color/color_primary</item>
+    </style>
+
+
+    <dimen name="item_margin">8dp</dimen>
+    <dimen name="column_width">80dp</dimen>
+
+    <style name="AppThemeStatusBarRed" parent="@style/AppTheme" />
+
+    <style name="AppTheme.Transparent" parent="AppTheme">
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="WindowTitleStyle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DialogButtonStyle" parent="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/color_accent</item>
+        <item name="android:textSize">@dimen/dimen_16sp</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowTitleStyle">@style/WindowTitleStyle</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="buttonBarButtonStyle">@style/DialogButtonStyle</item>
+    </style>
+
+    <style name="CustomAlertDialogStyle">
+        <item name="android:bottomBright">@android:color/transparent</item>
+        <item name="android:bottomDark">@android:color/transparent</item>
+        <item name="android:bottomMedium">@android:color/transparent</item>
+        <item name="android:centerBright">@android:color/transparent</item>
+        <item name="android:centerDark">@android:color/transparent</item>
+        <item name="android:centerMedium">@android:color/transparent</item>
+        <item name="android:fullBright">@android:color/transparent</item>
+        <item name="android:fullDark">@android:color/transparent</item>
+        <item name="android:topBright">@android:color/transparent</item>
+        <item name="android:topDark">@android:color/transparent</item>
+    </style>
+
+    <style name="ProgressDialogStyle" parent="android:Theme.Holo.Dialog">
+        <item name="android:alertDialogStyle">@style/CustomAlertDialogStyle</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="AppRoundedCornersButton" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:paddingStart">@dimen/dimen_10dp</item>
+        <item name="android:paddingEnd">@dimen/dimen_10dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">@dimen/dimen_12sp</item>
+        <item name="autoSizeMaxTextSize">@dimen/button_text_size</item>
+        <item name="autoSizeStepGranularity">@dimen/dimen_2sp</item>
+
+    </style>
+
+    <style name="GreenButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_blue</item>
+        <item name="android:minHeight">@dimen/min_height_btn</item>
+        <item name="android:minWidth">@dimen/min_width_btn</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+    <style name="UseButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_green</item>
+        <item name="android:minHeight">@dimen/dimen_35dp</item>
+        <item name="android:minWidth">@dimen/dimen_66dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/sf_pro_display_medium</item>
+    </style>
+
+    <style name="GiftsButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_blue</item>
+        <item name="android:minHeight">@dimen/dimen_54dp</item>
+        <item name="android:minWidth">@dimen/dimen_155dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/sf_pro_display_medium</item>
+    </style>
+
+    <style name="TicketsButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_grey</item>
+        <item name="android:minHeight">@dimen/dimen_54dp</item>
+        <item name="android:minWidth">@dimen/dimen_155dp</item>
+        <item name="android:textColor">@color/status_grey</item>
+        <item name="android:fontFamily">@font/sf_pro_display_medium</item>
+    </style>
+
+    <style name="OrangeButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_orange</item>
+        <item name="android:minHeight">@dimen/min_height_btn</item>
+        <item name="android:minWidth">@dimen/min_width_btn</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+    <style name="FacebookButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/facebook_background_green</item>
+        <item name="android:minHeight">@dimen/min_height_btn</item>
+        <item name="android:minWidth">@dimen/min_width_btn</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+    <style name="NavigationButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@color/white</item>
+        <item name="android:minHeight">@dimen/min_height_btn</item>
+        <item name="android:minWidth">@dimen/min_width_btn</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+    <style name="GrayButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_gray</item>
+        <item name="android:minHeight">@dimen/min_height_btn</item>
+        <item name="android:minWidth">@dimen/min_width_btn</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+    <style name="GrayResetButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_grey_reset_mdp_btn</item>
+        <item name="android:minHeight">@dimen/min_height_btn</item>
+        <item name="android:minWidth">@dimen/min_width_btn</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+    <style name="GraySignUpButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_grey_reset_mdp</item>
+        <item name="android:minHeight">@dimen/min_height_btn</item>
+        <item name="android:minWidth">@dimen/min_width_btn</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+    <style name="DarkGrayButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_dark_grey</item>
+        <item name="android:minHeight">@dimen/min_height_btn</item>
+        <item name="android:minWidth">@dimen/min_width_btn</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+    <style name="GraySplashButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_gray</item>
+        <item name="android:minHeight">@dimen/min_height_btn</item>
+        <item name="android:minWidth">@dimen/min_width_btn</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+    <style name="BlueButton" parent="AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_blue</item>
+        <item name="android:minHeight">@dimen/min_height_btn</item>
+        <item name="android:minWidth">@dimen/min_width_btn</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/sf_ui_text_bold</item>
+    </style>
+
+    <style name="GoldButton" parent="AppRoundedCornersButton">
+        <item name="android:textSize">@dimen/home_button_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/solid_background_gold</item>
+        <item name="android:minHeight">@dimen/gold_btn_height</item>
+        <item name="android:minWidth">@dimen/gold_btn_width</item>
+        <item name="android:fontFamily">@font/sf_ui_text_bold</item>
+    </style>
+
+    <style name="AppEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+
+    <style name="AppEditTextBlack" parent="@style/AppEditText">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="AppEditTextForm" parent="@style/AppEditText">
+        <item name="android:textColor">@color/text_color_seconday</item>
+        <item name="android:textColorHint">@color/text_color_seconday</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+    </style>
+
+    <style name="custom_dialog">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="custom_error_dialog" parent="AppCompatAlertDialogStyle">
+        <item name="android:windowMinWidthMajor">70%</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <style name="AppEditTextProfileForm" parent="@style/AppEditText">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:background">@drawable/solid_background_form</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+    </style>
+
+
+    <style name="AppEditTextUpdateMdpForm" parent="@style/AppEditText">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 </resources>

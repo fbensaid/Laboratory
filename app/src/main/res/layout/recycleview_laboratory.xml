@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardBackgroundColor="@color/color_primary"
         app:cardCornerRadius="6dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,7 +25,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/color_primary"
         android:layout_margin="10dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="@+id/labo_icon"
