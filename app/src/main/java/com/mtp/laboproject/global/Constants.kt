@@ -22,4 +22,10 @@ class Constants {
 
     }
 
+    object Variants
+    {
+        const val CLICK_OPACITY = 0.75f
+
+    }
+
 }

@@ -92,16 +92,15 @@
 
     </style>
 
-    <style name="GreenButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_blue</item>
+    <style name="WhiteButton" parent="AppRoundedCornersButton">
         <item name="android:minHeight">@dimen/min_height_btn</item>
         <item name="android:minWidth">@dimen/min_width_btn</item>
+        <item name="android:background">@drawable/solid_background_white</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/sf_pro_display_bold</item>
     </style>
 
     <style name="UseButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_green</item>
         <item name="android:minHeight">@dimen/dimen_35dp</item>
         <item name="android:minWidth">@dimen/dimen_66dp</item>
         <item name="android:textColor">@color/white</item>
@@ -109,7 +108,6 @@
     </style>
 
     <style name="GiftsButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_blue</item>
         <item name="android:minHeight">@dimen/dimen_54dp</item>
         <item name="android:minWidth">@dimen/dimen_155dp</item>
         <item name="android:textColor">@color/white</item>
@@ -117,15 +115,12 @@
     </style>
 
     <style name="TicketsButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_grey</item>
         <item name="android:minHeight">@dimen/dimen_54dp</item>
         <item name="android:minWidth">@dimen/dimen_155dp</item>
-        <item name="android:textColor">@color/status_grey</item>
         <item name="android:fontFamily">@font/sf_pro_display_medium</item>
     </style>
 
     <style name="OrangeButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_orange</item>
         <item name="android:minHeight">@dimen/min_height_btn</item>
         <item name="android:minWidth">@dimen/min_width_btn</item>
         <item name="android:textColor">@color/white</item>
@@ -133,7 +128,6 @@
     </style>
 
     <style name="FacebookButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/facebook_background_green</item>
         <item name="android:minHeight">@dimen/min_height_btn</item>
         <item name="android:minWidth">@dimen/min_width_btn</item>
         <item name="android:fontFamily">@font/sf_pro_display_bold</item>
@@ -147,7 +141,6 @@
     </style>
 
     <style name="GrayButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_gray</item>
         <item name="android:minHeight">@dimen/min_height_btn</item>
         <item name="android:minWidth">@dimen/min_width_btn</item>
         <item name="android:textColor">@color/white</item>
@@ -155,7 +148,6 @@
     </style>
 
     <style name="GrayResetButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_grey_reset_mdp_btn</item>
         <item name="android:minHeight">@dimen/min_height_btn</item>
         <item name="android:minWidth">@dimen/min_width_btn</item>
         <item name="android:textColor">@color/white</item>
@@ -163,7 +155,6 @@
     </style>
 
     <style name="GraySignUpButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_grey_reset_mdp</item>
         <item name="android:minHeight">@dimen/min_height_btn</item>
         <item name="android:minWidth">@dimen/min_width_btn</item>
         <item name="android:textColor">@color/white</item>
@@ -171,7 +162,6 @@
     </style>
 
     <style name="DarkGrayButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_dark_grey</item>
         <item name="android:minHeight">@dimen/min_height_btn</item>
         <item name="android:minWidth">@dimen/min_width_btn</item>
         <item name="android:textColor">@color/white</item>
@@ -179,7 +169,6 @@
     </style>
 
     <style name="GraySplashButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_gray</item>
         <item name="android:minHeight">@dimen/min_height_btn</item>
         <item name="android:minWidth">@dimen/min_width_btn</item>
         <item name="android:textColor">@color/white</item>
@@ -187,7 +176,6 @@
     </style>
 
     <style name="BlueButton" parent="AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_blue</item>
         <item name="android:minHeight">@dimen/min_height_btn</item>
         <item name="android:minWidth">@dimen/min_width_btn</item>
         <item name="android:textColor">@color/white</item>
@@ -197,7 +185,6 @@
     <style name="GoldButton" parent="AppRoundedCornersButton">
         <item name="android:textSize">@dimen/home_button_text_size</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/solid_background_gold</item>
         <item name="android:minHeight">@dimen/gold_btn_height</item>
         <item name="android:minWidth">@dimen/gold_btn_width</item>
         <item name="android:fontFamily">@font/sf_ui_text_bold</item>
@@ -232,7 +219,6 @@
 
     <style name="AppEditTextProfileForm" parent="@style/AppEditText">
         <item name="android:textColor">@color/text_color</item>
-        <item name="android:background">@drawable/solid_background_form</item>
         <item name="android:textSize">@dimen/button_text_size</item>
     </style>
 
