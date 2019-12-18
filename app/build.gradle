@@ -39,6 +39,7 @@ dependencies {
     def retrofit_version = "2.6.0"
     def work_version = "2.2.0"
     def anko_version='0.10.8'
+    def dispatcher_version='4.6.0'
 
 
     implementation 'com.google.firebase:firebase-analytics:17.2.1'
@@ -81,8 +82,8 @@ dependencies {
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
 
-
-
+    // set biometric bio
+    implementation 'androidx.biometric:biometric:1.0.0'
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$cor_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$cor_version"
@@ -101,6 +102,17 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+
+    implementation "com.google.dagger:dagger-android-support:2.11"
+    implementation "com.google.dagger:dagger:2.11"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+    kapt "com.google.dagger:dagger-compiler:2.11"
+
+    implementation "org.permissionsdispatcher:permissionsdispatcher:$dispatcher_version"
+    kapt "org.permissionsdispatcher:permissionsdispatcher-processor:$dispatcher_version"
+
+    implementation 'com.scottyab:secure-preferences-lib:0.1.7'
+
 
 
 }

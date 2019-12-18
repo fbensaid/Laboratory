@@ -12,8 +12,8 @@ import com.mtp.laboproject.data.model.UserResponse
  interface UserDao{
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUser(user: UserResponse):Long
+     fun insertUser(user: UserResponse):Long
 
     @Query("SELECT * FROM userResponse WHERE id_db_user= $CURRENT_USERID")
-    suspend fun getUser():LiveData<UserResponse>
+     fun getUser():LiveData<UserResponse>
 }

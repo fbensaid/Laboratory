@@ -7,26 +7,29 @@
 package com.mtp.laboproject
 
 import android.app.Application
-import android.content.Context
+import com.mtp.laboproject.dagger.AppComponent
+import com.mtp.laboproject.dagger.AppModule
+import com.farouk.travelcar.dagger.RoomModule
+import com.mtp.laboproject.dagger.DaggerAppComponent
+import com.mtp.laboproject.dagger.PreferencesModule
 
 
 class LaboApplication : Application() {
 
+    companion object {
+        lateinit var appComponent: AppComponent
+    }
+
     override fun onCreate() {
         super.onCreate()
-        instance = this
+        initDI()
     }
 
-    override fun onTerminate() {
-        super.onTerminate()
-    }
-
-    companion object {
-        lateinit var instance: Application
-
-
-        fun getAppContext(): Context {
-            return instance.applicationContext
-        }
+    private fun initDI() {
+        appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this))
+            .roomModule(RoomModule(this))
+            .preferencesModule(PreferencesModule(this))
+            .build()
     }
 }

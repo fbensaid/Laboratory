@@ -83,6 +83,41 @@
                 android:textSize="@dimen/dimen_15sp" />
 
         </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ly_display_finger_print"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_display_finger_print"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_10dp"
+                android:backgroundTint="@color/white"
+                android:buttonTint="@color/white"
+                android:drawableTint="@color/white"
+                android:textSize="@dimen/dimen_13sp" />
+
+            <TextView
+                android:id="@+id/tv_display_finger_print"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:fontFamily="@font/google_sans"
+                android:gravity="start"
+                android:padding="@dimen/dimen_5dp"
+                android:text="@string/show_finger_print_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_15sp" />
+
+        </LinearLayout>
         <com.mtp.laboproject.view.ui.view.CustomButton
             android:id="@+id/btn_login"
             style="@style/WhiteButton"

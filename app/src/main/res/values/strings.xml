@@ -11,6 +11,8 @@
     <string name="noaccount_text">No account yet? Create one</string>
     <string name="login_string">Login</string>
     <string name="show_password_text">Show password</string>
+    <string name="show_finger_print_text">Activer l\'empreinte digitale</string>
+
 
 
 </resources>

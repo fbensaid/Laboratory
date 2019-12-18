@@ -9,8 +9,7 @@ data class UserResponse(
     val name: String?,
     val email: String?,
     val photoUrl: String?,
-    val emailVerified: String?,
-    var uid: Int?
+    var uid: String?
 
 ){
     // we need to store only one user
