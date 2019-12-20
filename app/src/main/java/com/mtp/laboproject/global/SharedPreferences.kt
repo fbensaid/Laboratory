@@ -38,9 +38,27 @@ class SharedPreferences(context: Context) {
         }
     var password: String?
         get() = mSharedPreferences.getString(PASSWORD_FLAG, null)
-        set(email) {
+        set(password) {
             val editor = mSharedPreferences.edit()
-            editor.putString(PASSWORD_FLAG, email)
+            editor.putString(PASSWORD_FLAG, password)
+            editor.apply()
+        }
+    var fingerPrint: Boolean?
+        get() = mSharedPreferences.getBoolean(FINGER_FLAG, false)
+        set(fingerPrint) {
+            val editor = mSharedPreferences.edit()
+            if (fingerPrint != null) {
+                editor.putBoolean(FINGER_FLAG, fingerPrint)
+            }
+            editor.apply()
+        }
+    var isConnectedSuccess: Boolean
+        get() = mSharedPreferences.getBoolean(CONNECTED_FLAG, false)
+        set(isConnectedSuccess) {
+            val editor = mSharedPreferences.edit()
+            if (isConnectedSuccess != null) {
+                editor.putBoolean(CONNECTED_FLAG, isConnectedSuccess)
+            }
             editor.apply()
         }
 
@@ -94,6 +112,9 @@ class SharedPreferences(context: Context) {
         private val MODEL_FLAG = "model_flag"
         private val EMAIL_FLAG = "email_flag"
         private val PASSWORD_FLAG = "password_flag"
+        private val FINGER_FLAG = "finger_flag"
+        private val CONNECTED_FLAG = "connect_flag"
+
         private lateinit var mSharedPreferences: android.content.SharedPreferences
 
         private val FILE_NAME_FLAG = "bingo_file.xml"

@@ -9,6 +9,7 @@ import java.util.concurrent.Executor
 
 
 interface BiometricPromptListener {
+
     fun onAuthenticationError()
     fun onAuthenticationSucceeded()
     fun onAuthenticationFailed()

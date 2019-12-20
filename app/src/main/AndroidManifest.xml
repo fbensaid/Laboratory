@@ -24,7 +24,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.ui.activity.MainActivity"/>
+        <activity android:name=".view.ui.activity.MainActivity"
+            android:theme="@style/CustomActionBarTheme"
+            />
         <service
             android:name=".global.FirebaseMessagingService"
             android:exported="false">

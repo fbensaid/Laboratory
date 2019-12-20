@@ -5,8 +5,10 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import javax.inject.Inject
 
 class FirebaseMessagingService : FirebaseMessagingService() {
+
 
     /**
      * Called when message is received.

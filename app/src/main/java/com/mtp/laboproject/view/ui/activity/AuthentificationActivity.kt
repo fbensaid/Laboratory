@@ -27,6 +27,7 @@ class AuthentificationActivity : AppCompatActivity(), BiometricPromptListener {
     private lateinit var auth: FirebaseAuth
     private val TAG = "Authentification"
     private  lateinit var biometricPrompt:BiometricPrompt
+    private var isFromLoginPassword: Boolean = false
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -42,22 +43,22 @@ class AuthentificationActivity : AppCompatActivity(), BiometricPromptListener {
         //check if user had biometric configuration and support
         checkBiometric()
         //auth with fingerPrint if user connected before
-        authWithFingerPrint()
 
         btn_login.setOnClickListener {
             if ((input_email.validateForm() && input_password.validateForm())) {
+                isFromLoginPassword=true
                 signIn(input_email.text.toString(),input_password.text.toString())
             }
         }
+        cb_display_finger_print.isChecked= sharedPreferences.fingerPrint!!
+        authWithFingerPrint()
 
         cb_display_finger_print.setOnCheckedChangeListener { _, b ->
-            if(b){
-                biometricPrompt.authenticateBiometric()
-            }
+            if(b && sharedPreferences.isConnectedSuccess) biometricPrompt.authenticateBiometric()
         }
     }
     private fun authWithFingerPrint() {
-        if(cb_display_finger_print.isActivated&&sharedPreferences.email!=null){
+        if(cb_display_finger_print.isChecked&&sharedPreferences.isConnectedSuccess){
             biometricPrompt.authenticateBiometric()
         }
     }
@@ -68,9 +69,13 @@ class AuthentificationActivity : AppCompatActivity(), BiometricPromptListener {
         }
     }
     private fun storeUserData(user:FirebaseUser?) {
-        sharedPreferences.email=input_email.text.toString()
-        sharedPreferences.password=input_password.text.toString()
         sharedPreferences.userResponse= UserResponse(user!!.displayName,user!!.email,user.photoUrl.toString(),user.uid)
+        if(isFromLoginPassword){
+            sharedPreferences.email=input_email.text.toString()
+            sharedPreferences.password=input_password.text.toString()
+            sharedPreferences.isConnectedSuccess=true
+            sharedPreferences.fingerPrint=cb_display_finger_print.isChecked
+        }
     }
 
     // [START on_start_check_user]
@@ -78,12 +83,12 @@ class AuthentificationActivity : AppCompatActivity(), BiometricPromptListener {
         super.onStart()
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            Toast.makeText(baseContext, "there is a user registred", Toast.LENGTH_SHORT).show()
+           // Toast.makeText(baseContext, "there is a user registred", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun signIn(email: String, password: String) {
-
+        ct_loading.visibility=View.VISIBLE
         // [START sign_in_with_email]
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -96,6 +101,8 @@ class AuthentificationActivity : AppCompatActivity(), BiometricPromptListener {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
+                    ct_loading.visibility=View.GONE
+
                 }
             }
     }
@@ -106,9 +113,9 @@ class AuthentificationActivity : AppCompatActivity(), BiometricPromptListener {
     }
 
     override fun onAuthenticationSucceeded() {
-        if(!sharedPreferences.email.toString().isNullOrEmpty())
-        signIn(sharedPreferences.email.toString(),sharedPreferences.password.toString())
-        else
+        if(sharedPreferences.isConnectedSuccess) {
+            signIn(sharedPreferences.email.toString(),sharedPreferences.password.toString())
+        } else
             toast("You have to set login and password at first")
 
     }

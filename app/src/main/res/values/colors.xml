@@ -3,6 +3,7 @@
     <color name="color_primary">#0075cf</color>
     <color name="colorAccent">#D81B60</color>
     <color name="color_primary_dark">#7C4B97</color>
+    <color name="black_transparent_gradient">#99000000</color>
 
     <color name="color_accent">#6B6B6B</color>
 
