@@ -1,109 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/color_primary"
-    android:fitsSystemWindows="true">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/dimen_50dp"
-        android:paddingLeft="@dimen/dimen_24dp"
-        android:paddingRight="@dimen/dimen_24dp">
-
-        <ImageView android:src="@drawable/logo_white"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dimen_70dp"
-            android:layout_marginBottom="@dimen/dimen_24dp"
-            android:layout_gravity="center_horizontal" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/dimen_40dp"
-            android:fontFamily="@font/google_sans"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/input_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/test_username"
-                android:fontFamily="@font/google_sans"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Password Label -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:fontFamily="@font/google_sans"
-            android:layout_height="wrap_content">
-            <EditText android:id="@+id/input_password"
-                android:fontFamily="@font/google_sans"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:textColorHint="@color/grey"
-                android:hint="Password"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        android:layout_height="match_parent"
+        android:background="@color/color_primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dimen_24dp"
+            android:paddingTop="@dimen/dimen_50dp"
+            android:paddingRight="@dimen/dimen_24dp">
 
-            <CheckBox
-                android:id="@+id/cb_display_mdp"
+
+            <ImageView
                 android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_70dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/dimen_24dp"
+                android:src="@drawable/logo_white" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/dimen_10dp"
-                android:backgroundTint="@color/white"
-                android:buttonTint="@color/white"
-                android:drawableTint="@color/white"
-                android:textSize="@dimen/dimen_13sp" />
+                android:layout_marginTop="@dimen/dimen_40dp"
+                android:fontFamily="@font/google_sans">
+
+                <EditText
+                    android:id="@+id/input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/google_sans"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:text="@string/test_username"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Password Label -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/google_sans">
+
+                <EditText
+                    android:id="@+id/input_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/google_sans"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColorHint="@color/grey" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_display_mdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_10dp"
+                    android:backgroundTint="@color/white"
+                    android:buttonTint="@color/white"
+                    android:drawableTint="@color/white"
+                    android:textSize="@dimen/dimen_13sp" />
+
+                <TextView
+                    android:id="@+id/tv_display_mdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="true"
+                    android:fontFamily="@font/google_sans"
+                    android:gravity="start"
+                    android:padding="@dimen/dimen_5dp"
+                    android:text="@string/show_password_text"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen_15sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ly_display_finger_print"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <CheckBox
+                    android:id="@+id/cb_display_finger_print"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_10dp"
+                    android:backgroundTint="@color/white"
+                    android:buttonTint="@color/white"
+                    android:drawableTint="@color/white"
+                    android:textSize="@dimen/dimen_13sp" />
+
+                <TextView
+                    android:id="@+id/tv_display_finger_print"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="true"
+                    android:fontFamily="@font/google_sans"
+                    android:gravity="start"
+                    android:padding="@dimen/dimen_5dp"
+                    android:text="@string/show_finger_print_text"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen_15sp" />
+
+            </LinearLayout>
+
+            <com.mtp.laboproject.view.ui.view.CustomButton
+                android:id="@+id/btn_login"
+                style="@style/WhiteButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_100dp"
+                android:layout_marginBottom="@dimen/dimen_24dp"
+                android:fontFamily="@font/googlesans_bold"
+                android:padding="@dimen/dimen_12dp"
+                android:text="@string/login_string"
+                android:textColor="@color/color_primary" />
 
             <TextView
-                android:id="@+id/tv_display_mdp"
-                android:layout_width="wrap_content"
+                android:id="@+id/link_signup"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_vertical"
-                android:clickable="true"
+                android:layout_marginBottom="@dimen/dimen_24dp"
                 android:fontFamily="@font/google_sans"
-                android:gravity="start"
-                android:padding="@dimen/dimen_5dp"
-                android:text="@string/show_password_text"
-                android:textColor="@color/white"
-                android:textSize="@dimen/dimen_15sp" />
+                android:gravity="center"
+                android:text="@string/noaccount_text"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dimen_16sp" />
 
         </LinearLayout>
-        <com.mtp.laboproject.view.ui.view.CustomButton
-            android:id="@+id/btn_login"
-            style="@style/WhiteButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_100dp"
-            android:layout_marginBottom="@dimen/dimen_24dp"
-            android:padding="@dimen/dimen_12dp"
-            android:fontFamily="@font/googlesans_bold"
-            android:textColor="@color/color_primary"
-            android:text="@string/login_string"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ct_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/black_transparent_gradient"
+            android:visibility="gone"
+            >
 
-        <TextView android:id="@+id/link_signup"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimen_24dp"
-            android:text="@string/noaccount_text"
-            android:textColor="@android:color/white"
-            android:fontFamily="@font/google_sans"
-            android:gravity="center"
-            android:textSize="@dimen/dimen_16sp"/>
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progressBarP2pSearchRecipient"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:indeterminateDrawable="@drawable/circular_progress_bar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                 />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
-</ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
