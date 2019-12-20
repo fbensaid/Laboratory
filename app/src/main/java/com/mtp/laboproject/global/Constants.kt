@@ -19,6 +19,7 @@ class Constants {
     object EndPoints {
         const  val LABORATORY: String = "movies"
         const  val LABORATORY_ENDPOINT: String = "lab/list"
+        const  val FORGOTTEN_PASSWORD_ENDPOINT: String = "forgot_password"
 
     }
 
