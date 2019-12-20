@@ -12,6 +12,9 @@
     <string name="login_string">Login</string>
     <string name="show_password_text">Show password</string>
     <string name="confirm_text">Confirm</string>
+    <string name="share_text">%1$s \n \n  J\'ai gagné %2$s</string>
+    <string name="share_subject">Partagez vos gains</string>
+    <string name="show_finger_print_text">Finger Print Authentication</string>
 
 
 </resources>

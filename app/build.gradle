@@ -27,6 +27,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"http://picking-geant.ddns.net:84/\""
+        }
     }
     dataBinding {
         enabled = true
@@ -103,6 +108,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
     //dagger support
+    implementation 'com.google.dagger:dagger:2.13'
+    kapt 'com.google.dagger:dagger-compiler:2.13'
     implementation "com.google.dagger:dagger-android-support:2.11"
     implementation "com.google.dagger:dagger:2.11"
     kapt "android.arch.persistence.room:compiler:1.1.1"
