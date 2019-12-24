@@ -23,11 +23,11 @@ class ForgottenPasswordViewModel : ViewModel() {
     //live data that will be populated as news updates
     val forgotPasswordLiveData = MutableLiveData<ForgottenPasswordResponse>()
 
-    fun getLabs() {
+    fun forgotPassword(email: String) {
         ///launch the coroutine scope
         scope.launch {
             //get latest news from news repo
-            val latestNews = forgotPasswordRepository.forgotPassword()
+            val latestNews = forgotPasswordRepository.forgotPassword(email)
             //post the value inside live data
             forgotPasswordLiveData.postValue(latestNews)
 

@@ -21,7 +21,7 @@ import android.view.MenuInflater
 import android.widget.SearchView
 
 
-class LaboratoryFragment : Fragment(), LaboratoryClickListener {
+class LaboratoryFragment : BaseFragment(), LaboratoryClickListener {
 
     private lateinit var labsViewModel: LabsViewModel
     private lateinit var laboAdapter: LaboratoryAdapter

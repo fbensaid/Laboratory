@@ -16,12 +16,14 @@ import com.mtp.laboproject.global.BiometricPromptListener
 import com.mtp.laboproject.global.SharedPreferences
 import com.mtp.laboproject.global.checkBiometric
 import kotlinx.android.synthetic.main.activity_auth.*
+import kotlinx.android.synthetic.main.activity_auth.btn_login
+import kotlinx.android.synthetic.main.activity_forgotton_password.*
 import net.simplifiedcoding.mvvmsampleapp.util.toast
 import net.simplifiedcoding.mvvmsampleapp.util.validateForm
 import org.jetbrains.anko.intentFor
 import javax.inject.Inject
 
-class AuthentificationActivity : AppCompatActivity(), BiometricPromptListener {
+class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
 
 
     private lateinit var auth: FirebaseAuth
@@ -29,14 +31,12 @@ class AuthentificationActivity : AppCompatActivity(), BiometricPromptListener {
     private  lateinit var biometricPrompt:BiometricPrompt
     private var isFromLoginPassword: Boolean = false
 
-    @Inject
-    lateinit var sharedPreferences: SharedPreferences
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        LaboApplication.appComponent.inject(this)
         biometricPrompt = BiometricPrompt(this, this)
         auth = FirebaseAuth.getInstance()
 
@@ -45,7 +45,7 @@ class AuthentificationActivity : AppCompatActivity(), BiometricPromptListener {
         //auth with fingerPrint if user connected before
 
         btn_login.setOnClickListener {
-            if ((input_email.validateForm() && input_password.validateForm())) {
+            if ((input_email_forgot.validateForm() && input_password.validateForm())) {
                 isFromLoginPassword=true
                 signIn(input_email.text.toString(),input_password.text.toString())
             }

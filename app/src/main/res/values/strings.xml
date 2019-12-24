@@ -15,6 +15,11 @@
     <string name="share_text">%1$s \n \n  J\'ai gagné %2$s</string>
     <string name="share_subject">Partagez vos gains</string>
     <string name="show_finger_print_text">Finger Print Authentication</string>
+    <string name="ok">OK</string>
+    <string name="error_network">No network Available</string>
+    <string name="error_server">Server Error</string>
+    <string name="expired_session">Exipred session</string>
+    <string name="error_loading">Loading Error</string>
 
 
 </resources>

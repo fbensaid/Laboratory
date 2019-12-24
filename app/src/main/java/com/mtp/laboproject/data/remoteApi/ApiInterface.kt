@@ -14,7 +14,7 @@ interface ApiInterface {
 
 
     @GET(Constants.EndPoints.FORGOTTEN_PASSWORD_ENDPOINT)
-    fun forgotPassword(): Deferred<Response<ForgottenPasswordResponse>>
+    fun forgotPassword(email : String): Deferred<Response<ForgottenPasswordResponse>>
 
 
 

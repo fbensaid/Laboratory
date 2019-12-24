@@ -2,6 +2,7 @@ package com.farouk.travelcar.data.repository
 
 import androidx.lifecycle.LiveData
 import com.mtp.laboproject.data.model.UserResponse
+import com.mtp.laboproject.data.repository.BaseRepository
 
 
 interface UserRepository  {

@@ -19,7 +19,7 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = [AppModule::class, RoomModule::class, PreferencesModule::class])
+@Component(modules = [AppModule::class, RoomModule::class, PreferencesModule::class,APIClientModule::class,PicassoModule::class])
 interface AppComponent {
 
 
@@ -29,9 +29,7 @@ interface AppComponent {
     fun inject(appComponent: LaboApplication)
     fun inject(fireBase: FirebaseMessagingService)
     fun appDatabase(): AppDataBase
-    fun baseRepository(): BaseRepository
     fun application(): Application
-
     fun getPreferences(): SharedPreferences
 
 

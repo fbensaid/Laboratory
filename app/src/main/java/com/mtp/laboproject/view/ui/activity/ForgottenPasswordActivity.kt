@@ -1,57 +1,56 @@
 package com.mtp.laboproject.view.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import androidx.annotation.Nullable
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.mtp.laboproject.R
+import com.mtp.laboproject.view.adapter.LaboratoryAdapter
+import com.mtp.laboproject.view.factory.LabsViewModelFactory
+import com.mtp.laboproject.view.viewmodel.ForgottenPasswordViewModel
+import com.mtp.laboproject.view.viewmodel.LabsViewModel
 import kotlinx.android.synthetic.main.activity_auth.*
+import kotlinx.android.synthetic.main.activity_auth.btn_login
+import kotlinx.android.synthetic.main.activity_forgotton_password.*
+import kotlinx.android.synthetic.main.fragment_laboratory.*
+import net.simplifiedcoding.mvvmsampleapp.util.validateForm
 import org.jetbrains.anko.intentFor
-class ForgottenPasswordActivity : AppCompatActivity() {
+class ForgottenPasswordActivity : BaseActivity() {
 
 
+    private lateinit var forgottenPassViewModel: ForgottenPasswordViewModel
     private lateinit var auth: FirebaseAuth
-    private val TAG = "Authentification"
+    private val TAG = "ForgottenPassword"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        setContentView(R.layout.activity_forgotton_password)
 
-        auth = FirebaseAuth.getInstance()
+
+
         btn_login.setOnClickListener {
-            signIn(input_email.text.toString(),input_password.text.toString())
-        }
-
-    }
-
-    // [START on_start_check_user]
-    public override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            Toast.makeText(baseContext, "there is a user registred", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun signIn(email: String, password: String) {
-        if (!validateForm()) {
-            return
-        }
-        // [START sign_in_with_email]
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    startActivity(intentFor<MainActivity>())
-                    finish()
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                }
+            if ((input_email.validateForm())) {
+                setForgotApi(input_email_forgot.text.toString())
             }
+        }
+
     }
+
+    private fun setForgotApi(email : String) {
+        val factory = LabsViewModelFactory()
+        forgottenPassViewModel = ViewModelProviders.of(this, factory)
+            .get(ForgottenPasswordViewModel::class.java)
+        forgottenPassViewModel.forgotPassword(email)
+        forgottenPassViewModel.forgotPasswordLiveData.observe(this, Observer { forgotResponse ->
+            startActivity(intentFor<AuthentificationActivity>())
+        })
+    }
+
+
 
     private fun validateForm(): Boolean {
         var valid = true
