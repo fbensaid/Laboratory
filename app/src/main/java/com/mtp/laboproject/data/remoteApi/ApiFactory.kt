@@ -26,7 +26,7 @@ object Apifactory{
     //OkhttpClient for building http request url
     private val tmdbClient = OkHttpClient().newBuilder()
         //.addInterceptor(authInterceptor)
-        .addInterceptor(EndpointInterceptor())
+        //.addInterceptor(EndpointInterceptor())
         .build()
 
     fun retrofit() : Retrofit = Retrofit.Builder()

@@ -2,7 +2,6 @@ package com.mtp.laboproject.view.ui.fragment
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -21,7 +20,7 @@ import android.view.MenuInflater
 import android.widget.SearchView
 
 
-class ProfilFragment : Fragment(), LaboratoryClickListener {
+class ProfilFragment : BaseFragment(), LaboratoryClickListener {
 
     private lateinit var labsViewModel: LabsViewModel
     private lateinit var laboAdapter: LaboratoryAdapter

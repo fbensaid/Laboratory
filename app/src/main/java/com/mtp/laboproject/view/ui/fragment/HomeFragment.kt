@@ -1,13 +1,12 @@
 package com.mtp.laboproject.view.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mtp.laboproject.R
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
 
     override fun onCreateView(
