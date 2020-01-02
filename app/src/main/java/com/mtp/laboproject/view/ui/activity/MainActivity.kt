@@ -66,9 +66,10 @@ class MainActivity : AppCompatActivity() {
 
       fun showBadgeOnNavigationButtomView(s: String?) {
           scope.launch(Dispatchers.Main.immediate) {
-              val badgeDrawable = bottomNavigationViewHome.getOrCreateBadge(menuNavigation[s!!.toInt()])
-              badgeDrawable.isVisible = true
-              badgeDrawable.number = 1
+              bottomNavigationViewHome.getOrCreateBadge(menuNavigation[s!!.toInt()]).apply {
+                  isVisible=true
+                  number=1
+              }
           }
     }
 
@@ -82,11 +83,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun replaceMainLayout(fragment: Fragment,menu:Int) {
         // delete bagde if existe
-        refreshBadgeView(menu)
         fragmentManager.beginTransaction()
             .replace(R.id.layoutSlidingHome, fragment)
             .addToBackStack(null)
             .commit()
+        refreshBadgeView(menu)
+
     }
 
     companion object {

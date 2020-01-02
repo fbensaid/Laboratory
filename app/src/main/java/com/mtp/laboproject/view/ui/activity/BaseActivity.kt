@@ -1,40 +1,22 @@
 package com.mtp.laboproject.view.ui.activity
 
-import android.Manifest
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
-import android.content.IntentFilter
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.hardware.Camera
-import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.*
-import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import androidx.annotation.LayoutRes
 import androidx.annotation.NonNull
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.R
-import com.mtp.laboproject.global.AppUtils
 import com.mtp.laboproject.global.Constants
-import com.mtp.laboproject.global.Constants.Requests.REQUEST_CALL_SETTINGS
-import com.mtp.laboproject.global.Constants.Requests.REQUEST_CAMERA_SETTINGS
 import com.mtp.laboproject.global.SharedPreferences
-import com.mtp.laboproject.listener.RepositoryListener
 import com.mtp.laboproject.view.ui.view.CustomProgressDialog
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.dialog_layout.*
-import org.jetbrains.anko.find
 import javax.inject.Inject
 
 open class BaseActivity : AppCompatActivity() {
@@ -72,7 +54,6 @@ open class BaseActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
     fun quitApp() {
@@ -332,42 +313,8 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * show unavailable Network Error
-     */
-    fun showErrorNetworkDialog() {
-
-        showSimpleOkDialog(R.string.error_network, R.string.ok)
-    }
-
-    /**
-     * show server Error
-     */
-    fun showErrorServerDialog() {
-
-        showSimpleOkDialog(R.string.error_server, R.string.ok)
-    }
-
-    /**
-     * show default ws dialog fail handler
-     */
-    fun showDefaultFailDialog(failType: RepositoryListener.FailType) {
-        when (failType) {
-
-            RepositoryListener.FailType.NETWORK -> showErrorNetworkDialog()
-            RepositoryListener.FailType.UNAUTHORIZED -> showSimpleOkDialog(R.string.expired_session, getUnauthorizedAction())
-
-            else -> showSimpleOkDialog(R.string.error_server, R.string.ok)
-        }
-    }
 
 
-
-
-
-    /**
-     * show blocking progressBar on the root of the activity
-     */
     fun showProgressBar() {
 
         if (!isFinishing) {
@@ -404,191 +351,10 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     private fun navigateToSignIn() {
-
-
         val intent = Intent(this@BaseActivity, AuthentificationActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
-        //   overridePendingTransition(R.anim.slide_in_up, R.anim.non);
 
-    }
-
-
-    /**
-     * Start new activity when the app on foreground
-     */
-    fun startActivityWhenForeground(intent: Intent) {
-
-        startActivityWhenForeground(intent, false)
-    }
-
-
-    /**
-     * Start new activity when the app on foreground
-     */
-    fun startActivityWhenForeground(intent: Intent, shouldFinish: Boolean) {
-
-
-    }
-
-
-    /**
-     * Start new activity when the app on foreground
-     */
-    fun startActivityWhenForeground(activity: Class<*>) {
-
-        startActivityWhenForeground(activity, false)
-
-    }
-
-    /**
-     * Start new activity when the app on foreground
-     *
-     * @param shouldFinish current activity
-     */
-
-    fun startActivityWhenForeground(activity: Class<*>, shouldFinish: Boolean) {
-
-        val intent = Intent(this@BaseActivity, activity)
-        startActivityWhenForeground(intent, shouldFinish)
-
-    }
-
-
-    @NonNull
-    private fun buildStartRunnable(intent: Intent, shouldFinish: Boolean): Runnable {
-        return Runnable {
-
-            startActivity(intent)
-
-            if (shouldFinish) finish()
-
-        }
-    }
-
-
-    /**
-     * Start new activity for result when the app on foreground
-     */
-    fun startActivityForResultWhenForeground(intent: Intent, requestCode: Int) {
-
-        startActivityForResultWhenForeground(intent, false, requestCode)
-    }
-
-
-    /**
-     * Start new activity for result when the app on foreground
-     */
-    fun startActivityForResultWhenForeground(
-        intent: Intent,
-        shouldFinish: Boolean,
-        requestCode: Int
-    ) {
-
-
-    }
-
-
-    /**
-     * Start new activity for result when the app on foreground
-     */
-    fun startActivityForResultWhenForeground(activity: Class<*>, requestCode: Int) {
-
-        startActivityForResultWhenForeground(activity, false, requestCode)
-
-    }
-
-    /**
-     * Start new activity for result when the app on foreground
-     *
-     * @param shouldFinish current activity
-     */
-
-    fun startActivityForResultWhenForeground(
-        activity: Class<*>,
-        shouldFinish: Boolean,
-        requestCode: Int
-    ) {
-
-        val intent = Intent(this@BaseActivity, activity)
-        startActivityForResultWhenForeground(intent, shouldFinish, requestCode)
-
-    }
-
-
-    @NonNull
-    private fun buildStartForResultRunnable(
-        intent: Intent,
-        shouldFinish: Boolean,
-        requestCode: Int
-    ): Runnable {
-        return Runnable {
-
-
-            startActivityForResult(intent, requestCode)
-
-            if (shouldFinish) finish()
-
-        }
-    }
-
-    /**
-     * show error network
-     */
-    fun isNetworkAvailable(): Boolean {
-        return AppUtils.isNetworkAvailable(this)
-    }
-
-    /**
-     * try to hide Keyboard from the focused screen
-     */
-    fun hideKeyboard() {
-        try {
-            val inputMethodManager =
-                getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(currentFocus?.getWindowToken(), 0)
-        } catch (e: Exception) {
-        }
-
-    }
-
-
-    private fun cancelProgress() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss()
-        }
-    }
-
-    private fun pendingTransition() {
-
-        //overridePendingTransition(R.anim.nothing, R.anim.bottom_down)
-
-    }
-
-    fun requestCameraPermission() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.CAMERA),
-            REQUEST_CAMERA_SETTINGS
-        )
-    }
-
-    fun requestCallPermission() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.CALL_PHONE),
-            REQUEST_CALL_SETTINGS
-        )
-    }
-
-
-    fun checkAndroidVersion(@NonNull permissions: Array<String>) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            val showRationale = shouldShowRequestPermissionRationale(permissions[0])
-            //getPreferences().setNeverLocation(!showRationale);
-        }
-
-        //   finish();
     }
 
 
