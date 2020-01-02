@@ -1,19 +1,14 @@
 package com.mtp.laboproject.view.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
-import com.farouk.travelcar.data.repository.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.UserResponse
 import com.mtp.laboproject.global.BiometricPrompt
 import com.mtp.laboproject.global.BiometricPromptListener
-import com.mtp.laboproject.global.SharedPreferences
 import com.mtp.laboproject.global.checkBiometric
 import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.activity_auth.btn_login
@@ -21,7 +16,6 @@ import kotlinx.android.synthetic.main.activity_forgotton_password.*
 import net.simplifiedcoding.mvvmsampleapp.util.toast
 import net.simplifiedcoding.mvvmsampleapp.util.validateForm
 import org.jetbrains.anko.intentFor
-import javax.inject.Inject
 
 class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
 
@@ -71,10 +65,13 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
     private fun storeUserData(user:FirebaseUser?) {
         sharedPreferences.userResponse= UserResponse(user!!.displayName,user!!.email,user.photoUrl.toString(),user.uid)
         if(isFromLoginPassword){
-            sharedPreferences.email=input_email.text.toString()
-            sharedPreferences.password=input_password.text.toString()
-            sharedPreferences.isConnectedSuccess=true
-            sharedPreferences.fingerPrint=cb_display_finger_print.isChecked
+            sharedPreferences.apply {
+                email=input_email.text.toString()
+                password=input_password.text.toString()
+               isConnectedSuccess=true
+                fingerPrint=cb_display_finger_print.isChecked
+            }
+
         }
     }
 

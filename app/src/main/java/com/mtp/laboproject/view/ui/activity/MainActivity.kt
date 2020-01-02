@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
     private val fragmentManager = supportFragmentManager
     private var laboratoryFragment= LaboratoryFragment()
     private var homeFragment= HomeFragment()
-    private var notificationBadge: View? = null
 
     private val parentJob = Job()
     //create a coroutine context with the job and the dispatcher
@@ -40,10 +39,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-        //init badge
-
 
         replaceMainLayout(homeFragment,0)
         //define the activity context
