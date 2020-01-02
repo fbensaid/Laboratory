@@ -99,7 +99,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
     implementation 'com.android.support:design:29.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-beta02'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
     //dagger support

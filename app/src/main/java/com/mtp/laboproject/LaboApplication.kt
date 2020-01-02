@@ -7,6 +7,7 @@
 package com.mtp.laboproject
 
 import android.app.Application
+import android.content.Context
 import com.mtp.laboproject.dagger.AppComponent
 import com.mtp.laboproject.dagger.AppModule
 import com.farouk.travelcar.dagger.RoomModule
@@ -18,11 +19,18 @@ class LaboApplication : Application() {
 
     companion object {
         lateinit var appComponent: AppComponent
+        lateinit var instance: Context
+
     }
 
     override fun onCreate() {
         super.onCreate()
+        instance = this
         initDI()
+    }
+
+    fun getAppContext(): Context {
+        return instance
     }
 
     private fun initDI() {
@@ -33,3 +41,5 @@ class LaboApplication : Application() {
             .build()
     }
 }
+
+

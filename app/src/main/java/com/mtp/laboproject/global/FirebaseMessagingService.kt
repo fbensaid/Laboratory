@@ -5,9 +5,12 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import javax.inject.Inject
+import com.mtp.laboproject.LaboApplication
+import com.mtp.laboproject.view.ui.activity.MainActivity
+
 
 class FirebaseMessagingService : FirebaseMessagingService() {
+
 
 
     /**
@@ -17,6 +20,7 @@ class FirebaseMessagingService : FirebaseMessagingService() {
      */
     // [START receive_message]
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
+
         // [START_EXCLUDE]
         // There are two types of messages data messages and notification messages. Data messages are handled
         // here in onMessageReceived whether the app is in the foreground or background. Data messages are the type
@@ -34,8 +38,16 @@ class FirebaseMessagingService : FirebaseMessagingService() {
         // Check if message contains a data payload.
         remoteMessage.data.isNotEmpty().let {
             Log.d(TAG, "Message data payload: " + remoteMessage.data)
+            Log.d(TAG, "Message data payload-->: screen " + remoteMessage.data["screen"])
+            Log.d(TAG, "Message data payload-->: data " + remoteMessage.data["data"])
 
-            if (/* Check if data needs to be processed by long running job */ true) {
+
+            (LaboApplication.instance as MainActivity).showBadgeOnNavigationButtomView(remoteMessage.data["screen"])
+
+
+
+
+                if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use WorkManager.
                 scheduleJob()
             } else {
@@ -52,6 +64,7 @@ class FirebaseMessagingService : FirebaseMessagingService() {
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
     }
+
     // [END receive_message]
 
     // [START on_new_token]

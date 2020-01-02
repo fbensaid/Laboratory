@@ -24,12 +24,12 @@ interface AppComponent {
     fun inject(profilFragment: ProfilFragment)
     fun inject(authActivity: AuthentificationActivity)
     fun inject(appComponent: LaboApplication)
-    fun inject(fireBase: FirebaseMessagingService)
 
 
     fun appDatabase(): AppDataBase
 
     fun userRepository(): UserRepository
+
 
     fun application(): Application
 

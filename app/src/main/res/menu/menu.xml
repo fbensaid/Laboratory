@@ -6,4 +6,10 @@
         android:icon="@android:drawable/ic_menu_search"
         app:showAsAction="always|collapseActionView"
         app:actionViewClass="android.widget.SearchView" />
+
+    <item android:id="@+id/info_view"
+        android:title="@string/action_info"
+        android:icon="@android:drawable/ic_dialog_info"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="android.widget.ImageView" />
 </menu>
