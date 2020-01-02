@@ -123,6 +123,7 @@ class Constants {
         const val LABORATORY = "movies"
         const val LABORATORY_ENDPOINT  = "lab/list"
         const val FORGOTTEN_PASSWORD_ENDPOINT  = "forgot_password"
+        const val ALERTS_ENDPOINT  = "alerts"
         const val HOME = "api/home"
         const val MY_GIFTS = "api/loot"
         const val USE_VOUCHER = "api/loot"

@@ -32,6 +32,9 @@
             android:name=".view.ui.activity.MainActivity"
             android:theme="@style/CustomActionBarTheme" />
         <activity
+            android:name=".view.ui.activity.AlertsActivity"
+            android:theme="@style/CustomActionBarTheme" />
+        <activity
             android:name=".view.ui.activity.BaseActivity"
             android:theme="@style/CustomActionBarTheme" />
         <activity

@@ -3,6 +3,7 @@ package com.mtp.laboproject.data.remoteApi
 import com.mtp.laboproject.data.model.ForgottenPasswordResponse
 import com.mtp.laboproject.global.Constants
 import com.mtp.laboproject.data.model.LaboratoryListResponse
+import com.mtp.laboproject.data.rest.AlertsDetailsResponse
 
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
@@ -15,6 +16,9 @@ interface ApiInterface {
 
     @GET(Constants.EndPoints.FORGOTTEN_PASSWORD_ENDPOINT)
     fun forgotPassword(email : String): Deferred<Response<ForgottenPasswordResponse>>
+
+    @GET(Constants.EndPoints.ALERTS_ENDPOINT)
+    fun getAlerts(): Deferred<Response<AlertsDetailsResponse>>
 
 
 
