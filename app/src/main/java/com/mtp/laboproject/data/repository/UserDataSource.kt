@@ -3,6 +3,7 @@ package com.farouk.travelcar.data.repository
 import androidx.lifecycle.LiveData
 import com.mtp.laboproject.data.dao.UserDao
 import com.mtp.laboproject.data.model.UserResponse
+import com.mtp.laboproject.data.repository.UserRepository
 
 class UserDataSource( private val userDao: UserDao) : UserRepository {
 

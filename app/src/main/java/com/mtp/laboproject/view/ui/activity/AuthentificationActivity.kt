@@ -3,6 +3,7 @@ package com.mtp.laboproject.view.ui.activity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.mtp.laboproject.R
@@ -10,6 +11,10 @@ import com.mtp.laboproject.data.model.UserResponse
 import com.mtp.laboproject.global.BiometricPrompt
 import com.mtp.laboproject.global.BiometricPromptListener
 import com.mtp.laboproject.global.checkBiometric
+import com.mtp.laboproject.view.factory.AuthViewModelFactory
+import com.mtp.laboproject.view.factory.LabsViewModelFactory
+import com.mtp.laboproject.view.viewmodel.AuthViewModel
+import com.mtp.laboproject.view.viewmodel.LabsViewModel
 import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.activity_auth.btn_login
 import kotlinx.android.synthetic.main.activity_forgotton_password.*
@@ -19,12 +24,11 @@ import org.jetbrains.anko.intentFor
 
 class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
 
-
     private lateinit var auth: FirebaseAuth
     private val TAG = "Authentification"
     private  lateinit var biometricPrompt:BiometricPrompt
     private var isFromLoginPassword: Boolean = false
-
+    private lateinit var authViewModel: AuthViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,12 +38,16 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
         biometricPrompt = BiometricPrompt(this, this)
         auth = FirebaseAuth.getInstance()
 
+        val factory = AuthViewModelFactory()
+        authViewModel = ViewModelProviders.of(this, factory)
+            .get(AuthViewModel::class.java)
+
         //check if user had biometric configuration and support
         checkBiometric()
         //auth with fingerPrint if user connected before
 
         btn_login.setOnClickListener {
-            if ((input_email_forgot.validateForm() && input_password.validateForm())) {
+            if ((input_email.validateForm() && input_password.validateForm())) {
                 isFromLoginPassword=true
                 signIn(input_email.text.toString(),input_password.text.toString())
             }
@@ -63,17 +71,14 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
         }
     }
     private fun storeUserData(user:FirebaseUser?) {
-        sharedPreferences.userResponse= UserResponse(user!!.displayName,user!!.email,user.photoUrl.toString(),user.uid)
+        authViewModel.storeuser(UserResponse(user!!.displayName,user!!.email,user.photoUrl.toString(),user.uid))
         if(isFromLoginPassword){
-            sharedPreferences.apply {
-                email=input_email.text.toString()
-                password=input_password.text.toString()
-               isConnectedSuccess=true
-                fingerPrint=cb_display_finger_print.isChecked
-            }
-
+            authViewModel.storeAuthData(input_email.text.toString(),input_password.text.toString(),
+                true,cb_display_finger_print.isChecked)
         }
     }
+
+
 
     // [START on_start_check_user]
     public override fun onStart() {

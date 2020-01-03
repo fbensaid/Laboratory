@@ -21,6 +21,9 @@
     <string name="error_server">Server Error</string>
     <string name="expired_session">Exipred session</string>
     <string name="error_loading">Loading Error</string>
+    <string name="fingerprint_title">Fingerprint pour IFF</string>
+    <string name="fingerprint_subtitle">Entrez votre empreinte pour vous identifier</string>
+    <string name="fingerprint_action">Touchez le capteur</string>
 
 
 </resources>

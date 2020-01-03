@@ -30,14 +30,11 @@ class ForgottenPasswordActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgotton_password)
 
-
-
         btn_login.setOnClickListener {
             if ((input_email.validateForm())) {
                 setForgotApi(input_email_forgot.text.toString())
             }
         }
-
     }
 
     private fun setForgotApi(email : String) {
@@ -49,31 +46,5 @@ class ForgottenPasswordActivity : BaseActivity() {
             startActivity(intentFor<AuthentificationActivity>())
         })
     }
-
-
-
-    // unused function ( fun EditText.validateForm() in ViewUtils)
-    private fun validateForm(): Boolean {
-        var valid = true
-
-        val email = input_email.text.toString()
-        if (TextUtils.isEmpty(email)) {
-            input_email.error = "Required."
-            valid = false
-        } else {
-            input_email.error = null
-        }
-
-        val password = input_password.text.toString()
-        if (TextUtils.isEmpty(password)) {
-            input_password.error = "Required."
-            valid = false
-        } else {
-            input_password.error = null
-        }
-
-        return valid
-    }
-
 
 }

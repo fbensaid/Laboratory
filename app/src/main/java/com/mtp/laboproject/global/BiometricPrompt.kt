@@ -5,6 +5,7 @@ import android.os.Looper
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.fragment.app.FragmentActivity
+import com.mtp.laboproject.R
 import java.util.concurrent.Executor
 
 
@@ -26,9 +27,9 @@ enum class checkBiometric {
 class BiometricPrompt(val activity: FragmentActivity, val listener: BiometricPromptListener) {
 
     private val promptInfo = BiometricPrompt.PromptInfo.Builder()
-        .setTitle("Set the title to display.")
-        .setSubtitle("Set the subtitle to display.")
-        .setDescription("Set the description to display")
+        .setTitle(activity.getString(R.string.fingerprint_title))
+        .setSubtitle(activity.getString(R.string.fingerprint_subtitle))
+        .setDescription(activity.getString(R.string.fingerprint_action))
         //.setNegativeButtonText("Negative Button")
         .setDeviceCredentialAllowed(true) // allow to authenticate using device PIN, pattern, or password
         .build()

@@ -119,9 +119,7 @@ dependencies {
     kapt "org.permissionsdispatcher:permissionsdispatcher-processor:$dispatcher_version"
 
     implementation 'com.scottyab:secure-preferences-lib:0.1.7'
-
-
-
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
 
 
 }

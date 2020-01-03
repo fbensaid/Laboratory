@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import com.mtp.laboproject.view.ui.fragment.HomeFragment
 import com.mtp.laboproject.view.ui.fragment.LaboratoryFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import android.view.View
 import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.R
 import kotlinx.coroutines.CoroutineScope
@@ -14,8 +13,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
-
-
+import android.view.MenuItem
+import com.mtp.laboproject.view.ui.fragment.ProfilFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     private val fragmentManager = supportFragmentManager
     private var laboratoryFragment= LaboratoryFragment()
     private var homeFragment= HomeFragment()
+    private var profilFragment= ProfilFragment()
+
 
     private val parentJob = Job()
     //create a coroutine context with the job and the dispatcher
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         R.id.navigation_graph,
         R.id.navigation_parametres
     )
+    private var itemSearch: MenuItem? = null
+    private var itemInfo: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home -> replaceMainLayout(homeFragment,0)
                 R.id.navigation_labo -> replaceMainLayout(laboratoryFragment,1)
                 R.id.navigation_graph -> replaceMainLayout(laboratoryFragment,2)
-                R.id.navigation_parametres -> replaceMainLayout(laboratoryFragment,3)
+                R.id.navigation_parametres -> replaceMainLayout(profilFragment,3)
             }
             true
         }

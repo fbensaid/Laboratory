@@ -4,9 +4,10 @@ package com.mtp.laboproject.dagger
 import android.app.Application
 import com.mtp.laboproject.view.ui.fragment.BaseFragment
 import com.farouk.travelcar.dagger.RoomModule
-import com.farouk.travelcar.data.repository.UserRepository
+import com.mtp.laboproject.data.repository.UserRepository
 import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.data.Database.AppDataBase
+import com.mtp.laboproject.data.repository.AuthenticationRepository
 import com.mtp.laboproject.data.repository.BaseRepository
 import com.mtp.laboproject.global.FirebaseMessagingService
 import com.mtp.laboproject.global.SharedPreferences
@@ -30,10 +31,12 @@ interface AppComponent {
     fun userRepository(): UserRepository
 
 
+
     fun inject(fireBase: FirebaseMessagingService)
 
     fun application(): Application
     fun getPreferences(): SharedPreferences
+
 
 
 }

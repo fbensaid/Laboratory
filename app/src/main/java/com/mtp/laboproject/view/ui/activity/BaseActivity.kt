@@ -25,7 +25,6 @@ open class BaseActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)

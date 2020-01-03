@@ -4,7 +4,7 @@ import android.app.Application
 import dagger.Provides
 import androidx.room.Room
 import com.farouk.travelcar.data.repository.UserDataSource
-import com.farouk.travelcar.data.repository.UserRepository
+import com.mtp.laboproject.data.repository.UserRepository
 import com.mtp.laboproject.data.Database.AppDataBase
 import com.mtp.laboproject.data.dao.UserDao
 import dagger.Module

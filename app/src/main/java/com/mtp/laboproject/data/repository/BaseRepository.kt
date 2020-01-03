@@ -1,12 +1,21 @@
 package com.mtp.laboproject.data.repository
 
 import android.util.Log
+import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.data.remoteApi.Output
+import com.mtp.laboproject.global.SharedPreferences
 
 import retrofit2.Response
 import java.io.IOException
+import javax.inject.Inject
 
 open class BaseRepository {
+
+      constructor() {
+        LaboApplication.appComponent.inject(baseRepository = this)
+    }
+
+
     suspend fun <T : Any> safeApiCall(call : suspend()-> Response<T>, error : String) :  T?{
         val result = apiOutput(call, error)
         var output : T? = null

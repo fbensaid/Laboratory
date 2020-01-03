@@ -65,15 +65,13 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener {
                 laboAdapter.filter.filter(query)
                 return false
             }
-
         })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu, menu)
+       inflater.inflate(R.menu.menu, menu)
         searchView = menu.findItem(R.id.search_view).actionView as SearchView
         searchView.queryHint = getString(R.string.search_hint)
-
         super.onCreateOptionsMenu(menu, inflater)
     }
 

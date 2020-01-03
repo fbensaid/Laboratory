@@ -30,8 +30,6 @@ fun View.snackbar(message: String){
     }.show()
 }
 
-
-
  fun EditText.validateForm(): Boolean {
     var valid = true
 

@@ -14,16 +14,12 @@ import com.mtp.laboproject.R
 
 class CustomProgressDialog : AlertDialog {
 
-
     constructor(context: Context) : super(context) {}
-
     constructor(
         context: Context,
         cancelable: Boolean,
         cancelListener: DialogInterface.OnCancelListener
-    ) : super(context, cancelable, cancelListener) {
-    }
-
+    ) : super(context, cancelable, cancelListener)
     constructor(context: Context, @StyleRes themeResId: Int) : super(context, themeResId) {}
 
     override fun onCreate(savedInstanceState: Bundle) {
