@@ -21,9 +21,10 @@ import javax.inject.Inject
 
 open class BaseActivity : AppCompatActivity() {
     private lateinit var  mProgressDialog: CustomProgressDialog
+
+
     @Inject
     lateinit var sharedPreferences: SharedPreferences
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -11,6 +11,9 @@ import javax.inject.Inject
 
 open class BaseRepository {
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
       constructor() {
         LaboApplication.appComponent.inject(baseRepository = this)
     }

@@ -10,6 +10,7 @@ import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.UserResponse
 import com.mtp.laboproject.global.BiometricPrompt
 import com.mtp.laboproject.global.BiometricPromptListener
+import com.mtp.laboproject.global.SharedPreferences
 import com.mtp.laboproject.global.checkBiometric
 import com.mtp.laboproject.view.factory.AuthViewModelFactory
 import com.mtp.laboproject.view.factory.LabsViewModelFactory
@@ -21,6 +22,9 @@ import kotlinx.android.synthetic.main.activity_forgotton_password.*
 import net.simplifiedcoding.mvvmsampleapp.util.toast
 import net.simplifiedcoding.mvvmsampleapp.util.validateForm
 import org.jetbrains.anko.intentFor
+import javax.inject.Inject
+
+
 
 class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
 
@@ -29,6 +33,7 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
     private  lateinit var biometricPrompt:BiometricPrompt
     private var isFromLoginPassword: Boolean = false
     private lateinit var authViewModel: AuthViewModel
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

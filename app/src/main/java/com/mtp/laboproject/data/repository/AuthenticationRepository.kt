@@ -10,12 +10,6 @@ import javax.inject.Inject
 
 class  AuthenticationRepository  : BaseRepository() {
 
-    @Inject
-    lateinit var sharedPreferences: SharedPreferences
-
-
-
-
      fun storeUser(userResponse: UserResponse) {
          sharedPreferences.userResponse=userResponse
      }
