@@ -10,20 +10,14 @@ import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.UserResponse
 import com.mtp.laboproject.global.BiometricPrompt
 import com.mtp.laboproject.global.BiometricPromptListener
-import com.mtp.laboproject.global.SharedPreferences
 import com.mtp.laboproject.global.checkBiometric
 import com.mtp.laboproject.view.factory.AuthViewModelFactory
-import com.mtp.laboproject.view.factory.LabsViewModelFactory
 import com.mtp.laboproject.view.viewmodel.AuthViewModel
-import com.mtp.laboproject.view.viewmodel.LabsViewModel
 import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.activity_auth.btn_login
-import kotlinx.android.synthetic.main.activity_forgotton_password.*
 import net.simplifiedcoding.mvvmsampleapp.util.toast
 import net.simplifiedcoding.mvvmsampleapp.util.validateForm
 import org.jetbrains.anko.intentFor
-import javax.inject.Inject
-
 
 
 class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
@@ -57,15 +51,15 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
                 signIn(input_email.text.toString(),input_password.text.toString())
             }
         }
-        cb_display_finger_print.isChecked= sharedPreferences.fingerPrint!!
+        cb_display_finger_print.isChecked= authViewModel.getsharedPreference().fingerPrint!!
         authWithFingerPrint()
 
         cb_display_finger_print.setOnCheckedChangeListener { _, b ->
-            if(b && sharedPreferences.isConnectedSuccess) biometricPrompt.authenticateBiometric()
+            if(b && authViewModel.getsharedPreference().isConnectedSuccess) biometricPrompt.authenticateBiometric()
         }
     }
     private fun authWithFingerPrint() {
-        if(cb_display_finger_print.isChecked&&sharedPreferences.isConnectedSuccess){
+        if(cb_display_finger_print.isChecked&&authViewModel.getsharedPreference().isConnectedSuccess){
             biometricPrompt.authenticateBiometric()
         }
     }
@@ -82,8 +76,6 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
                 true,cb_display_finger_print.isChecked)
         }
     }
-
-
 
     // [START on_start_check_user]
     public override fun onStart() {
@@ -109,7 +101,6 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
                     ct_loading.visibility=View.GONE
-
                 }
             }
     }
@@ -120,8 +111,9 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
     }
 
     override fun onAuthenticationSucceeded() {
-        if(sharedPreferences.isConnectedSuccess) {
-            signIn(sharedPreferences.email.toString(),sharedPreferences.password.toString())
+        if(authViewModel.getsharedPreference().isConnectedSuccess) {
+            signIn(authViewModel.getsharedPreference().email.toString(),
+                authViewModel.getsharedPreference().password.toString())
         } else
             toast("You have to set login and password at first")
 

@@ -3,8 +3,7 @@ package com.farouk.travelcar.dagger
 import android.app.Application
 import dagger.Provides
 import androidx.room.Room
-import com.farouk.travelcar.data.repository.UserDataSource
-import com.mtp.laboproject.data.repository.UserRepository
+import com.farouk.travelcar.data.repository.UserRepository
 import com.mtp.laboproject.data.Database.AppDataBase
 import com.mtp.laboproject.data.dao.UserDao
 import dagger.Module
@@ -32,7 +31,7 @@ class RoomModule(mApplication: Application) {
     @Singleton
     @Provides
     internal fun UserRepository(productDao: UserDao): UserRepository {
-        return UserDataSource(productDao)
+        return UserRepository(productDao)
     }
 
 }

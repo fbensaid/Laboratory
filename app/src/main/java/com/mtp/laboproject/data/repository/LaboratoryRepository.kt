@@ -1,7 +1,5 @@
 package com.mtp.laboproject.data.repository
 
-
-import androidx.lifecycle.MutableLiveData
 import com.mtp.laboproject.data.model.LaboratoryListResponse
 import com.mtp.laboproject.data.remoteApi.ApiInterface
 
