@@ -14,17 +14,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.R
 import com.mtp.laboproject.global.Constants
-import com.mtp.laboproject.global.SharedPreferences
 import com.mtp.laboproject.view.ui.view.CustomProgressDialog
 import kotlinx.android.synthetic.main.dialog_layout.*
-import javax.inject.Inject
 
 open class BaseActivity : AppCompatActivity() {
     private lateinit var  mProgressDialog: CustomProgressDialog
 
-
-    @Inject
-    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +27,6 @@ open class BaseActivity : AppCompatActivity() {
         LaboApplication.appComponent.inject(this)
     }
 
-    protected fun getPreferences(): SharedPreferences {
-        return sharedPreferences
-    }
 
 
     private fun handleNotification(intent: Intent?) {
