@@ -1,4 +1,4 @@
-package com.mtp.laboproject.data.rest
+package com.mtp.laboproject.data.model
 
 data class AlertsDetailsResponse(
     val __v: Int,
