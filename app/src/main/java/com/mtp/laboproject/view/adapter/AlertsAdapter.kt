@@ -72,7 +72,7 @@ class AlertsAdapter(
     )
 
     override fun onBindViewHolder(holder: AlertsViewHolder, position: Int) {
-        holder.recycleviewAlertsBinding.alertListResponseData =
+        holder.recycleviewAlertsBinding.alertsListResponseData =
             filtredListofAlerts[position]
 
         holder.recycleviewAlertsBinding.cardView.setOnClickListener {
