@@ -13,9 +13,12 @@ import com.mtp.laboproject.view.adapter.AlertsAdapter
 import com.mtp.laboproject.view.factory.AlertsViewModelFactory
 import com.mtp.laboproject.view.ui.DetailsLaboBottomSheet
 import com.mtp.laboproject.view.viewmodel.AlertsViewModel
-import kotlinx.android.synthetic.main.alerts_activity.*
+import kotlinx.android.synthetic.main.activity_alerts.*
 
 class AlertsActivity : BaseActivity(), AlertsClickListener {
+    override fun onRecyclerViewItemClick(view: View, labo: AlertsDetailsResponse) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private lateinit var alertsViewModel: AlertsViewModel
     private lateinit var alertsAdapter: AlertsAdapter
@@ -23,7 +26,7 @@ class AlertsActivity : BaseActivity(), AlertsClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.alerts_activity)
+        setContentView(R.layout.activity_alerts)
 
         setRepo()
 
@@ -35,7 +38,7 @@ class AlertsActivity : BaseActivity(), AlertsClickListener {
         alertsViewModel = ViewModelProviders.of(this, factory)
             .get(AlertsViewModel::class.java)
         alertsViewModel.getAlerts()
-        alertsViewModel.alertsLiveData.observe(viewLifecycleOwner, Observer { alerts ->
+        alertsViewModel.alertsLiveData.observe(this, Observer { alerts ->
             recycleview_alerts.also {
                 it.layoutManager = GridLayoutManager(this, 2)
                 it.setHasFixedSize(true)
@@ -75,11 +78,6 @@ class AlertsActivity : BaseActivity(), AlertsClickListener {
 // "On click listener" for options menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return false
-    }
-
-    override fun onRecyclerViewItemClick(view: View, labo: AlertsDetailsResponse) {
-        DetailsLaboBottomSheet().show(fragmentManager!!, "tessst")
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 
