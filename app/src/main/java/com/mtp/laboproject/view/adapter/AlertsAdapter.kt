@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.AlertsDetailsResponse
+import com.mtp.laboproject.databinding.RecycleviewAlertBinding
 import com.mtp.laboproject.databinding.RecycleviewLaboratoryBinding
 
 import com.mtp.laboproject.listener.AlertsClickListener
@@ -64,14 +65,14 @@ class AlertsAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = AlertsViewHolder(
         DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            R.layout.item_alert,
+            R.layout.recycleview_alert,
             parent,
             false
         )
     )
 
     override fun onBindViewHolder(holder: AlertsViewHolder, position: Int) {
-        holder.recycleviewAlertsBinding.laboratoryListResponseData =
+        holder.recycleviewAlertsBinding.alertListResponseData =
             filtredListofAlerts[position]
 
         holder.recycleviewAlertsBinding.cardView.setOnClickListener {
@@ -85,7 +86,7 @@ class AlertsAdapter(
 
 
     inner class AlertsViewHolder(
-        val recycleviewAlertsBinding: RecycleviewLaboratoryBinding
+        val recycleviewAlertsBinding: RecycleviewAlertBinding
     ) : RecyclerView.ViewHolder(recycleviewAlertsBinding.root)
 }
 

@@ -25,26 +25,25 @@ class AlertsActivity : BaseActivity(), AlertsClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.alerts_activity)
 
-        setRepo()
+        //setRepo()
 
     }
-
-
-    private fun setRepo() {
-        val factory = AlertsViewModelFactory()
-        alertsViewModel = ViewModelProviders.of(this, factory)
-            .get(AlertsViewModel::class.java)
-        alertsViewModel.getAlerts()
-        alertsViewModel.alertsLiveData.observe(viewLifecycleOwner, Observer { alerts ->
-            recycleview_alerts.also {
-                it.layoutManager = GridLayoutManager(this, 2)
-                it.setHasFixedSize(true)
-                alertsAdapter = AlertsAdapter(alerts, this)
-                it.adapter = alertsAdapter
-                searchAlerts()
-            }
-        })
-    }
+    // delete this because we dont need viewLifecycleOwner in activity
+//    private fun setRepo() {
+//        val factory = AlertsViewModelFactory()
+//        alertsViewModel = ViewModelProviders.of(this, factory)
+//            .get(AlertsViewModel::class.java)
+//        alertsViewModel.getAlerts()
+//        alertsViewModel.alertsLiveData.observe(viewLifecycleOwner, Observer { alerts ->
+//            recycleview_alerts.also {
+//                it.layoutManager = GridLayoutManager(this, 2)
+//                it.setHasFixedSize(true)
+//                alertsAdapter = AlertsAdapter(alerts, this)
+//                it.adapter = alertsAdapter
+//                searchAlerts()
+//            }
+//        })
+//    }
 
     private fun searchAlerts() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -59,7 +58,6 @@ class AlertsActivity : BaseActivity(), AlertsClickListener {
             }
         })
     }
-
 
     // onCreateOptionsMenu()
 // Create options menu
@@ -78,8 +76,8 @@ class AlertsActivity : BaseActivity(), AlertsClickListener {
     }
 
     override fun onRecyclerViewItemClick(view: View, labo: AlertsDetailsResponse) {
-        DetailsLaboBottomSheet().show(fragmentManager!!, "tessst")
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       // DetailsLaboBottomSheet().show(fragmentManager!!, "tessst")
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 

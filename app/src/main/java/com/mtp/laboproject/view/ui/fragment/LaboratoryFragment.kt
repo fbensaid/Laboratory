@@ -40,8 +40,7 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener {
 
     private fun setRepo() {
         val factory = LabsViewModelFactory()
-        labsViewModel = ViewModelProviders.of(this, factory)
-            .get(LabsViewModel::class.java)
+        labsViewModel = ViewModelProviders.of(this, factory).get(LabsViewModel::class.java)
         labsViewModel.getLabs()
         labsViewModel.labsLiveData.observe(viewLifecycleOwner, Observer { laboratory ->
             recycleview_laboratory.also {

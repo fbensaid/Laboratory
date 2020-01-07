@@ -5,7 +5,7 @@
     <data>
         <import type="android.view.View" />
         <variable
-            name="alertsListResponseData"
+            name="alertListResponseData"
             type="com.mtp.laboproject.data.model.AlertsDetailsResponse" />
     </data>
 
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@{alertsListResponseData.title}"
+                android:text="@{alertListResponseData.title}"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
 

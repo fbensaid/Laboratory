@@ -1,8 +1,8 @@
 package com.mtp.laboproject.data.repository
 
 
+import com.mtp.laboproject.data.model.AlertsDetailsResponse
 import com.mtp.laboproject.data.remoteApi.ApiInterface
-import com.mtp.laboproject.data.rest.AlertsDetailsResponse
 
 
 class AlertsRepository(private val api: ApiInterface) : BaseRepository() {

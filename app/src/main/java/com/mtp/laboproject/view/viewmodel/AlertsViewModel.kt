@@ -17,7 +17,7 @@ class AlertsViewModel : ViewModel() {
     //create a coroutine scope with the coroutine context
     private val scope = CoroutineScope(coroutineContext)
     //initialize news repo
-    private val forgotPasswordRepository: AlertsRepository = AlertsRepository(Apifactory.Api)
+    private val alertRepository: AlertsRepository = AlertsRepository(Apifactory.Api)
     //live data that will be populated as news updates
     val alertsLiveData = MutableLiveData<MutableList<AlertsDetailsResponse>>()
 
@@ -25,7 +25,7 @@ class AlertsViewModel : ViewModel() {
         ///launch the coroutine scope
         scope.launch {
             //get latest news from news repo
-            val latestAlerts = forgotPasswordRepository.getAlerts()
+            val latestAlerts = alertRepository.getAlerts()
             //post the value inside live data
             alertsLiveData.postValue(latestAlerts)
 
