@@ -18,7 +18,7 @@ interface ApiInterface {
     fun forgotPassword(email : String): Deferred<Response<ForgottenPasswordResponse>>
 
     @GET(Constants.EndPoints.ALERTS_ENDPOINT)
-    fun getAlerts(): Deferred<Response<AlertsDetailsResponse>>
+    fun getAlerts(): Deferred<Response<List<AlertsDetailsResponse>>>
 
 
 
