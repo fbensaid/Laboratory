@@ -11,14 +11,10 @@ import com.mtp.laboproject.data.model.AlertsDetailsResponse
 import com.mtp.laboproject.listener.AlertsClickListener
 import com.mtp.laboproject.view.adapter.AlertsAdapter
 import com.mtp.laboproject.view.factory.AlertsViewModelFactory
-import com.mtp.laboproject.view.ui.DetailsLaboBottomSheet
 import com.mtp.laboproject.view.viewmodel.AlertsViewModel
 import kotlinx.android.synthetic.main.activity_alerts.*
 
 class AlertsActivity : BaseActivity(), AlertsClickListener {
-    override fun onRecyclerViewItemClick(view: View, labo: AlertsDetailsResponse) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     private lateinit var alertsViewModel: AlertsViewModel
     private lateinit var alertsAdapter: AlertsAdapter
@@ -31,8 +27,7 @@ class AlertsActivity : BaseActivity(), AlertsClickListener {
         setRepo()
 
     }
-
-
+    // delete this because we dont need viewLifecycleOwner in activity
     private fun setRepo() {
         val factory = AlertsViewModelFactory()
         alertsViewModel = ViewModelProviders.of(this, factory)
@@ -63,7 +58,6 @@ class AlertsActivity : BaseActivity(), AlertsClickListener {
         })
     }
 
-
     // onCreateOptionsMenu()
 // Create options menu
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -78,6 +72,11 @@ class AlertsActivity : BaseActivity(), AlertsClickListener {
 // "On click listener" for options menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return false
+    }
+
+    override fun onRecyclerViewItemClick(view: View, labo: AlertsDetailsResponse) {
+       // DetailsLaboBottomSheet().show(fragmentManager!!, "tessst")
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 

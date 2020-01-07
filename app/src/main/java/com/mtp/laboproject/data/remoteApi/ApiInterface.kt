@@ -1,10 +1,9 @@
 package com.mtp.laboproject.data.remoteApi
 
+import com.mtp.laboproject.data.model.AlertsDetailsResponse
 import com.mtp.laboproject.data.model.ForgottenPasswordResponse
 import com.mtp.laboproject.global.Constants
 import com.mtp.laboproject.data.model.LaboratoryListResponse
-import com.mtp.laboproject.data.rest.AlertsDetailsResponse
-
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.GET
