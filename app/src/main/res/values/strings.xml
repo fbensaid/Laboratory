@@ -24,6 +24,10 @@
     <string name="fingerprint_title">Fingerprint pour IFF</string>
     <string name="fingerprint_subtitle">Entrez votre empreinte pour vous identifier</string>
     <string name="fingerprint_action">Touchez le capteur</string>
+    <string name="switch_notification">Notification</string>
+    <string name="switch_fingerprint">Empreinte digitale</string>
+    <string name="btn_log_out">Déconnexion</string>
+
 
 
 </resources>

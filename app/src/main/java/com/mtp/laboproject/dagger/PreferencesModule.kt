@@ -17,5 +17,4 @@ class PreferencesModule(mApplication: Application) {
     fun sharedPreferences(): SharedPreferences {
         return SharedPreferences(mContext)
     }
-
 }

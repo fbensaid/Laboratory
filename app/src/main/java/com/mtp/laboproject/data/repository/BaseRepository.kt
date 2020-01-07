@@ -4,6 +4,7 @@ import android.util.Log
 import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.data.remoteApi.Output
 import com.mtp.laboproject.global.SharedPreferences
+import com.mtp.laboproject.view.factory.AuthViewModelFactory
 
 import retrofit2.Response
 import java.io.IOException
@@ -14,7 +15,9 @@ open class BaseRepository {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
-      constructor() {
+
+
+    constructor() {
         LaboApplication.appComponent.inject(baseRepository = this)
     }
 
