@@ -226,7 +226,7 @@
     <dimen name="autocomplete_item_padding_top_bottom">10dp</dimen>
 
     <dimen name="single_day_layout_desc_height">220dp</dimen>
-    <dimen name="single_day_layout_corner_radius">2dp</dimen>
+    <dimen name="single_day_layout_corner_radius">5dp</dimen>
     <dimen name="single_day_layout_elevation">5dp</dimen>
     <dimen name="single_day_layout_content_padding">10dp</dimen>
     <dimen name="single_day_layout_city_name_text_size">28sp</dimen>
@@ -273,6 +273,7 @@
     <dimen name="dimen_300dp">300dp</dimen>
     <dimen name="dimen_400dp">400dp</dimen>
     <dimen name="dimen_350dp">350dp</dimen>
+    <dimen name="dimen_32sp">32</dimen>
 
 
 </resources>
