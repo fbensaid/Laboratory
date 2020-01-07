@@ -5,7 +5,7 @@
     <data>
         <import type="android.view.View" />
         <variable
-            name="alertListResponseData"
+            name="alertsListResponseData"
             type="com.mtp.laboproject.data.model.AlertsDetailsResponse" />
     </data>
 

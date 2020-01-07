@@ -29,7 +29,6 @@ import com.mtp.laboproject.view.viewmodel.AlertsViewModel
 
 class AlertFragment : BaseFragment(), AlertsClickListener {
 
-
     private lateinit var alertsViewModel: AlertsViewModel
     private lateinit var alertsAdapter: AlertsAdapter
 
