@@ -11,9 +11,8 @@ import com.mtp.laboproject.data.model.AlertsDetailsResponse
 import com.mtp.laboproject.listener.AlertsClickListener
 import com.mtp.laboproject.view.adapter.AlertsAdapter
 import com.mtp.laboproject.view.factory.AlertsViewModelFactory
-import com.mtp.laboproject.view.ui.DetailsLaboBottomSheet
 import com.mtp.laboproject.view.viewmodel.AlertsViewModel
-import kotlinx.android.synthetic.main.alerts_activity.*
+import kotlinx.android.synthetic.main.activity_alerts.*
 
 class AlertsActivity : BaseActivity(), AlertsClickListener {
 
@@ -23,27 +22,27 @@ class AlertsActivity : BaseActivity(), AlertsClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.alerts_activity)
+        setContentView(R.layout.activity_alerts)
 
-        //setRepo()
+        setRepo()
 
     }
     // delete this because we dont need viewLifecycleOwner in activity
-//    private fun setRepo() {
-//        val factory = AlertsViewModelFactory()
-//        alertsViewModel = ViewModelProviders.of(this, factory)
-//            .get(AlertsViewModel::class.java)
-//        alertsViewModel.getAlerts()
-//        alertsViewModel.alertsLiveData.observe(viewLifecycleOwner, Observer { alerts ->
-//            recycleview_alerts.also {
-//                it.layoutManager = GridLayoutManager(this, 2)
-//                it.setHasFixedSize(true)
-//                alertsAdapter = AlertsAdapter(alerts, this)
-//                it.adapter = alertsAdapter
-//                searchAlerts()
-//            }
-//        })
-//    }
+    private fun setRepo() {
+        val factory = AlertsViewModelFactory()
+        alertsViewModel = ViewModelProviders.of(this, factory)
+            .get(AlertsViewModel::class.java)
+        alertsViewModel.getAlerts()
+        alertsViewModel.alertsLiveData.observe(this, Observer { alerts ->
+            recycleview_alerts.also {
+                it.layoutManager = GridLayoutManager(this, 2)
+                it.setHasFixedSize(true)
+                alertsAdapter = AlertsAdapter(alerts, this)
+                it.adapter = alertsAdapter
+                searchAlerts()
+            }
+        })
+    }
 
     private fun searchAlerts() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
