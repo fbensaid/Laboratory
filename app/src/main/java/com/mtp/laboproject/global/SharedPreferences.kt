@@ -52,12 +52,31 @@ class SharedPreferences(context: Context) {
             }
             editor.apply()
         }
-    var isConnectedSuccess: Boolean
-        get() = mSharedPreferences.getBoolean(CONNECTED_FLAG, false)
-        set(isConnectedSuccess) {
+    var notification: Boolean?
+        get() = mSharedPreferences.getBoolean(NOTIF_FLAG, true)
+        set(notification) {
             val editor = mSharedPreferences.edit()
-            if (isConnectedSuccess != null) {
-                editor.putBoolean(CONNECTED_FLAG, isConnectedSuccess)
+            if (notification != null) {
+                editor.putBoolean(NOTIF_FLAG, notification)
+            }
+            editor.apply()
+        }
+    var isConnectedSuccessBefore: Boolean
+        get() = mSharedPreferences.getBoolean(CONNECTED_FLAG, false)
+        set(isConnectedSuccessBefore) {
+            val editor = mSharedPreferences.edit()
+            if (isConnectedSuccessBefore != null) {
+                editor.putBoolean(CONNECTED_FLAG, isConnectedSuccessBefore)
+            }
+            editor.apply()
+        }
+
+    var isStillConnected: Boolean
+        get() = mSharedPreferences.getBoolean(IS_STILL_CONNECTED_FLAG, false)
+        set(isStillConnected) {
+            val editor = mSharedPreferences.edit()
+            if (isStillConnected != null) {
+                editor.putBoolean(IS_STILL_CONNECTED_FLAG, isStillConnected)
             }
             editor.apply()
         }
@@ -113,7 +132,10 @@ class SharedPreferences(context: Context) {
         private val EMAIL_FLAG = "email_flag"
         private val PASSWORD_FLAG = "password_flag"
         private val FINGER_FLAG = "finger_flag"
+        private val NOTIF_FLAG = "notif_flag"
         private val CONNECTED_FLAG = "connect_flag"
+        private val IS_STILL_CONNECTED_FLAG = "is_still_connect_flag"
+
 
         private lateinit var mSharedPreferences: android.content.SharedPreferences
 

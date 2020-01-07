@@ -1,6 +1,8 @@
 package com.mtp.laboproject.view.ui.activity
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
@@ -18,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_auth.btn_login
 import net.simplifiedcoding.mvvmsampleapp.util.toast
 import net.simplifiedcoding.mvvmsampleapp.util.validateForm
 import org.jetbrains.anko.intentFor
+import javax.inject.Inject
 
 
 class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
@@ -27,6 +30,7 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
     private  lateinit var biometricPrompt:BiometricPrompt
     private var isFromLoginPassword: Boolean = false
     private lateinit var authViewModel: AuthViewModel
+
 
 
 
@@ -40,6 +44,8 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
         val factory = AuthViewModelFactory()
         authViewModel = ViewModelProviders.of(this, factory)
             .get(AuthViewModel::class.java)
+
+
 
         //check if user had biometric configuration and support
         checkBiometric()
@@ -55,11 +61,13 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
         authWithFingerPrint()
 
         cb_display_finger_print.setOnCheckedChangeListener { _, b ->
-            if(b && authViewModel.getsharedPreference().isConnectedSuccess) biometricPrompt.authenticateBiometric()
+            if(b && authViewModel.getsharedPreference().isConnectedSuccessBefore) biometricPrompt.authenticateBiometric()
         }
     }
+
+
     private fun authWithFingerPrint() {
-        if(cb_display_finger_print.isChecked&&authViewModel.getsharedPreference().isConnectedSuccess){
+        if(cb_display_finger_print.isChecked&&authViewModel.getsharedPreference().isConnectedSuccessBefore){
             biometricPrompt.authenticateBiometric()
         }
     }
@@ -111,7 +119,7 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
     }
 
     override fun onAuthenticationSucceeded() {
-        if(authViewModel.getsharedPreference().isConnectedSuccess) {
+        if(authViewModel.getsharedPreference().isConnectedSuccessBefore) {
             signIn(authViewModel.getsharedPreference().email.toString(),
                 authViewModel.getsharedPreference().password.toString())
         } else

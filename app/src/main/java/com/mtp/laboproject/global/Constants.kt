@@ -33,6 +33,7 @@ class Constants {
         val REQUEST_CALL_SETTINGS = 31
         val MY_PERMISSIONS_REQUEST_LOCATION = 99
 
+
     }
 
     object Parameters {
@@ -43,6 +44,7 @@ class Constants {
         val PUSH_DATA_MESSAGE = "push_data_message"
         val USERNAME = "username"
         val PASSWORD = "password"
+
     }
 
     object EndPoints {
@@ -55,6 +57,8 @@ class Constants {
 
     object Variants {
         const val CLICK_OPACITY = 0.75f
+        // SPLASHSCREEN
+        const val SPLASHTIME: Long = 2000
 
     }
 

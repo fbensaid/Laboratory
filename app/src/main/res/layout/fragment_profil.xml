@@ -1,35 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/dimen_24dp"
-        android:paddingTop="@dimen/dimen_50dp"
-        android:paddingRight="@dimen/dimen_24dp">
+        android:id="@+id/layout">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imagePicker"
-        android:layout_width="@dimen/dimen_90dp"
-        android:layout_height="@dimen/dimen_90dp"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="2dp"
-        android:background="@android:drawable/ic_lock_idle_lock"
-        android:layout_gravity="center_horizontal"
-        />
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/header_cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_100dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerCrop" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:clickable="true"
+            app:civ_border_width="@dimen/dimen_3dp"
+            app:civ_border_color="@color/white"
+            android:id="@+id/profile"
+            android:layout_width="@dimen/dimen_150dp"
+            android:layout_height="@dimen/dimen_200dp"
+            android:layout_below="@+id/header_cover_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-100dp"
+            android:elevation="@dimen/changed_dimen_5dp"
+            android:padding="@dimen/dimen_20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/user" />
+
+        <RelativeLayout
+            android:id="@+id/profile_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header_cover_image"
+            android:background="@color/blue"
+            android:elevation="4dp"
+            android:paddingBottom="@dimen/dimen_24dp">
+
+
+            <ImageView
+                android:id="@+id/edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="@dimen/dimen_16sp"
+                android:layout_marginRight="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_16sp"
+                android:clickable="true"
+                android:src="@android:drawable/ic_menu_edit" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dimen_70dp"
+                android:text="Farouk Ben said"
+                android:textColor="#fff"
+                android:textSize="@dimen/dimen_23sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/designation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:text="(chef de sécurité)"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_18sp" />
+        </RelativeLayout>
 
 
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/profile_layout"
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:text="Matricule: "
+                android:textStyle="bold"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp"
+                 />
+            <TextView
+                android:id="@+id/matricule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:text="012345"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/work"
+                />
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_notif"
+                android:theme="@style/SwitchTheme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_marginLeft="5dp"
+                android:checked="true"
+                app:layout_constraintTop_toBottomOf="@+id/work"
+                android:text="@string/switch_notification"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_finger"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:theme="@style/SwitchTheme"
+                app:switchTextAppearance="@style/Switchtext"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_marginLeft="5dp"
+                android:checked="true"
+                app:layout_constraintTop_toBottomOf="@+id/switch_notif"
+                android:text="@string/switch_fingerprint"/>
+
+
+
+            <Button
+                app:layout_constraintTop_toBottomOf="@+id/switch_finger"
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/dimen_20dp"
+                android:layout_height="@dimen/dimen_50dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:id="@+id/btn_disconnect"
+                style="@style/AppTheme.RoundedCornerMaterialButton"
+                android:text="@string/btn_log_out"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</ScrollView>

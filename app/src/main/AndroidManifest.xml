@@ -21,7 +21,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:name=".view.ui.activity.AuthentificationActivity">
+            android:name=".view.ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -29,10 +29,11 @@
         </activity>
 
         <activity android:name=".view.ui.activity.MainActivity"
-            android:theme="@style/CustomActionBarTheme">
-
+            android:theme="@style/CustomActionBarTheme">x
             </activity>
-
+        <activity
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:name=".view.ui.activity.AuthentificationActivity"/>
         <activity
             android:name=".view.ui.activity.BaseActivity"
             android:theme="@style/CustomActionBarTheme" />

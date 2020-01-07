@@ -13,11 +13,7 @@ import dagger.Provides
 @Module
 class ContextModule(context: Context) {
 
-    private val mContext: Context
-
-    init {
-        mContext = context.applicationContext
-    }
+    private val mContext: Context = context.applicationContext
 
     @Provides
     @ApplicationScope

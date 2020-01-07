@@ -5,7 +5,7 @@ import com.mtp.laboproject.data.model.UserResponse
 import com.mtp.laboproject.data.repository.AuthenticationRepository
 import com.mtp.laboproject.global.SharedPreferences
 
-class AuthViewModel : ViewModel() {
+class ProfilViewModel : ViewModel() {
 
     //initialize news repo
     private val authRepository: AuthenticationRepository = AuthenticationRepository()
@@ -15,17 +15,6 @@ class AuthViewModel : ViewModel() {
     fun getsharedPreference():SharedPreferences{
         return authRepository.sharedPreferences
     }
-
-
-    fun storeAuthData(mail: String, pass: String, isConnected: Boolean, finger: Boolean) {
-        authRepository.storeAuthData(mail,pass,isConnected,finger)
-
-        }
-
-    fun storeuser(user:UserResponse) {
-        authRepository.storeUser(user)
-    }
-
 
 
         override fun onCleared() {
