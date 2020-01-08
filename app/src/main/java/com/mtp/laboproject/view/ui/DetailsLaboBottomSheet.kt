@@ -21,7 +21,7 @@ class DetailsLaboBottomSheet : BottomSheetDialogFragment() {
 // get the views and attach the listener
 
         return inflater.inflate(
-            R.layout.bottomshit_details_labo, container,
+            R.layout.bottomsheet_details_labo, container,
             false
         )
 

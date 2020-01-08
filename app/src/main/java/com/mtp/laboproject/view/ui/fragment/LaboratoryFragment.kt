@@ -1,30 +1,35 @@
 package com.mtp.laboproject.view.ui.fragment
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.SearchView
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.LaboratoryListResponse
-import com.mtp.laboproject.view.adapter.LaboratoryAdapter
 import com.mtp.laboproject.listener.LaboratoryClickListener
+import com.mtp.laboproject.view.adapter.LaboratoryAdapter
+import com.mtp.laboproject.view.factory.LabsViewModelFactory
 import com.mtp.laboproject.view.ui.DetailsLaboBottomSheet
 import com.mtp.laboproject.view.viewmodel.LabsViewModel
-import com.mtp.laboproject.view.factory.LabsViewModelFactory
 import kotlinx.android.synthetic.main.fragment_laboratory.*
-import android.view.MenuInflater
-import android.widget.SearchView
 
 
-class LaboratoryFragment : BaseFragment(), LaboratoryClickListener {
+
+class LaboratoryFragment : BaseFragment(), LaboratoryClickListener , View.OnClickListener {
 
     private lateinit var labsViewModel: LabsViewModel
     private lateinit var laboAdapter: LaboratoryAdapter
     private lateinit var searchView: SearchView
+    private var mBottomSheetBehavior: BottomSheetBehavior<*>? = null
+    private var mBottomSheetBehaviourMarkerInfos: BottomSheetBehavior<*>? = null
+
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -68,16 +73,47 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-       inflater.inflate(R.menu.menu, menu)
+        inflater.inflate(R.menu.menu, menu)
         searchView = menu.findItem(R.id.search_view).actionView as SearchView
         searchView.queryHint = getString(R.string.search_hint)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
 
-
     override fun onRecyclerViewItemClick(view: View, labo: LaboratoryListResponse) {
         DetailsLaboBottomSheet().show(fragmentManager!!, "tessst")
+    }
+
+    private fun setBottomSheetMarkerBehaviour() {
+        mBottomSheetBehaviourMarkerInfos =
+            BottomSheetBehavior.from<View>(bottom_sheet_laboratory)
+        (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setBottomSheetCallback(object : BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
+                    (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setState(BottomSheetBehavior.STATE_COLLAPSED)
+                }
+                when (newState) {
+                    BottomSheetBehavior.STATE_HIDDEN -> {
+                    }
+                    BottomSheetBehavior.STATE_EXPANDED -> {
+                    }
+                    BottomSheetBehavior.STATE_COLLAPSED -> {
+                    }
+                    BottomSheetBehavior.STATE_DRAGGING -> {
+                    }
+                    BottomSheetBehavior.STATE_SETTLING -> {
+                    }
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+        })
+        bottom_sheet_laboratory.setOnClickListener(this)
+        (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setState(BottomSheetBehavior.STATE_HIDDEN)
+    }
+
+    override fun onClick(v: View?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 
