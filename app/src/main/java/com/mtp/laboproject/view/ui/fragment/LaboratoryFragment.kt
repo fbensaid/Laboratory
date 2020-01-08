@@ -17,17 +17,13 @@ import com.mtp.laboproject.view.ui.DetailsLaboBottomSheet
 import com.mtp.laboproject.view.viewmodel.LabsViewModel
 import kotlinx.android.synthetic.main.fragment_laboratory.*
 
-
-
-class LaboratoryFragment : BaseFragment(), LaboratoryClickListener , View.OnClickListener {
+class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClickListener {
 
     private lateinit var labsViewModel: LabsViewModel
     private lateinit var laboAdapter: LaboratoryAdapter
     private lateinit var searchView: SearchView
     private var mBottomSheetBehavior: BottomSheetBehavior<*>? = null
     private var mBottomSheetBehaviourMarkerInfos: BottomSheetBehavior<*>? = null
-
-
 
 
     override fun onCreateView(
@@ -41,6 +37,7 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener , View.OnClic
         super.onActivityCreated(savedInstanceState)
         setRepo()
         setHasOptionsMenu(true)
+        setBottomSheetBehaviour()
     }
 
     private fun setRepo() {
@@ -84,13 +81,13 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener , View.OnClic
         DetailsLaboBottomSheet().show(fragmentManager!!, "tessst")
     }
 
-    private fun setBottomSheetMarkerBehaviour() {
-        mBottomSheetBehaviourMarkerInfos =
-            BottomSheetBehavior.from<View>(bottom_sheet_laboratory)
-        (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setBottomSheetCallback(object : BottomSheetCallback() {
+    private fun setBottomSheetBehaviour() {
+        mBottomSheetBehavior = BottomSheetBehavior.from<View>(bottom_sheet_laboratory)
+        (mBottomSheetBehavior as BottomSheetBehavior<View>).setBottomSheetCallback(object :
+            BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 if (newState == BottomSheetBehavior.STATE_DRAGGING) {
-                    (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setState(BottomSheetBehavior.STATE_COLLAPSED)
+                    (mBottomSheetBehavior as BottomSheetBehavior<View>).setState(BottomSheetBehavior.STATE_COLLAPSED)
                 }
                 when (newState) {
                     BottomSheetBehavior.STATE_HIDDEN -> {
@@ -108,6 +105,37 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener , View.OnClic
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {}
         })
+        bottom_sheet_laboratory.setOnClickListener(this)
+        bottom_sheet_laboratory.setOnClickListener(this)
+    }
+
+    private fun setBottomSheetMarkerBehaviour() {
+        mBottomSheetBehaviourMarkerInfos =
+            BottomSheetBehavior.from<View>(bottom_sheet_laboratory)
+        (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setBottomSheetCallback(
+            object : BottomSheetCallback() {
+                override fun onStateChanged(bottomSheet: View, newState: Int) {
+                    if (newState == BottomSheetBehavior.STATE_DRAGGING) {
+                        (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setState(
+                            BottomSheetBehavior.STATE_COLLAPSED
+                        )
+                    }
+                    when (newState) {
+                        BottomSheetBehavior.STATE_HIDDEN -> {
+                        }
+                        BottomSheetBehavior.STATE_EXPANDED -> {
+                        }
+                        BottomSheetBehavior.STATE_COLLAPSED -> {
+                        }
+                        BottomSheetBehavior.STATE_DRAGGING -> {
+                        }
+                        BottomSheetBehavior.STATE_SETTLING -> {
+                        }
+                    }
+                }
+
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+            })
         bottom_sheet_laboratory.setOnClickListener(this)
         (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setState(BottomSheetBehavior.STATE_HIDDEN)
     }
