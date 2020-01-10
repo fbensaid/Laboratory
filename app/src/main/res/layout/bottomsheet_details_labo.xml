@@ -1,220 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_voucher_color"
-    android:fillViewport="true"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="0dp">
+    android:background="@color/grey_bg">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/collapsing_toolbar_appbarlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/dimen_200dp">
 
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
+        <!--  app:contentScrim : The Toolbar color when the
+              collapsing toolbar is collapsed. -->
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0dp"
-            android:layout_margin="@dimen/dimen_30dp"
-            android:visibility="gone"
-            app:cardBackgroundColor="@color/color_primary"
-            app:cardCornerRadius="@dimen/dimen_6dp"
-            app:layout_constraintBottom_toTopOf="@+id/cardView2"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed">
+            android:layout_height="match_parent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentScrim="@color/black"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- app:layout_collapseMode : parallax means an animation effect,
+                 pin means fixed. -->
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="@+id/labo_icon"
-                app:layout_constraintStart_toEndOf="@+id/labo_icon">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dimen_80dp"
+                android:layout_marginTop="@dimen/dimen_40dp"
+                android:layout_marginEnd="@dimen/dimen_80dp"
+                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:fontFamily="@font/googlesans_bold"
+                android:maxLines="2"
+                android:text="Laboratory Number 1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_30sp"
+                android:textStyle="normal" />
 
-                <ImageView
-                    android:id="@+id/labo_icon"
-                    android:layout_width="@dimen/dimen_0dp"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/laboratory"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5"></ImageView>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
 
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/labo_icon"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5">
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/home_laboratory_string"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold"
+    </com.google.android.material.appbar.AppBarLayout>
 
-                        />
+    <!-- app:layout_behavior attribute value settings make app tool bar appear while RecyclerView scroll. -->
+    <LinearLayout
+        android:id="@+id/collapsing_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/home_porte_string"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/home_clapet_string"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/collapsing_toolbar_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="30dp"
+            android:layout_height="wrap_content"
             android:visibility="gone"
-            app:cardBackgroundColor="@color/color_primary_dark"
-            app:cardCornerRadius="6dp"
-            app:layout_constraintBottom_toTopOf="@+id/cardView3"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginEnd="@dimen/dimen_10dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_80dp"
+            app:cardBackgroundColor="@color/main_card_color"
+            app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
+            app:cardElevation="@dimen/single_day_layout_elevation"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="@dimen/single_day_layout_content_padding">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <ImageView
-                    android:id="@+id/door_icon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/opened_door"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5"></ImageView>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:layout_marginEnd="@dimen/dimen_10dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/home_porte_ouverte"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/door_icon"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:text="Status : STABLE"
+                    android:textAlignment="center"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/dimen_20sp"
+                    android:textStyle="normal" />
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="30dp"
-            android:visibility="gone"
-            app:cardBackgroundColor="@color/colorAccent"
-            app:cardCornerRadius="6dp"
-            app:layout_constraintBottom_toBottomOf="@id/cardView4"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2">
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="@+id/window_icon"
-                app:layout_constraintStart_toEndOf="@+id/window_icon">
-
-
-                <ImageView
-                    android:id="@+id/window_icon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/opened_window"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5"></ImageView>
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="X clapet ouverte"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/window_icon"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView4"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_180dp"
             app:cardBackgroundColor="@color/main_card_color"
             app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
             app:cardElevation="@dimen/single_day_layout_elevation"
             app:cardUseCompatPadding="true"
-            app:contentPadding="@dimen/single_day_layout_content_padding"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView3"
-            app:layout_constraintVertical_chainStyle="packed">
+            app:contentPadding="@dimen/single_day_layout_content_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -267,16 +172,16 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/dimen_10dp"
+                        android:layout_gravity="center_horizontal"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/dimen_30dp"
                             android:layout_height="@dimen/dimen_30dp"
-                            android:layout_gravity="start"
                             android:layout_marginEnd="@dimen/dimen_3dp"
                             android:background="@android:color/transparent"
+                            android:layout_gravity="start"
                             android:src="@drawable/alcohol"
                             android:visibility="visible" />
 
@@ -336,8 +241,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/dimen_10dp"
+                        android:layout_gravity="center_horizontal"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -354,10 +259,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/dimen_4dp"
                             android:fontFamily="@font/googlesans_mediumitalic"
                             android:maxLines="2"
                             android:text="CO² Level"
+                            android:layout_marginStart="@dimen/dimen_4dp"
                             android:textAlignment="textStart"
                             android:textColor="@color/text_3"
                             android:textSize="@dimen/dimen_12sp" />
@@ -371,9 +276,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen_5dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
+                    android:layout_marginStart="@dimen/dimen_5dp"
                     android:paddingEnd="@dimen/dimen_0dp">
 
 
@@ -409,15 +314,15 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/dimen_10dp"
+                        android:layout_gravity="center_horizontal"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/dimen_30dp"
                             android:layout_height="@dimen/dimen_30dp"
-                            android:layout_marginStart="@dimen/dimen_10dp"
                             android:layout_marginEnd="@dimen/dimen_5dp"
+                            android:layout_marginStart="@dimen/dimen_10dp"
                             android:background="@android:color/transparent"
                             android:foregroundGravity="center_horizontal"
                             android:src="@drawable/valve_icon"
@@ -478,8 +383,8 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/dimen_10dp"
+                        android:layout_height="match_parent"
                         android:weightSum="2">
 
                         <ImageView
@@ -514,17 +419,18 @@
 
         </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </LinearLayout>
 
-</ScrollView>
+    <!-- app:layout_anchor attribute value is the component id that this floating action button will anchor at.
+         app:layout_anchorGravity configures where the floating action button will located at. -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/collapsing_toolbar_floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="19dp"
+        android:src="@drawable/edit"
+        app:layout_anchor="@id/collapsing_linear_layout"
+        app:layout_anchorGravity="bottom|end" />
 
-
-
-
-
-
-
-
-
-
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

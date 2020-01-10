@@ -11,13 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.AlertsDetailsResponse
 import com.mtp.laboproject.databinding.RecycleviewAlertBinding
-import com.mtp.laboproject.databinding.RecycleviewLaboratoryBinding
-
 import com.mtp.laboproject.listener.AlertsClickListener
 import com.squareup.picasso.Picasso
 
+
 class AlertsAdapter(
-    private val listofAlerts: List<AlertsDetailsResponse>?,
+    private val listofAlerts: ArrayList<AlertsDetailsResponse>,
     private val listner: AlertsClickListener
 
 ) : RecyclerView.Adapter<AlertsAdapter.AlertsViewHolder>(), Filterable {
@@ -31,7 +30,7 @@ class AlertsAdapter(
                     listofAlerts
                 else {
                     resultListOfSearch.clear()
-                    listofAlerts!!.forEach {
+                    listofAlerts.forEach {
                         if (it.title.toLowerCase().contains(p0.toString()))
                             resultListOfSearch.add(it)
                     }
@@ -43,8 +42,8 @@ class AlertsAdapter(
             }
 
             override fun publishResults(p0: CharSequence?, filtredResult: FilterResults?) {
-                filtredListofAlerts = listOf()
-                filtredListofAlerts = filtredResult!!.values as List<AlertsDetailsResponse>
+                filtredListofAlerts = ArrayList()
+                filtredListofAlerts = filtredResult!!.values as ArrayList<AlertsDetailsResponse>
                 notifyDataSetChanged()
             }
         }
@@ -59,7 +58,7 @@ class AlertsAdapter(
     }
 
     override fun getItemCount(): Int {
-        return filtredListofAlerts!!.size
+        return filtredListofAlerts.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = AlertsViewHolder(
@@ -73,15 +72,21 @@ class AlertsAdapter(
 
     override fun onBindViewHolder(holder: AlertsViewHolder, position: Int) {
         holder.recycleviewAlertsBinding.alertsListResponseData =
-            filtredListofAlerts!![position]
+            filtredListofAlerts[position]
 
-        holder.recycleviewAlertsBinding.cardView.setOnClickListener {
+        holder.recycleviewAlertsBinding.viewCardAlert.setOnClickListener {
             listner.onRecyclerViewItemClick(
-                holder.recycleviewAlertsBinding.cardView,
-                filtredListofAlerts!![position]
+                holder.recycleviewAlertsBinding.viewCardAlert,
+                filtredListofAlerts[position]
             )
         }
 
+    }
+
+    fun removeItem(position: Int) {
+        listofAlerts.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, listofAlerts.size)
     }
 
 

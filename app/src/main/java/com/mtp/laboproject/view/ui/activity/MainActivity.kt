@@ -46,7 +46,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        //setting toolbar
+      //  setSupportActionBar(findViewById(R.id.toolbar))
+        //home navigation
+       // supportActionBar?.setDisplayHomeAsUpEnabled(false)
         replaceMainLayout(homeFragment,0)
         //define the activity context
         LaboApplication.instance=this

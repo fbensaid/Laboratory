@@ -73,9 +73,9 @@ class LaboratoryAdapter(
         holder.recycleviewLaboratoryBinding.laboratoryListResponseData =
             filtredListofLaboratory[position]
 
-        holder.recycleviewLaboratoryBinding.cardView.setOnClickListener {
+        holder.recycleviewLaboratoryBinding.cardViewLabo.setOnClickListener {
             listner.onRecyclerViewItemClick(
-                holder.recycleviewLaboratoryBinding.cardView,
+                holder.recycleviewLaboratoryBinding.cardViewLabo,
                 filtredListofLaboratory[position]
             )
         }

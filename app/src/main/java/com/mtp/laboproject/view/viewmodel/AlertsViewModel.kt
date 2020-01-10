@@ -25,7 +25,8 @@ class AlertsViewModel : ViewModel() {
         ///launch the coroutine scope
         scope.launch {
             //get latest news from news repo
-            val latestAlerts = alertRepository.getAlerts()
+            var latestAlerts = alertRepository.getAlerts()
+            //latestAlerts = mutableListOf<AlertsDetailsResponse>()
             //post the value inside live data
             alertsLiveData.postValue(latestAlerts)
 

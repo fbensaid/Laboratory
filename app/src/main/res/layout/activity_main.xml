@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".view.ui.activity.MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/AppTheme"
+        app:logo="@drawable/logo_white_small"
+        app:title="IFF WATCHER"
+        app:titleMarginStart="@dimen/dimen_50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
 
     <FrameLayout
         android:id="@+id/layoutSlidingHome"
