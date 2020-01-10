@@ -52,8 +52,8 @@ class AlertFragment : BaseFragment(), AlertsClickListener {
             recycleview_laboratory.also {
                 it.layoutManager = LinearLayoutManager(context)
                 it.setHasFixedSize(true)
-                alertsAdapter = AlertsAdapter(alert, this)
-                it.adapter = alertsAdapter
+               // alertsAdapter = AlertsAdapter(alert, this)
+               // it.adapter = alertsAdapter
             }
         })
     }

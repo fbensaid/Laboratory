@@ -5,5 +5,6 @@ data class AlertsDetailsResponse(
     val _id: String,
     val title: String,
     val description: String,
-    val state : String
+    val state : String,
+    val date : String
 )
