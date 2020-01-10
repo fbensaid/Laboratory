@@ -17,7 +17,7 @@ import com.mtp.laboproject.listener.AlertsClickListener
 import com.squareup.picasso.Picasso
 
 class AlertsAdapter(
-    private val listofAlerts: List<AlertsDetailsResponse>,
+    private val listofAlerts: List<AlertsDetailsResponse>?,
     private val listner: AlertsClickListener
 
 ) : RecyclerView.Adapter<AlertsAdapter.AlertsViewHolder>(), Filterable {
@@ -31,7 +31,7 @@ class AlertsAdapter(
                     listofAlerts
                 else {
                     resultListOfSearch.clear()
-                    listofAlerts.forEach {
+                    listofAlerts!!.forEach {
                         if (it.title.toLowerCase().contains(p0.toString()))
                             resultListOfSearch.add(it)
                     }
@@ -59,7 +59,7 @@ class AlertsAdapter(
     }
 
     override fun getItemCount(): Int {
-        return filtredListofAlerts.size
+        return filtredListofAlerts!!.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = AlertsViewHolder(
@@ -73,12 +73,12 @@ class AlertsAdapter(
 
     override fun onBindViewHolder(holder: AlertsViewHolder, position: Int) {
         holder.recycleviewAlertsBinding.alertsListResponseData =
-            filtredListofAlerts[position]
+            filtredListofAlerts!![position]
 
         holder.recycleviewAlertsBinding.cardView.setOnClickListener {
             listner.onRecyclerViewItemClick(
                 holder.recycleviewAlertsBinding.cardView,
-                filtredListofAlerts[position]
+                filtredListofAlerts!![position]
             )
         }
 

@@ -37,8 +37,8 @@ class NetworkModule {
 
     @Provides
     @ApplicationScope
-    fun endpointInterceptor(preferences: SharedPreferences, @ApplicationContext context: Context): EndpointInterceptor {
-        return EndpointInterceptor(preferences, context)
+    fun endpointInterceptor(@ApplicationContext context: Context): EndpointInterceptor {
+        return EndpointInterceptor(context)
     }
 
     @Provides

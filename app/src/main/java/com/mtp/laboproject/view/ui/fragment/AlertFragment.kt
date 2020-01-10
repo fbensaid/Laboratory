@@ -25,6 +25,7 @@ import com.mtp.laboproject.listener.AlertsClickListener
 import com.mtp.laboproject.view.adapter.AlertsAdapter
 import com.mtp.laboproject.view.factory.AlertsViewModelFactory
 import com.mtp.laboproject.view.viewmodel.AlertsViewModel
+import kotlinx.android.synthetic.main.fragment_alert.*
 
 
 class AlertFragment : BaseFragment(), AlertsClickListener {
@@ -41,7 +42,7 @@ class AlertFragment : BaseFragment(), AlertsClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setAlert()
+        //setAlert()
     }
 
     private fun setAlert() {
@@ -49,7 +50,7 @@ class AlertFragment : BaseFragment(), AlertsClickListener {
         alertsViewModel = ViewModelProviders.of(this, factory).get(AlertsViewModel::class.java)
         alertsViewModel.getAlerts()
         alertsViewModel.alertsLiveData.observe(viewLifecycleOwner, Observer { alert ->
-            recycleview_laboratory.also {
+            recycleview_alerts.also {
                 it.layoutManager = LinearLayoutManager(context)
                 it.setHasFixedSize(true)
                 alertsAdapter = AlertsAdapter(alert, this)

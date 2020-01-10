@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/header_cover_image"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_100dp"
+            android:layout_height="@dimen/dimen_70dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="centerCrop" />
 
@@ -24,7 +24,7 @@
             android:clickable="true"
             app:civ_border_width="@dimen/dimen_3dp"
             app:civ_border_color="@color/white"
-            android:id="@+id/profile"
+            android:id="@+id/profile_picture"
             android:layout_width="@dimen/dimen_150dp"
             android:layout_height="@dimen/dimen_200dp"
             android:layout_below="@+id/header_cover_image"
@@ -44,18 +44,6 @@
             android:elevation="4dp"
             android:paddingBottom="@dimen/dimen_24dp">
 
-
-            <ImageView
-                android:id="@+id/edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dimen_16sp"
-                android:layout_marginRight="@dimen/dimen_16sp"
-                android:layout_marginTop="@dimen/dimen_16sp"
-                android:clickable="true"
-                android:src="@android:drawable/ic_menu_edit" />
-
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
@@ -66,6 +54,18 @@
                 android:textColor="#fff"
                 android:textSize="@dimen/dimen_23sp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/edit_btn_name"
+                android:layout_width="@dimen/dimen_20dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:layout_toRightOf="@+id/name"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dimen_16sp"
+                android:layout_marginRight="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_16sp"
+                android:clickable="true"
+                android:src="@android:drawable/ic_menu_edit" />
 
 
             <TextView
@@ -98,12 +98,12 @@
 
 
             <TextView
-                android:id="@+id/work"
+                android:id="@+id/identifiant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:clickable="true"
-                android:text="Matricule: "
+                android:text="Identifiant :  "
                 android:textStyle="bold"
                 android:layout_marginLeft="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -111,7 +111,7 @@
                 android:layout_marginTop="8dp"
                  />
             <TextView
-                android:id="@+id/matricule"
+                android:id="@+id/identifiant_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -120,7 +120,7 @@
                 android:clickable="true"
                 android:text="012345"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/work"
+                app:layout_constraintLeft_toRightOf="@+id/identifiant"
                 />
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switch_notif"
@@ -130,7 +130,7 @@
                 android:layout_marginTop="@dimen/dimen_20dp"
                 android:layout_marginLeft="5dp"
                 android:checked="true"
-                app:layout_constraintTop_toBottomOf="@+id/work"
+                app:layout_constraintTop_toBottomOf="@+id/identifiant"
                 android:text="@string/switch_notification"/>
 
             <com.google.android.material.switchmaterial.SwitchMaterial

@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.R
 import com.mtp.laboproject.global.Constants
@@ -46,6 +47,7 @@ open class BaseActivity : AppCompatActivity() {
             }
         }
     }
+
 
 
     fun quitApp() {

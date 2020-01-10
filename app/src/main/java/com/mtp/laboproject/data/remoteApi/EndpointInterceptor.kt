@@ -16,12 +16,14 @@ import okhttp3.Response
  * Created by MacBook on 8/28/17.
  */
 
-class EndpointInterceptor(private val mPreferences: SharedPreferences, @param:ApplicationContext private val mContext: Context) :
+class EndpointInterceptor(@param:ApplicationContext private val mContext: Context) :
     Interceptor {
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()
+        var response: Response? = null
+
         val url = request.url().toString()
         if (url.contains(Constants.BASE_URL)) {
             if (AppUtils.isNetworkAvailable(mContext)) {
@@ -37,8 +39,9 @@ class EndpointInterceptor(private val mPreferences: SharedPreferences, @param:Ap
 
 
         }
+        response=chain.proceed(request)
 
-        return chain.proceed(request)
+        return response
     }
 
     companion object {

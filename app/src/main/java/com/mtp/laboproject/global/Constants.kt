@@ -59,6 +59,8 @@ class Constants {
         const val CLICK_OPACITY = 0.75f
         // SPLASHSCREEN
         const val SPLASHTIME: Long = 2000
+        const val RESULT_LOAD_IMG: Int = 201
+
 
     }
 

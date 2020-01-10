@@ -27,7 +27,10 @@
     <string name="switch_notification">Notification</string>
     <string name="switch_fingerprint">Empreinte digitale</string>
     <string name="btn_log_out">Déconnexion</string>
-
-
+    <string name="userPhoto">https://www.jeancoutu.com/globalassets/revamp/photo/conseils-photo/20160302-01-reseaux-sociaux-profil/image-principale-919b9d.png</string>
+    <string name="OK">OK</string>
+    <string name="NO">Non</string>
+    <string name="permission_denied">Permission refusé</string>
+    <string name="ask_permission">Demande de permission</string>
 
 </resources>

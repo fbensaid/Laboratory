@@ -11,6 +11,7 @@ import android.content.Context
 import com.mtp.laboproject.dagger.AppComponent
 import com.mtp.laboproject.dagger.AppModule
 import com.farouk.travelcar.dagger.RoomModule
+import com.google.firebase.auth.FirebaseAuth
 import com.mtp.laboproject.dagger.DaggerAppComponent
 import com.mtp.laboproject.dagger.PreferencesModule
 
@@ -20,12 +21,13 @@ class LaboApplication : Application() {
     companion object {
         lateinit var appComponent: AppComponent
         lateinit var instance: Context
-
+        lateinit var auth: FirebaseAuth
     }
 
     override fun onCreate() {
         super.onCreate()
         instance = this
+        auth = FirebaseAuth.getInstance()
         initDI()
     }
 

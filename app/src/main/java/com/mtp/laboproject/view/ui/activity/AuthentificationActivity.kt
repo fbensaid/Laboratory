@@ -1,13 +1,11 @@
 package com.mtp.laboproject.view.ui.activity
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.mtp.laboproject.LaboApplication.Companion.auth
 import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.UserResponse
 import com.mtp.laboproject.global.BiometricPrompt
@@ -17,21 +15,17 @@ import com.mtp.laboproject.view.factory.AuthViewModelFactory
 import com.mtp.laboproject.view.viewmodel.AuthViewModel
 import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.activity_auth.btn_login
-import net.simplifiedcoding.mvvmsampleapp.util.toast
-import net.simplifiedcoding.mvvmsampleapp.util.validateForm
+import com.mtp.laboproject.global.toast
+import com.mtp.laboproject.global.validateForm
 import org.jetbrains.anko.intentFor
-import javax.inject.Inject
 
 
 class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
 
-    private lateinit var auth: FirebaseAuth
     private val TAG = "Authentification"
     private  lateinit var biometricPrompt:BiometricPrompt
     private var isFromLoginPassword: Boolean = false
     private lateinit var authViewModel: AuthViewModel
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,13 +33,10 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
         setContentView(R.layout.activity_auth)
 
         biometricPrompt = BiometricPrompt(this, this)
-        auth = FirebaseAuth.getInstance()
 
         val factory = AuthViewModelFactory()
         authViewModel = ViewModelProviders.of(this, factory)
             .get(AuthViewModel::class.java)
-
-
 
         //check if user had biometric configuration and support
         checkBiometric()

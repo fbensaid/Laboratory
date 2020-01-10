@@ -15,6 +15,10 @@
         android:id="@+id/navigation_graph"
         android:icon="@drawable/graph_menu"
         android:title="Graphes" />
+    <item
+        android:id="@+id/navigation_alert"
+        android:icon="@drawable/alert_menu"
+        android:title="Alerts" />
 
     <item
         android:id="@+id/navigation_parametres"

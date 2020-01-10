@@ -1,11 +1,16 @@
 package com.mtp.laboproject.data.remoteApi
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.global.Constants
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
+import javax.xml.datatype.DatatypeConstants.SECONDS
+
+
 
 object Apifactory{
 
@@ -26,8 +31,9 @@ object Apifactory{
     //OkhttpClient for building http request url
     private val tmdbClient = OkHttpClient().newBuilder()
         //.addInterceptor(authInterceptor)
-        //.addInterceptor(EndpointInterceptor())
+        .addInterceptor(EndpointInterceptor(LaboApplication.instance))
         .build()
+
 
     fun retrofit() : Retrofit = Retrofit.Builder()
         .client(tmdbClient)

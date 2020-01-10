@@ -121,6 +121,9 @@ dependencies {
     implementation 'com.scottyab:secure-preferences-lib:0.1.7'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
 
+    //ExiInterface from androidx
+    implementation "androidx.exifinterface:exifinterface:1.1.0"
+
 
 }
 apply plugin: 'com.google.gms.google-services'
