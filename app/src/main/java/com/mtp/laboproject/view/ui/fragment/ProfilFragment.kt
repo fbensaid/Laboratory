@@ -2,6 +2,7 @@ package com.mtp.laboproject.view.ui.fragment
 
 import android.Manifest
 import android.content.Intent
+import android.graphics.Bitmap
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -29,11 +30,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import android.widget.LinearLayout
 import android.widget.EditText
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import org.jetbrains.anko.support.v4.act
 
 @RuntimePermissions
-class ProfilFragment : BaseFragment() {
+class ProfilFragment : BaseFragment() , OnMapReadyCallback {
+
 
     private lateinit var profilViewModel: ProfilViewModel
+    private lateinit var mMap: GoogleMap
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +58,7 @@ class ProfilFragment : BaseFragment() {
         profilViewModel = ViewModelProviders.of(this, factory).get(ProfilViewModel::class.java)
 
         setupUserInfo()
+        initMaps()
 
         switch_finger.setOnCheckedChangeListener { _, b ->
             profilViewModel.getsharedPreference().fingerPrint = b
@@ -66,6 +77,20 @@ class ProfilFragment : BaseFragment() {
         edit_btn_name.setOnClickListener {
            showDialogueWithEditText()
         }
+    }
+
+    private fun initMaps() {
+        (this.childFragmentManager.findFragmentById(R.id.map1) as SupportMapFragment?)?.let {
+            it.getMapAsync(this)
+        }
+    }
+    override fun onMapReady(googleMap: GoogleMap?) {
+        mMap = googleMap!!
+        // Add a marker in Sydney and move the camera
+        val iff = LatLng(getString(R.string.iff_lat).toDouble(), getString(R.string.iff_lang).toDouble())
+        //val sydney = LatLng(-34.0, 151.0)
+        mMap.addMarker(MarkerOptions().position(iff).title("IFF"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(iff))
     }
 
     private fun showDialogueWithEditText(){
@@ -90,11 +115,9 @@ class ProfilFragment : BaseFragment() {
         identifiant_txt.text=auth.currentUser!!.email
 
         profilViewModel.viewModelScope.launch(Dispatchers.Main.immediate) {
-            Glide.with(context!!).load(
-                getRightAngleImage(
-                Uri.parse(profilViewModel.getsharedPreference()!!.userResponse.photoUrl!!)
-            )
-                ?.let { bitmapToByte(it) }).into(profile_picture)
+            var bitmap=getRightAngleImage(Uri.parse(profilViewModel.getsharedPreference()!!.userResponse.photoUrl!!))
+            if(bitmap !=  null)
+            Glide.with(context!!).load(bitmap?.let { bitmapToByte(it) }).into(profile_picture)
         }
     }
 

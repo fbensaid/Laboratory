@@ -52,8 +52,9 @@ fun View.snackbar(message: String){
 
 @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
  suspend fun getRightAngleImage(path:Uri): Bitmap? {
-    val bitmap = MediaStore.Images.Media.getBitmap(LaboApplication.instance.contentResolver, path)
+    val bitmap : Bitmap? = null
     try {
+        val bitmap = MediaStore.Images.Media.getBitmap(LaboApplication.instance.contentResolver, path)
         var file = LaboApplication.instance.contentResolver.openInputStream(path)
         val ei = ExifInterface(file!!)
         val orientation =

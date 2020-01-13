@@ -32,5 +32,7 @@
     <string name="NO">Non</string>
     <string name="permission_denied">Permission refusé</string>
     <string name="ask_permission">Demande de permission</string>
+    <string name="iff_lang">48.892060</string>
+    <string name="iff_lat">2.277560</string>
 
 </resources>

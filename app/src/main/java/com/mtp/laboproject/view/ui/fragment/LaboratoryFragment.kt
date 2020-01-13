@@ -37,7 +37,7 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
         super.onActivityCreated(savedInstanceState)
         setRepo()
         setHasOptionsMenu(true)
-        setBottomSheetBehaviour()
+       // setBottomSheetBehaviour()
     }
 
     private fun setRepo() {

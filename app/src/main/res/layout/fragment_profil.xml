@@ -2,73 +2,59 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/layout">
-
-
-        <ImageView
-            android:id="@+id/header_cover_image"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_70dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:scaleType="centerCrop" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:clickable="true"
-            app:civ_border_width="@dimen/dimen_3dp"
-            app:civ_border_color="@color/white"
-            android:id="@+id/profile_picture"
-            android:layout_width="@dimen/dimen_150dp"
-            android:layout_height="@dimen/dimen_200dp"
-            android:layout_below="@+id/header_cover_image"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-100dp"
-            android:elevation="@dimen/changed_dimen_5dp"
-            android:padding="@dimen/dimen_20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/user" />
 
         <RelativeLayout
             android:id="@+id/profile_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/header_cover_image"
             android:background="@color/blue"
             android:elevation="4dp"
-            android:paddingBottom="@dimen/dimen_24dp">
+            >
+
+            <RelativeLayout
+                android:id="@+id/image_layout"
+                android:layout_width="@dimen/dimen_120dp"
+                android:layout_height="@dimen/dimen_120dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:clickable="true"
+                    app:civ_border_width="@dimen/dimen_3dp"
+                    app:civ_border_color="@color/white"
+                    android:id="@+id/profile_picture"
+                    android:layout_width="@dimen/dimen_120dp"
+                    android:layout_height="@dimen/dimen_120dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:elevation="@dimen/changed_dimen_5dp"
+                    android:padding="@dimen/dimen_10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/user" />
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/name"
+                android:layout_toRightOf="@+id/image_layout"
+                android:paddingLeft="@dimen/dimen_10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/dimen_70dp"
+                android:layout_marginTop="@dimen/dimen_40dp"
                 android:text="Farouk Ben said"
                 android:textColor="#fff"
-                android:textSize="@dimen/dimen_23sp"
+                android:textSize="@dimen/dimen_20sp"
                 android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/edit_btn_name"
-                android:layout_width="@dimen/dimen_20dp"
-                android:layout_height="@dimen/dimen_20dp"
-                android:layout_toRightOf="@+id/name"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/dimen_16sp"
-                android:layout_marginRight="@dimen/dimen_16sp"
-                android:layout_marginTop="@dimen/dimen_16sp"
-                android:clickable="true"
-                android:src="@android:drawable/ic_menu_edit" />
 
 
             <TextView
+                android:layout_toRightOf="@+id/image_layout"
+                android:paddingLeft="@dimen/dimen_10dp"
                 android:id="@+id/designation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,39 +63,50 @@
                 android:layout_marginTop="@dimen/dimen_10dp"
                 android:text="(chef de sécurité)"
                 android:textColor="@color/white"
-                android:textSize="@dimen/dimen_18sp" />
+                android:textSize="@dimen/dimen_16sp" />
+
+
+            <ImageView
+                android:id="@+id/btn_disconnect"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_margin="@dimen/dimen_20dp"
+                android:clickable="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/sign_out" />
+
         </RelativeLayout>
 
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/setting_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/profile_layout"
-            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:elevation="4dp"
             android:orientation="vertical"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:paddingRight="5dp"
             android:paddingLeft="5dp"
-            >
-
+            android:paddingTop="20dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="20dp">
 
             <TextView
                 android:id="@+id/identifiant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
                 android:clickable="true"
                 android:text="Identifiant :  "
                 android:textStyle="bold"
-                android:layout_marginLeft="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="8dp"
-                 />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/identifiant_txt"
                 android:layout_width="wrap_content"
@@ -119,45 +116,73 @@
                 android:layout_marginTop="8dp"
                 android:clickable="true"
                 android:text="012345"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/identifiant"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/edit_btn_name"
+                android:layout_width="@dimen/dimen_25dp"
+                android:layout_height="@dimen/dimen_25dp"
+
+                android:layout_alignParentBottom="true"
+                android:clickable="true"
+                android:src="@android:drawable/ic_menu_edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switch_notif"
-                android:theme="@style/SwitchTheme"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="@dimen/dimen_20dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
                 android:checked="true"
-                app:layout_constraintTop_toBottomOf="@+id/identifiant"
-                android:text="@string/switch_notification"/>
+                android:text="@string/switch_notification"
+                android:theme="@style/SwitchTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/identifiant" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switch_finger"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:theme="@style/SwitchTheme"
-                app:switchTextAppearance="@style/Switchtext"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="@dimen/dimen_20dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
                 android:checked="true"
+                android:text="@string/switch_fingerprint"
+                android:theme="@style/SwitchTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/switch_notif"
-                android:text="@string/switch_fingerprint"/>
+                app:switchTextAppearance="@style/Switchtext" />
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:paddingTop="@dimen/dimen_20dp"
+                android:text="Ou Somme Nous : "
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/switch_finger" />
 
-
-            <Button
-                app:layout_constraintTop_toBottomOf="@+id/switch_finger"
-                android:layout_width="match_parent"
-                android:layout_margin="@dimen/dimen_20dp"
-                android:layout_height="@dimen/dimen_50dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:id="@+id/btn_disconnect"
-                style="@style/AppTheme.RoundedCornerMaterialButton"
-                android:text="@string/btn_log_out"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <include layout="@layout/layout_maps"
+            android:layout_below="@+id/setting_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_150dp"
+            android:layout_marginBottom="@dimen/dimen_10dp"></include>
+
+
     </RelativeLayout>
 </ScrollView>
