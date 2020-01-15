@@ -201,6 +201,7 @@
         <item name="android:minHeight">@dimen/min_height_btn</item>
         <item name="android:minWidth">@dimen/min_width_btn</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/color_primary</item>
         <item name="android:fontFamily">@font/sf_ui_text_bold</item>
     </style>
 

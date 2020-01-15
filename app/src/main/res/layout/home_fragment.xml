@@ -9,6 +9,8 @@
     android:layout_height="match_parent"
     android:background="@color/bg_voucher_color"
     android:fillViewport="true"
+    android:elevation="@dimen/dimen_10dp"
+    app:cardElevation="10dp"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="0dp">
 
@@ -43,29 +45,36 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView4"
+            android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/dimen_120dp"
             android:layout_marginStart="@dimen/dimen_10dp"
             android:layout_marginEnd="@dimen/dimen_10dp"
-            android:layout_height="@dimen/dimen_180dp"
+            android:layout_height="240dp"
             app:cardBackgroundColor="@color/main_card_color"
             app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
             app:cardElevation="@dimen/single_day_layout_elevation"
+            android:elevation="@dimen/dimen_10dp"
             app:cardUseCompatPadding="true"
             app:contentPadding="@dimen/single_day_layout_content_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_5dp"
                 android:orientation="horizontal"
-                android:weightSum="4">
+                android:weightSum="3">
 
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:orientation="vertical"
@@ -74,7 +83,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_10dp"
                         android:layout_marginEnd="@dimen/dimen_10dp"
                         android:orientation="vertical">
@@ -90,119 +99,43 @@
                             android:text="18"
                             android:textAlignment="center"
                             android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25sp" />
+                            android:textSize="@dimen/dimen_40sp" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/gotham_light"
-                            android:text="L"
-                            android:textAlignment="center"
-                            android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_13sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_gravity="center"
                         android:layout_marginTop="@dimen/dimen_10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/dimen_30dp"
-                            android:layout_height="@dimen/dimen_30dp"
-                            android:layout_gravity="start"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/dimen_3dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/dimen_5dp"
                             android:background="@android:color/transparent"
                             android:src="@drawable/alcohol"
+                            android:foregroundGravity="center"
                             android:visibility="visible" />
 
                         <TextView
                             android:layout_width="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/googlesans_mediumitalic"
                             android:gravity="center"
-                            android:text="Alcohol Level"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/text_3"
-                            android:textSize="@dimen/dimen_12sp" />
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-
-                    android:paddingEnd="@dimen/dimen_0dp">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/main_temp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/googlesans_bold"
-                            android:text="12"
-                            android:textAlignment="center"
-                            android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25dp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/gotham_light"
-                            android:text="°C"
-                            android:textAlignment="center"
-                            android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_13sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/dimen_10dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="@dimen/dimen_30dp"
-                            android:layout_height="@dimen/dimen_30dp"
-                            android:layout_marginStart="@dimen/dimen_5dp"
-                            android:background="@android:color/transparent"
-                            android:foregroundGravity="center_horizontal"
-                            android:src="@drawable/co2"
-                            android:visibility="visible" />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/dimen_4dp"
-                            android:fontFamily="@font/googlesans_mediumitalic"
                             android:maxLines="2"
-                            android:text="CO² Level"
+                            android:text="Laboratories"
                             android:textAlignment="textStart"
                             android:textColor="@color/text_3"
-                            android:textSize="@dimen/dimen_12sp" />
+                            android:textSize="@dimen/dimen_18sp" />
+
 
                     </LinearLayout>
-
 
                 </LinearLayout>
 
@@ -230,19 +163,12 @@
                             android:fontFamily="@font/googlesans_bold"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:text="Open"
+                            android:text="2"
                             android:textAlignment="center"
                             android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25dp" />
+                            android:textSize="@dimen/dimen_40sp" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:fontFamily="@font/gotham_light"
-                            android:textAlignment="center"
-                            android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_13sp" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -250,13 +176,13 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/dimen_10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/dimen_30dp"
-                            android:layout_height="@dimen/dimen_30dp"
-                            android:layout_marginStart="@dimen/dimen_10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/dimen_5dp"
+                            android:layout_gravity="center"
                             android:background="@android:color/transparent"
                             android:foregroundGravity="center_horizontal"
                             android:src="@drawable/valve_icon"
@@ -264,14 +190,15 @@
 
                         <TextView
                             android:layout_width="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/googlesans_mediumitalic"
-                            android:gravity=""
-                            android:text="Valve"
+                            android:maxLines="2"
+                            android:text="Opened Valves"
                             android:textAlignment="center"
                             android:textColor="@color/text_3"
-                            android:textSize="@dimen/dimen_12sp" />
+                            android:textSize="@dimen/dimen_18sp" />
 
 
                     </LinearLayout>
@@ -297,21 +224,12 @@
                             android:layout_gravity="start"
                             android:fontFamily="@font/googlesans_bold"
                             android:lines="1"
-                            android:text="Closed"
+                            android:text="1"
                             android:textAlignment="center"
                             android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25sp" />
+                            android:textSize="@dimen/dimen_40sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/gotham_light"
-                            android:lines="1"
-                            android:text="this"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/dimen_13sp" />
+
 
                     </LinearLayout>
 
@@ -319,13 +237,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/dimen_10dp"
+                        android:orientation="vertical"
                         android:weightSum="2">
 
                         <ImageView
-                            android:layout_width="@dimen/dimen_30dp"
-                            android:layout_height="@dimen/dimen_30dp"
-                            android:layout_marginStart="@dimen/dimen_10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/dimen_2dp"
+                            android:layout_gravity="center"
                             android:background="@android:color/transparent"
                             android:foregroundGravity="center_horizontal"
                             android:src="@drawable/door"
@@ -334,14 +253,15 @@
 
                         <TextView
                             android:layout_width="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/googlesans_mediumitalic"
-                            android:maxLines="1"
-                            android:text="Door"
+                            android:maxLines="2"
+                            android:text="Opened Doors"
                             android:textAlignment="center"
                             android:textColor="@color/text_3"
-                            android:textSize="@dimen/dimen_12sp" />
+                            android:textSize="@dimen/dimen_18sp" />
 
 
                     </LinearLayout>
@@ -349,9 +269,43 @@
                 </LinearLayout>
 
 
+
+
+            </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:fontFamily="@font/googlesans_mediumitalic"
+                    android:gravity="center"
+                    android:text="Last updated on 14/01/2020"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/dimen_8sp" />
+
+
             </LinearLayout>
 
+
+
         </androidx.cardview.widget.CardView>
+
+
+        <com.mtp.laboproject.view.ui.view.CustomButton
+            android:id="@+id/btn_login"
+            style="@style/BlueButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_50dp"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            android:layout_marginBottom="@dimen/dimen_24dp"
+            android:fontFamily="@font/googlesans_bold"
+            android:padding="@dimen/dimen_12dp"
+            android:text="More Details"
+            android:layout_below="@id/cardView"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
