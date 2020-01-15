@@ -23,14 +23,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_220dp"
+            android:layout_height="@dimen/dimen_180dp"
             android:background="@color/color_primary">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/dimen_20dp"
+                android:layout_marginStart="@dimen/dimen_10dp"
                 android:layout_marginTop="@dimen/dimen_10dp"
                 android:layout_marginBottom="@dimen/dimen_50dp"
                 android:fontFamily="@font/googlesans_bold"
@@ -47,12 +47,12 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/dimen_120dp"
+            android:layout_marginTop="@dimen/dimen_80dp"
             android:layout_marginStart="@dimen/dimen_10dp"
             android:layout_marginEnd="@dimen/dimen_10dp"
             android:layout_height="240dp"
             app:cardBackgroundColor="@color/main_card_color"
-            app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
+            app:cardCornerRadius="@dimen/dimen_8dp"
             app:cardElevation="@dimen/single_day_layout_elevation"
             android:elevation="@dimen/dimen_10dp"
             app:cardUseCompatPadding="true"
@@ -132,7 +132,7 @@
                             android:text="Laboratories"
                             android:textAlignment="textStart"
                             android:textColor="@color/text_3"
-                            android:textSize="@dimen/dimen_18sp" />
+                            android:textSize="@dimen/dimen_15sp" />
 
 
                     </LinearLayout>
@@ -198,7 +198,7 @@
                             android:text="Opened Valves"
                             android:textAlignment="center"
                             android:textColor="@color/text_3"
-                            android:textSize="@dimen/dimen_18sp" />
+                            android:textSize="@dimen/dimen_15sp" />
 
 
                     </LinearLayout>
@@ -261,7 +261,7 @@
                             android:text="Opened Doors"
                             android:textAlignment="center"
                             android:textColor="@color/text_3"
-                            android:textSize="@dimen/dimen_18sp" />
+                            android:textSize="@dimen/dimen_15sp" />
 
 
                     </LinearLayout>
@@ -276,13 +276,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginTop="@dimen/dimen_10dp"
-                    android:fontFamily="@font/googlesans_mediumitalic"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:fontFamily="@font/googlesans_bold"
                     android:gravity="center"
                     android:text="Last updated on 14/01/2020"
                     android:textAlignment="textEnd"
                     android:textColor="@color/text_3"
-                    android:textSize="@dimen/dimen_8sp" />
+                    android:textSize="@dimen/dimen_12sp" />
 
 
             </LinearLayout>

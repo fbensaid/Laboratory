@@ -17,7 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:id="@+id/cardView_labo"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/grey_bg">
         <!-- <androidx.cardview.widget.CardView
          android:id="@+id/cardView"
@@ -132,9 +132,8 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/dimen_10dp"
                             android:layout_marginEnd="@dimen/dimen_10dp"
-                            android:background="@android:color/transparent"
                             android:foregroundGravity="center"
-                            android:src="@drawable/alcohol"
+                            android:src="@drawable/laboratory"
                             android:visibility="visible" />
 
 
@@ -168,7 +167,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/googlesans_mediumitalic"
-                            android:text="@{laboratoryListResponseData.clapet}"
+                            android:text="Closed"
                             android:textAlignment="center"
                             android:textColor="@color/text_3"
                             android:textSize="@dimen/dimen_13sp" />

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     android:background="@color/grey_bg">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/collapsing_toolbar_appbarlayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_200dp">
+        android:layout_height="@dimen/dimen_150dp">
 
         <!--  app:contentScrim : The Toolbar color when the
               collapsing toolbar is collapsed. -->
@@ -28,14 +28,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/dimen_80dp"
-                android:layout_marginTop="@dimen/dimen_40dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
                 android:layout_marginEnd="@dimen/dimen_80dp"
                 android:layout_marginBottom="@dimen/dimen_20dp"
                 android:fontFamily="@font/googlesans_bold"
                 android:maxLines="2"
                 android:text="Laboratory Number 1"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@color/color_primary"
                 android:textSize="@dimen/dimen_30sp"
                 android:textStyle="normal" />
 
@@ -81,10 +81,10 @@
         <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_80dp"
+            android:layout_height="@dimen/dimen_60dp"
             app:cardBackgroundColor="@color/main_card_color"
             app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
-            app:cardElevation="@dimen/single_day_layout_elevation"
+            app:cardElevation="@dimen/dimen_3dp"
             app:cardUseCompatPadding="true"
             app:contentPadding="@dimen/single_day_layout_content_padding">
 
@@ -296,7 +296,7 @@
                             android:fontFamily="@font/googlesans_bold"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:text="Open"
+                            android:text="Opened"
                             android:textAlignment="center"
                             android:textColor="@color/color_primary"
                             android:textSize="@dimen/dimen_25dp" />

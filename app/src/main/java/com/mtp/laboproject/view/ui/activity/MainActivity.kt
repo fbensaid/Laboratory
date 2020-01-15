@@ -17,6 +17,7 @@ import kotlin.coroutines.CoroutineContext
 import android.view.MenuItem
 import com.mtp.laboproject.view.ui.fragment.AlertFragment
 import com.mtp.laboproject.view.ui.fragment.ProfilFragment
+import org.jetbrains.anko.appcompat.v7.toolbar
 
 
 class MainActivity : AppCompatActivity() {
@@ -46,10 +47,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //setting toolbar
-      //  setSupportActionBar(findViewById(R.id.toolbar))
-        //home navigation
-       // supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        getSupportActionBar()!!.setDisplayShowHomeEnabled(true)
+        getSupportActionBar()!!.setLogo(R.drawable.logo_white_small);
+        getSupportActionBar()!!.setDisplayUseLogoEnabled(true);
+        supportActionBar!!.setTitle(" Watcher ")
+
         replaceMainLayout(homeFragment,0)
         //define the activity context
         LaboApplication.instance=this

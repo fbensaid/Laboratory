@@ -14,13 +14,18 @@
 
     <style name="Widget.Styled.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="android:background"  tools:ignore="NewApi">@color/blue</item>
-        <item name="background">@color/blue</item>
+        <item name="background">@color/color_primary</item>
+        <item name="android:icon">@drawable/logo_white_small</item>
+        <item name="android:fontFamily">@font/googlesans_medium</item>
+        <item name="android:title">@string/app_name_for_logo</item>
+        <item name="android:titleMarginStart" tools:targetApi="n">@dimen/dimen_10dp</item>
     </style>
 
     <style name="CustomActionBarTheme" parent="@style/Theme.MaterialComponents.Light.Bridge">
         <item name="android:actionBarStyle"   tools:ignore="NewApi">@style/Widget.Styled.ActionBar</item>
         <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
         <item name="colorPrimary">@color/color_primary</item>
+        <item name="android:icon">@drawable/logo_white_small</item>
         <item name="colorPrimaryDark">@color/color_primary_secondary</item>
         <item name="colorAccent">@color/color_accent</item>
         <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
@@ -201,7 +206,7 @@
         <item name="android:minHeight">@dimen/min_height_btn</item>
         <item name="android:minWidth">@dimen/min_width_btn</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@color/color_primary</item>
+        <item name="android:background">@drawable/rounded_corner_background_blue</item>
         <item name="android:fontFamily">@font/sf_ui_text_bold</item>
     </style>
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Widget.Styled.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="android:background" tools:ignore="NewApi">@color/blue</item>
+        <item name="background">@color/color_primary</item>
+        <item name="android:logo">@drawable/logo_white</item>
+        <item name="android:title">@string/app_name</item>
+        <item name="android:titleMarginStart">@dimen/dimen_10dp</item>
+    </style>
+</resources>

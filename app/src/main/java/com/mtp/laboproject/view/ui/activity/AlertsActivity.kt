@@ -32,7 +32,7 @@ class AlertsActivity : BaseActivity(), AlertsClickListener {
         setContentView(R.layout.activity_alerts)
 
         setRepo()
-        initSwipe()
+        //initSwipe()
 
     }
 

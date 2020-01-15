@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.LaboratoryListResponse
 import com.mtp.laboproject.listener.LaboratoryClickListener
@@ -37,7 +38,8 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
         super.onActivityCreated(savedInstanceState)
         setRepo()
         setHasOptionsMenu(true)
-       // setBottomSheetBehaviour()
+     //  setBottomSheetBehaviour()
+        setBottomSheetMarkerBehaviour()
     }
 
     private fun setRepo() {
@@ -106,22 +108,23 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
             override fun onSlide(bottomSheet: View, slideOffset: Float) {}
         })
         bottom_sheet_laboratory.setOnClickListener(this)
-        bottom_sheet_laboratory.setOnClickListener(this)
     }
 
     private fun setBottomSheetMarkerBehaviour() {
         mBottomSheetBehaviourMarkerInfos =
             BottomSheetBehavior.from<View>(bottom_sheet_laboratory)
+        BottomSheetBehavior.STATE_EXPANDED
         (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setBottomSheetCallback(
             object : BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     if (newState == BottomSheetBehavior.STATE_DRAGGING) {
                         (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setState(
-                            BottomSheetBehavior.STATE_COLLAPSED
+                            BottomSheetBehavior.STATE_EXPANDED
                         )
                     }
                     when (newState) {
                         BottomSheetBehavior.STATE_HIDDEN -> {
+
                         }
                         BottomSheetBehavior.STATE_EXPANDED -> {
                         }
@@ -137,7 +140,7 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {}
             })
         bottom_sheet_laboratory.setOnClickListener(this)
-        (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setState(BottomSheetBehavior.STATE_HIDDEN)
+        (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setState(BottomSheetBehavior.STATE_EXPANDED)
     }
 
     override fun onClick(v: View?) {
