@@ -36,4 +36,8 @@
     <string name="iff_lang">48.892060</string>
     <string name="iff_lat">2.277560</string>
 
+    <string name="location_perm_string">This app needs the Location permission, please accept to use location functionality</string>
+    <string name="location_perm_title">Location Permission Needed</string>
+    <string name="perm_denied_string">Permission Denied</string>
+
 </resources>
