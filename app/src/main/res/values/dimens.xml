@@ -131,7 +131,7 @@
 
     <dimen name="earnings_pager_height">240dp</dimen>
 
-    <dimen name="button_text_size">19sp</dimen>
+    <dimen name="button_text_size">15sp</dimen>
 
 
     <dimen name="home_left_balls_width">101dp</dimen>

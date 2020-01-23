@@ -48,9 +48,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         getSupportActionBar()!!.setDisplayShowHomeEnabled(true)
-        getSupportActionBar()!!.setLogo(R.drawable.logo_white_small);
+        getSupportActionBar()!!.setLogo(R.drawable.logo_bleu_small);
         getSupportActionBar()!!.setDisplayUseLogoEnabled(true);
         supportActionBar!!.setTitle(" Watcher ")
+
 
         replaceMainLayout(homeFragment,0)
         //define the activity context
