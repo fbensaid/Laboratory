@@ -1,16 +1,17 @@
 package com.mtp.laboproject.data.repository
 
 import com.mtp.laboproject.data.model.labs.LabsListResponse
+import com.mtp.laboproject.data.model.statistics.StatisticsResponse
 import com.mtp.laboproject.data.remoteApi.ApiInterface
 
 
-class LaboratoryRepository(private val api: ApiInterface) : BaseRepository() {
+class StatisticsRepository(private val api: ApiInterface) : BaseRepository() {
 
     //get latest news using safe api call
-    suspend fun getLabs(): LabsListResponse? {
+    suspend fun getStatistics(): StatisticsResponse? {
         return safeApiCall(
             //await the result of deferred type
-            call = { api.getLaboList().await() },
+            call = { api.getStatistics().await() },
             error = "Error fetching news"
         )
     }

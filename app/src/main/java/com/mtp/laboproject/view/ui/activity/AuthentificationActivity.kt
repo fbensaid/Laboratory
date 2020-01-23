@@ -2,12 +2,11 @@ package com.mtp.laboproject.view.ui.activity
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.google.firebase.auth.FirebaseUser
 import com.mtp.laboproject.LaboApplication.Companion.auth
 import com.mtp.laboproject.R
-import com.mtp.laboproject.data.model.UserResponse
+import com.mtp.laboproject.data.model.user.UserLoginResponse
 import com.mtp.laboproject.global.BiometricPrompt
 import com.mtp.laboproject.global.BiometricPromptListener
 import com.mtp.laboproject.global.checkBiometric
@@ -68,8 +67,8 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
             else -> ly_display_finger_print.visibility=View.GONE
         }
     }
-    private fun storeUserData(user:FirebaseUser?) {
-        authViewModel.storeuser(UserResponse(user!!.displayName,user!!.email,user.photoUrl.toString(),user.uid))
+    private fun storeUserData(user:UserLoginResponse?) {
+        authViewModel.storeuser(user!!)
         if(isFromLoginPassword){
             authViewModel.storeAuthData(input_email.text.toString(),input_password.text.toString(),
                 true,cb_display_finger_print.isChecked)
@@ -87,21 +86,28 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
 
     private fun signIn(email: String, password: String) {
         ct_loading.visibility=View.VISIBLE
-        // [START sign_in_with_email]
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    storeUserData(user)
-                    startActivity(intentFor<MainActivity>())
-                    finish()
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    ct_loading.visibility=View.GONE
-                }
-            }
+        authViewModel.setLogin(email,password)
+        authViewModel.loginLiveData.observe(this, Observer { userLogin ->
+            ct_loading.visibility=View.GONE
+            storeUserData(userLogin)
+            startActivity(intentFor<MainActivity>())
+            finish()
+        })
+
+//        // [START sign_in_with_email]
+//        auth.signInWithEmailAndPassword(email, password)
+//            .addOnCompleteListener(this) { task ->
+//                if (task.isSuccessful) {
+//                    val user = auth.currentUser
+//                    storeUserData(user)
+//                    startActivity(intentFor<MainActivity>())
+//                    finish()
+//                } else {
+//                    // If sign in fails, display a message to the user.
+//                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+//                    ct_loading.visibility=View.GONE
+//                }
+//            }
     }
 
 

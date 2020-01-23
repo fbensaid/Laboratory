@@ -10,17 +10,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mtp.laboproject.R
 import com.mtp.laboproject.listener.LaboratoryClickListener
-import com.mtp.laboproject.data.model.LaboratoryListResponse
+import com.mtp.laboproject.data.model.labs.LaboratoryResponse
 import com.mtp.laboproject.databinding.RecycleviewLaboratoryBinding
 import com.squareup.picasso.Picasso
 
 class LaboratoryAdapter(
-    private val listofLaboratory: List<LaboratoryListResponse>,
+    private val listofLaboratory: List<LaboratoryResponse>,
     private val listner: LaboratoryClickListener
 
 ) : RecyclerView.Adapter<LaboratoryAdapter.LaboratoryViewHolder>(), Filterable {
     private var filtredListofLaboratory = listofLaboratory
-    private var resultListOfSearch = arrayListOf<LaboratoryListResponse>()
+    private var resultListOfSearch = arrayListOf<LaboratoryResponse>()
 
     override fun getFilter(): Filter {
         return object : Filter() {
@@ -30,7 +30,7 @@ class LaboratoryAdapter(
                 else {
                     resultListOfSearch.clear()
                     listofLaboratory.forEach {
-                        if (it.nom.toLowerCase().contains(p0.toString()))
+                        if (it.toString().toLowerCase().contains(p0.toString()))
                             resultListOfSearch.add(it)
                     }
                     resultListOfSearch
@@ -42,7 +42,7 @@ class LaboratoryAdapter(
 
             override fun publishResults(p0: CharSequence?, filtredResult: FilterResults?) {
                 filtredListofLaboratory = listOf()
-                filtredListofLaboratory = filtredResult!!.values as List<LaboratoryListResponse>
+                filtredListofLaboratory = filtredResult!!.values as List<LaboratoryResponse>
                 notifyDataSetChanged()
             }
         }
@@ -70,7 +70,7 @@ class LaboratoryAdapter(
     )
 
     override fun onBindViewHolder(holder: LaboratoryViewHolder, position: Int) {
-        holder.recycleviewLaboratoryBinding.laboratoryListResponseData =
+        holder.recycleviewLaboratoryBinding.laboratoryResponseData =
             filtredListofLaboratory[position]
 
         holder.recycleviewLaboratoryBinding.cardViewLabo.setOnClickListener {

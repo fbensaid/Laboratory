@@ -1,12 +1,8 @@
 package com.mtp.laboproject.data.repository
 
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.mtp.laboproject.data.model.ForgottenPasswordResponse
-import com.mtp.laboproject.data.model.LaboratoryListResponse
 import com.mtp.laboproject.data.remoteApi.ApiInterface
-import retrofit2.Response
 
 
 class ForgottenPasswordRepository(private val api: ApiInterface) : BaseRepository() {

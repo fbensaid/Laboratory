@@ -1,16 +1,13 @@
-package com.mtp.laboproject.data.Database
+package com.mtp.laboproject.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.mtp.laboproject.data.dao.UserDao
-import com.mtp.laboproject.data.model.UserResponse
+import com.mtp.laboproject.data.model.FireBaseUserResponse
 
-@Database(entities = [UserResponse::class], version = 1)
+@Database(entities = [FireBaseUserResponse::class], version = 1)
 abstract class AppDataBase : RoomDatabase() {
-
-    abstract fun getUserDao(): UserDao
 
     companion object {
         // visible to all other class

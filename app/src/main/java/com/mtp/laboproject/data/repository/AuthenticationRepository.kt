@@ -1,11 +1,12 @@
 package com.mtp.laboproject.data.repository
 
-import com.mtp.laboproject.data.model.UserResponse
+import com.mtp.laboproject.data.model.user.UserLoginResponse
+import com.mtp.laboproject.data.remoteApi.ApiInterface
 
 
-class  AuthenticationRepository  : BaseRepository() {
+class  AuthenticationRepository(private val api: ApiInterface)  : BaseRepository() {
 
-     fun storeUser(user: UserResponse) {
+     fun storeUser(user: UserLoginResponse) {
          sharedPreferences.apply {
              userResponse=user
              isStillConnected=true
@@ -20,6 +21,15 @@ class  AuthenticationRepository  : BaseRepository() {
             fingerPrint = finger
         }
      }
+
+    suspend fun login(email :String, password: String): UserLoginResponse? {
+        return safeApiCall(
+            //await the result of deferred type
+            call = { api.login(email,password).await() },
+            error = "Error fetching news"
+            //convert to mutable list
+        )
+    }
 
 
 }

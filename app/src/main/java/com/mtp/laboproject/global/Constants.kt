@@ -7,7 +7,6 @@ class Constants {
     companion object {
 
         const val BASE_URL: String = "http://172.16.1.12:3000/api/"
-
     }
 
     inner class EndPointss {
@@ -32,25 +31,22 @@ class Constants {
         val REQUEST_CAMERA_SETTINGS = 3251
         val REQUEST_CALL_SETTINGS = 31
         val MY_PERMISSIONS_REQUEST_LOCATION = 99
-
-
     }
 
     object Parameters {
-
-
-
         val PUSH_DATA_type = "push_data_type"
         val PUSH_DATA_MESSAGE = "push_data_message"
-        val USERNAME = "username"
-        val PASSWORD = "password"
 
     }
 
     object EndPoints {
-        const val LABORATORY_ENDPOINT  = "lab/list"
+        const val LABORATORY_ENDPOINT  = "labs/all"
         const val FORGOTTEN_PASSWORD_ENDPOINT  = "forgot_password"
         const val ALERTS_ENDPOINT  = "alerts"
+        const val LOGIN_ENDPOINT  = "users/login"
+        const val STATISTICS_ENDPOINT  = "sensor/all_statistics"
+
+
     }
 
 
@@ -60,7 +56,8 @@ class Constants {
         // SPLASHSCREEN
         const val SPLASHTIME: Long = 2000
         const val RESULT_LOAD_IMG: Int = 201
-
+        const val EMAIL = "email"
+        const val PASSWORD = "password"
 
     }
 

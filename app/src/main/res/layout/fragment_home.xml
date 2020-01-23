@@ -1,212 +1,325 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="statisticsResponseData"
+            type="com.mtp.laboproject.data.model.statistics.StatisticsResponse" />
+    </data>
+
+
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_voucher_color"
     android:fillViewport="true"
+    android:elevation="@dimen/dimen_10dp"
+    app:cardElevation="10dp"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="0dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_180dp"
+            android:background="@color/color_primary">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_50dp"
+                android:fontFamily="@font/googlesans_bold"
+                android:maxLines="1"
+                android:text="Dashboard "
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_25sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0dp"
-            android:layout_margin="@dimen/dimen_30dp"
-            android:visibility="visible"
-            app:cardBackgroundColor="@color/color_primary"
-            app:cardCornerRadius="@dimen/dimen_6dp"
-            app:layout_constraintBottom_toTopOf="@+id/cardView2"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed">
+            android:layout_marginTop="@dimen/dimen_80dp"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginEnd="@dimen/dimen_10dp"
+            android:layout_height="240dp"
+            app:cardBackgroundColor="@color/main_card_color"
+            app:cardCornerRadius="@dimen/dimen_8dp"
+            app:cardElevation="@dimen/single_day_layout_elevation"
+            android:elevation="@dimen/dimen_10dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="@dimen/single_day_layout_content_padding">
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="@+id/labo_icon"
-                app:layout_constraintStart_toEndOf="@+id/labo_icon">
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/labo_icon"
-                    android:layout_width="@dimen/dimen_0dp"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/laboratory"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5"></ImageView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
 
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/labo_icon"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5">
+                    android:paddingEnd="@dimen/dimen_0dp">
 
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/home_laboratory_string"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/dimen_10dp"
+                        android:layout_marginEnd="@dimen/dimen_10dp"
+                        android:orientation="vertical">
 
-                        />
+                        <TextView
+                            android:id="@+id/fuel_level_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/googlesans_bold"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="18"
+                            android:textAlignment="center"
+                            android:textColor="@color/color_primary"
+                            android:textSize="@dimen/dimen_40sp" />
 
-                    <TextView
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dimen_3dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/dimen_5dp"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/alcohol"
+                            android:foregroundGravity="center"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/googlesans_mediumitalic"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:text="Laboratories"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/text_3"
+                            android:textSize="@dimen/dimen_15sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/dimen_5dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingEnd="@dimen/dimen_0dp">
+
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/home_porte_string"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold" />
+                        android:layout_gravity="start"
+                        android:orientation="vertical">
 
-                    <TextView
+                        <TextView
+                            android:id="@+id/fuel_evel_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:fontFamily="@font/googlesans_bold"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="2"
+                            android:textAlignment="center"
+                            android:textColor="@color/color_primary"
+                            android:textSize="@dimen/dimen_40sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dimen_5dp"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:foregroundGravity="center_horizontal"
+                            android:src="@drawable/valve_icon"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/googlesans_mediumitalic"
+                            android:maxLines="2"
+                            android:text="Opened Valves"
+                            android:textAlignment="center"
+                            android:textColor="@color/text_3"
+                            android:textSize="@dimen/dimen_15sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/home_clapet_string"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold" />
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start"
+                            android:fontFamily="@font/googlesans_bold"
+                            android:lines="1"
+                            android:text="1"
+                            android:textAlignment="center"
+                            android:textColor="@color/color_primary"
+                            android:textSize="@dimen/dimen_40sp" />
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dimen_2dp"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:foregroundGravity="center_horizontal"
+                            android:src="@drawable/door"
+                            android:visibility="visible" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/googlesans_mediumitalic"
+                            android:maxLines="2"
+                            android:text="Opened Doors"
+                            android:textAlignment="center"
+                            android:textColor="@color/text_3"
+                            android:textSize="@dimen/dimen_15sp" />
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="30dp"
-            android:visibility="visible"
-            app:cardBackgroundColor="@color/color_primary_dark"
-            app:cardCornerRadius="6dp"
-            app:layout_constraintBottom_toTopOf="@+id/cardView3"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <ImageView
-                    android:id="@+id/door_icon"
-                    android:layout_width="0dp"
+            </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/opened_door"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5"></ImageView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:fontFamily="@font/googlesans_bold"
                     android:gravity="center"
-                    android:text="@string/home_porte_ouverte"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/door_icon"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
+                    android:text="Last updated on 14/01/2020"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/dimen_12sp" />
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="30dp"
-            android:visibility="visible"
-            app:cardBackgroundColor="@color/colorAccent"
-            app:cardCornerRadius="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2">
+            </LinearLayout>
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="@+id/window_icon"
-                app:layout_constraintStart_toEndOf="@+id/window_icon">
-
-
-                <ImageView
-                    android:id="@+id/window_icon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/opened_window"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5"></ImageView>
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="X clapet ouverte"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/window_icon"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.cardview.widget.CardView>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.mtp.laboproject.view.ui.view.CustomButton
+            android:id="@+id/btn_login"
+            style="@style/BlueButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_50dp"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            android:layout_marginBottom="@dimen/dimen_24dp"
+            android:fontFamily="@font/googlesans_bold"
+            android:padding="@dimen/dimen_12dp"
+            android:text="More Details"
+            android:layout_below="@id/cardView"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
 
 
 </ScrollView>
 
-
+</layout>
 
 
 

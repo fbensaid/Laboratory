@@ -19,13 +19,11 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.mtp.laboproject.LaboApplication.Companion.auth
 import com.mtp.laboproject.R
@@ -89,14 +87,6 @@ class ProfilFragment : BaseFragment() , OnMapReadyCallback , GoogleMap.OnMapClic
             it.getMapAsync(this)
         }
     }
-    /*override fun onMapReady(googleMap: GoogleMap?) {
-        mMap = googleMap!!
-        // Add a marker in Sydney and move the camera
-        val iff = LatLng(getString(R.string.iff_lat).toDouble(), getString(R.string.iff_lang).toDouble())
-        //val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(iff).title("IFF"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(iff))
-    }*/
 
     private fun showDialogueWithEditText(){
         val input = EditText(context)

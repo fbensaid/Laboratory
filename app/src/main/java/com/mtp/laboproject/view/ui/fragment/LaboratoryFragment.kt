@@ -8,9 +8,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
-import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.mtp.laboproject.R
-import com.mtp.laboproject.data.model.LaboratoryListResponse
+import com.mtp.laboproject.data.model.labs.LaboratoryResponse
 import com.mtp.laboproject.listener.LaboratoryClickListener
 import com.mtp.laboproject.view.adapter.LaboratoryAdapter
 import com.mtp.laboproject.view.factory.LabsViewModelFactory
@@ -46,11 +45,11 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
         val factory = LabsViewModelFactory()
         labsViewModel = ViewModelProviders.of(this, factory).get(LabsViewModel::class.java)
         labsViewModel.getLabs()
-        labsViewModel.labsLiveData.observe(viewLifecycleOwner, Observer { laboratory ->
+        labsViewModel.labsLiveData.observe(viewLifecycleOwner, Observer { listLaboratoryResponse ->
             recycleview_laboratory.also {
                 it.layoutManager = GridLayoutManager(requireContext(), 2)
                 it.setHasFixedSize(true)
-                laboAdapter = LaboratoryAdapter(laboratory, this)
+                laboAdapter = LaboratoryAdapter(listLaboratoryResponse.data, this)
                 it.adapter = laboAdapter
                 searchLaboratory()
             }
@@ -79,7 +78,7 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
     }
 
 
-    override fun onRecyclerViewItemClick(view: View, labo: LaboratoryListResponse) {
+    override fun onRecyclerViewItemClick(view: View, labo: LaboratoryResponse) {
         DetailsLaboBottomSheet().show(fragmentManager!!, "tessst")
     }
 

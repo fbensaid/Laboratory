@@ -1,4 +1,4 @@
-package com.mtp.laboproject.listener
+package com.mtp.laboproject.view.listener
 
 import android.view.View
 import com.mtp.laboproject.data.model.labs.LaboratoryResponse

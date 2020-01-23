@@ -1,11 +1,9 @@
-package com.farouk.travelcar.dagger
+package com.mtp.laboproject.dagger
 
 import android.app.Application
 import dagger.Provides
 import androidx.room.Room
-import com.farouk.travelcar.data.repository.UserRepository
-import com.mtp.laboproject.data.Database.AppDataBase
-import com.mtp.laboproject.data.dao.UserDao
+import com.mtp.laboproject.data.database.AppDataBase
 import dagger.Module
 import javax.inject.Singleton
 
@@ -22,16 +20,5 @@ class RoomModule(mApplication: Application) {
         return appDatabase
     }
 
-    @Singleton
-    @Provides
-    internal fun providesUserDao(demoDatabase: AppDataBase): UserDao {
-        return demoDatabase.getUserDao()
-    }
-
-    @Singleton
-    @Provides
-    internal fun UserRepository(productDao: UserDao): UserRepository {
-        return UserRepository(productDao)
-    }
 
 }
