@@ -6,6 +6,7 @@ class Constants {
 
     companion object {
 
+        const val CURRENT_POSITION_ZOOM = 15
         const val BASE_URL: String = "http://172.16.1.12:3000/api/"
 
     }
@@ -31,7 +32,7 @@ class Constants {
         val REQUEST_CHECK_GOOGLE_SETTINGS = 321
         val REQUEST_CAMERA_SETTINGS = 3251
         val REQUEST_CALL_SETTINGS = 31
-        val MY_PERMISSIONS_REQUEST_LOCATION = 1
+        val MY_PERMISSIONS_REQUEST_LOCATION = 0
 
 
     }

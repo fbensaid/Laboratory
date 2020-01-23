@@ -1,6 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" >
     <!-- Search Widget -->
+    <item android:id="@+id/quit_view"
+        android:title="@string/quit"
+        android:icon="@drawable/ic_quit"
+        app:showAsAction="always" />
     <item android:id="@+id/search_view"
         android:title="@string/action_search"
         android:icon="@android:drawable/ic_menu_search"

@@ -3,6 +3,7 @@ package com.mtp.laboproject.view.ui.fragment
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
@@ -38,7 +39,7 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
         super.onActivityCreated(savedInstanceState)
         setRepo()
         setHasOptionsMenu(true)
-     //  setBottomSheetBehaviour()
+        //  setBottomSheetBehaviour()
         setBottomSheetMarkerBehaviour()
     }
 
@@ -50,9 +51,14 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
             recycleview_laboratory.also {
                 it.layoutManager = GridLayoutManager(requireContext(), 2)
                 it.setHasFixedSize(true)
-                laboAdapter = LaboratoryAdapter(laboratory, this)
-                it.adapter = laboAdapter
-                searchLaboratory()
+                if (laboratory != null) {
+                    laboAdapter = LaboratoryAdapter(laboratory, this)
+                    it.adapter = laboAdapter
+                    searchLaboratory()
+                } else {
+                    Toast.makeText(activity, "No available data  !", Toast.LENGTH_SHORT).show()
+                }
+
             }
         })
     }
@@ -75,6 +81,8 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
         inflater.inflate(R.menu.menu, menu)
         searchView = menu.findItem(R.id.search_view).actionView as SearchView
         searchView.queryHint = getString(R.string.search_hint)
+        menu.findItem(R.id.search_view).setVisible(true)
+        menu.findItem(R.id.quit_view).setVisible(false)
         super.onCreateOptionsMenu(menu, inflater)
     }
 

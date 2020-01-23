@@ -13,9 +13,10 @@
 
 
     <style name="Widget.Styled.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
-        <item name="android:background"  tools:ignore="NewApi">@color/blue</item>
-        <item name="background">@color/color_primary</item>
-        <item name="android:icon">@drawable/logo_white_small</item>
+        <item name="android:background"  tools:ignore="NewApi">@color/white</item>
+        <item name="background">@color/white</item>
+        <item name="android:icon">@drawable/logo_bleu</item>
+        <item name="android:titleTextColor">@color/color_primary</item>
         <item name="android:fontFamily">@font/googlesans_medium</item>
         <item name="android:title">@string/app_name_for_logo</item>
         <item name="android:titleMarginStart" tools:targetApi="n">@dimen/dimen_10dp</item>
@@ -25,12 +26,14 @@
         <item name="android:actionBarStyle"   tools:ignore="NewApi">@style/Widget.Styled.ActionBar</item>
         <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
         <item name="colorPrimary">@color/color_primary</item>
-        <item name="android:icon">@drawable/logo_white_small</item>
-        <item name="colorPrimaryDark">@color/color_primary_secondary</item>
-        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:icon">@drawable/logo_bleu_small</item>
+        <item name="colorPrimaryDark">@color/color_primary</item>
+        <item name="colorAccent">@color/color_primary</item>
         <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
         <item name="android:textColor">@color/color_primary</item>
-        <item name="titleTextColor">@android:color/white</item>
+        <item name="titleTextColor">@color/color_primary</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowBackground">@color/white</item>
     </style>
 
