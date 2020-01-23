@@ -3,10 +3,8 @@ package com.mtp.laboproject.view.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mtp.laboproject.data.model.ForgottenPasswordResponse
-import com.mtp.laboproject.data.model.LaboratoryListResponse
 import com.mtp.laboproject.data.remoteApi.Apifactory
 import com.mtp.laboproject.data.repository.ForgottenPasswordRepository
-import com.mtp.laboproject.data.repository.LaboratoryRepository
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 

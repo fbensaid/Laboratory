@@ -4,40 +4,29 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mtp.laboproject.data.model.labs.LabsListResponse
+import com.mtp.laboproject.data.model.statistics.StatisticsResponse
 import com.mtp.laboproject.data.remoteApi.Apifactory
 import com.mtp.laboproject.data.repository.LaboratoryRepository
+import com.mtp.laboproject.data.repository.StatisticsRepository
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class LabsViewModel : ViewModel() {
-    //create a new Job
+class HomeViewModel : ViewModel() {
     private val parentJob = Job()
-    //create a coroutine context with the job and the dispatcher
     private val coroutineContext: CoroutineContext get() = parentJob + Dispatchers.Default
-    //create a coroutine scope with the coroutine context
     private val scope = CoroutineScope(coroutineContext)
-
     private val handler = CoroutineExceptionHandler { _, exception ->
         Log.e("Couroutine", "Caught $exception")
     }
-    //initialize news repo
-    private val labsRepository: LaboratoryRepository = LaboratoryRepository(Apifactory.Api)
-    //live data that will be populated as news updates
-    val labsLiveData = MutableLiveData<LabsListResponse>()
+    private val statRepository: StatisticsRepository = StatisticsRepository(Apifactory.Api)
+    private val statisticsLiveData = MutableLiveData<StatisticsResponse>()
 
-    fun getLabs() {
-        ///launch the coroutine scope
+    fun getStatistic() {
         scope.launch(handler) {
-            //get latest news from news repo
-            val latestNews = labsRepository.getLabs()
-            //post the value inside live data
-            labsLiveData.postValue(latestNews)
+            val latestNews = statRepository.getStatistics()
+            statisticsLiveData.postValue(latestNews)
         }
     }
-
-
-    fun cancelRequests() = coroutineContext.cancel()
-
 
     override fun onCleared() {
         super.onCleared()

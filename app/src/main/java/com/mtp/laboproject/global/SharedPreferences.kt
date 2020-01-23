@@ -3,23 +3,12 @@ package com.mtp.laboproject.global
 
 import android.content.Context
 import android.text.TextUtils
-
 import com.google.gson.Gson
-import com.mtp.laboproject.data.model.UserResponse
+import com.mtp.laboproject.data.model.user.UserLoginResponse
 import com.securepreferences.SecurePreferences
 
 class SharedPreferences(context: Context) {
 
-    val isConnected: Boolean
-        get() = !TextUtils.isEmpty(token)
-
-    var isFirstInstall: String?
-        get() = mSharedPreferences.getString(FIRST_INSTALL_FLAG, null)
-        set(value) {
-            val editor = mSharedPreferences.edit()
-            editor.putString(FIRST_INSTALL_FLAG, value)
-            editor.commit()
-        }
 
     var token: String?
         get() = mSharedPreferences.getString(TOKEN_FLAG, null)
@@ -82,11 +71,11 @@ class SharedPreferences(context: Context) {
         }
 
 
-    var userResponse: UserResponse
+    var userResponse: UserLoginResponse
         get() {
             val gson = Gson()
             val json = mSharedPreferences.getString(USER_FLAG, null)
-            return gson.fromJson<UserResponse>(json, UserResponse::class.java!!)
+            return gson.fromJson<UserLoginResponse>(json, UserLoginResponse::class.java!!)
         }
         set(user) {
             val editor = mSharedPreferences.edit()

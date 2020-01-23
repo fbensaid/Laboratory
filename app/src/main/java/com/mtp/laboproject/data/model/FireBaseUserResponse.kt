@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 const val CURRENT_USERID=0
 @Entity
-data class UserResponse(
+data class FireBaseUserResponse(
     val name: String?,
     val email: String?,
     val photoUrl: String?,

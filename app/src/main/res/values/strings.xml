@@ -10,7 +10,7 @@
     <string name="quit">Quit</string>
     <string name="action_info">info</string>
     <string name="search_hint">Chercher un Laboratoire</string>
-    <string name="test_username">farouk@mobiletechpeople.fr</string>
+    <string name="test_username">romyos@hotmail.com</string>
     <string name="noaccount_text">No account yet? Create one</string>
     <string name="login_string">Login</string>
     <string name="show_password_text">Show password</string>
@@ -36,7 +36,6 @@
     <string name="ask_permission">Demande de permission</string>
     <string name="iff_lang">48.892060</string>
     <string name="iff_lat">2.277560</string>
-
     <string name="location_perm_string">This app needs the Location permission, please accept to use location functionality</string>
     <string name="location_perm_title">Location Permission Needed</string>
     <string name="perm_denied_string">Permission Denied</string>

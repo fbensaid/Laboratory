@@ -10,7 +10,7 @@ import android.app.Application
 import android.content.Context
 import com.mtp.laboproject.dagger.AppComponent
 import com.mtp.laboproject.dagger.AppModule
-import com.farouk.travelcar.dagger.RoomModule
+import com.mtp.laboproject.dagger.RoomModule
 import com.google.firebase.auth.FirebaseAuth
 import com.mtp.laboproject.dagger.DaggerAppComponent
 import com.mtp.laboproject.dagger.PreferencesModule
