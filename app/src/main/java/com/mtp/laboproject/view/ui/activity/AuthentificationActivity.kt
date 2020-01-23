@@ -1,12 +1,9 @@
 package com.mtp.laboproject.view.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.google.firebase.auth.FirebaseUser
 import com.mtp.laboproject.LaboApplication.Companion.auth
 import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.user.UserLoginResponse
@@ -25,7 +22,7 @@ import org.jetbrains.anko.intentFor
 class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
 
     private val TAG = "Authentification"
-    private lateinit var biometricPrompt: BiometricPrompt
+    private  lateinit var biometricPrompt:BiometricPrompt
     private var isFromLoginPassword: Boolean = false
     private lateinit var authViewModel: AuthViewModel
 
@@ -33,62 +30,48 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
+
         biometricPrompt = BiometricPrompt(this, this)
 
         val factory = AuthViewModelFactory()
         authViewModel = ViewModelProviders.of(this, factory)
             .get(AuthViewModel::class.java)
+
         //check if user had biometric configuration and support
         checkBiometric()
         //auth with fingerPrint if user connected before
-        setListeners()
-    }
 
-    private fun setListeners() {
         btn_login.setOnClickListener {
             if ((input_email.validateForm() && input_password.validateForm())) {
-                isFromLoginPassword = true
-                signIn(input_email.text.toString(), input_password.text.toString())
+                isFromLoginPassword=true
+                signIn(input_email.text.toString(),input_password.text.toString())
             }
         }
-
-        link_forget_pass.setOnClickListener {
-            val value: String = input_email.text.toString() // or just your string
-            val intent = Intent(this, ForgottenPasswordActivity::class.java)
-            intent.putExtra("email", value)
-            startActivity(intent)
-        }
-        cb_display_finger_print.isChecked = authViewModel.getsharedPreference().fingerPrint!!
+        cb_display_finger_print.isChecked= authViewModel.getsharedPreference().fingerPrint!!
         authWithFingerPrint()
 
         cb_display_finger_print.setOnCheckedChangeListener { _, b ->
-            if (b && authViewModel.getsharedPreference().isConnectedSuccessBefore) biometricPrompt.authenticateBiometric()
+            if(b && authViewModel.getsharedPreference().isConnectedSuccessBefore) biometricPrompt.authenticateBiometric()
         }
     }
 
 
     private fun authWithFingerPrint() {
-        if (cb_display_finger_print.isChecked && authViewModel.getsharedPreference().isConnectedSuccessBefore) {
+        if(cb_display_finger_print.isChecked&&authViewModel.getsharedPreference().isConnectedSuccessBefore){
             biometricPrompt.authenticateBiometric()
         }
     }
-
-    private fun checkBiometric() {
+        private fun checkBiometric(){
         when (biometricPrompt.checkBiometricSupport()) {
-            checkBiometric.BIOMETRIC_SUCCESS -> ly_display_finger_print.visibility = View.VISIBLE
-            else -> ly_display_finger_print.visibility = View.GONE
+            checkBiometric.BIOMETRIC_SUCCESS -> ly_display_finger_print.visibility=View.VISIBLE
+            else -> ly_display_finger_print.visibility=View.GONE
         }
     }
-
-
-    private fun storeUserData(user: UserLoginResponse?) {
+    private fun storeUserData(user:UserLoginResponse?) {
         authViewModel.storeuser(user!!)
-        if (isFromLoginPassword) {
-            authViewModel.storeAuthData(
-                input_email.text.toString(), input_password.text.toString(),
-                true, cb_display_finger_print.isChecked
-            )
-
+        if(isFromLoginPassword){
+            authViewModel.storeAuthData(input_email.text.toString(),input_password.text.toString(),
+                true,cb_display_finger_print.isChecked)
         }
     }
 
@@ -97,19 +80,20 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
         super.onStart()
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            // Toast.makeText(baseContext, "there is a user registred", Toast.LENGTH_SHORT).show()
+           // Toast.makeText(baseContext, "there is a user registred", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun signIn(email: String, password: String) {
-        ct_loading.visibility = View.VISIBLE
-        authViewModel.setLogin(email, password)
+        ct_loading.visibility=View.VISIBLE
+        authViewModel.setLogin(email,password)
         authViewModel.loginLiveData.observe(this, Observer { userLogin ->
-            ct_loading.visibility = View.GONE
+            ct_loading.visibility=View.GONE
             storeUserData(userLogin)
             startActivity(intentFor<MainActivity>())
             finish()
         })
+
     }
 
 
@@ -118,11 +102,9 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
     }
 
     override fun onAuthenticationSucceeded() {
-        if (authViewModel.getsharedPreference().isConnectedSuccessBefore) {
-            signIn(
-                authViewModel.getsharedPreference().email.toString(),
-                authViewModel.getsharedPreference().password.toString()
-            )
+        if(authViewModel.getsharedPreference().isConnectedSuccessBefore) {
+            signIn(authViewModel.getsharedPreference().email.toString(),
+                authViewModel.getsharedPreference().password.toString())
         } else
             toast("You have to set login and password at first")
 

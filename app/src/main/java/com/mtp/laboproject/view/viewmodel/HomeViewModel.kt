@@ -19,7 +19,7 @@ class HomeViewModel : ViewModel() {
         Log.e("Couroutine", "Caught $exception")
     }
     private val statRepository: StatisticsRepository = StatisticsRepository(Apifactory.Api)
-    private val statisticsLiveData = MutableLiveData<StatisticsResponse>()
+     val statisticsLiveData = MutableLiveData<StatisticsResponse>()
 
     fun getStatistic() {
         scope.launch(handler) {
