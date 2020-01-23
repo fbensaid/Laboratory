@@ -94,20 +94,6 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
             finish()
         })
 
-//        // [START sign_in_with_email]
-//        auth.signInWithEmailAndPassword(email, password)
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//                    val user = auth.currentUser
-//                    storeUserData(user)
-//                    startActivity(intentFor<MainActivity>())
-//                    finish()
-//                } else {
-//                    // If sign in fails, display a message to the user.
-//                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
-//                    ct_loading.visibility=View.GONE
-//                }
-//            }
     }
 
 
