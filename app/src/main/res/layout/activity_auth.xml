@@ -2,25 +2,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_primary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:orientation="vertical"
             android:paddingLeft="@dimen/dimen_24dp"
             android:paddingTop="@dimen/dimen_50dp"
-            android:paddingRight="@dimen/dimen_24dp">
+            android:paddingRight="@dimen/dimen_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
 
             <ImageView
@@ -35,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_40dp"
+                android:textColorHint="@color/white"
                 android:fontFamily="@font/google_sans">
 
                 <EditText
@@ -43,6 +43,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/google_sans"
                     android:hint="Email"
+                    app:backgroundTint="@color/white"
                     android:inputType="textEmailAddress"
                     android:text="@string/test_username"
                     android:textColor="@android:color/white"
@@ -53,16 +54,19 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/white"
                 android:fontFamily="@font/google_sans">
 
                 <EditText
                     android:id="@+id/input_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:backgroundTint="@color/white"
                     android:fontFamily="@font/google_sans"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:textColorHint="@color/grey" />
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
@@ -145,28 +149,28 @@
                 android:textColor="@color/color_primary" />
 
             <TextView
-                android:id="@+id/link_signup"
+                android:id="@+id/link_forget_pass"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dimen_24dp"
                 android:fontFamily="@font/google_sans"
                 android:gravity="center"
-                android:text="@string/noaccount_text"
+                android:text="Forget Password ?"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/dimen_16sp" />
 
         </LinearLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ct_loading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:background="@color/black_transparent_gradient"
             android:visibility="gone"
-            >
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.core.widget.ContentLoadingProgressBar
                 android:id="@+id/progressBarP2pSearchRecipient"
@@ -175,11 +179,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:indeterminateDrawable="@drawable/circular_progress_bar"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                 />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
