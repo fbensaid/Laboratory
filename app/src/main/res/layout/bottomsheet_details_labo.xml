@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/collapsing_toolbar_appbarlayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_150dp">
+        android:layout_height="@dimen/dimen_120dp">
 
         <!--  app:contentScrim : The Toolbar color when the
               collapsing toolbar is collapsed. -->
@@ -28,9 +28,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/dimen_80dp"
-                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_marginTop="@dimen/dimen_2dp"
                 android:layout_marginEnd="@dimen/dimen_80dp"
-                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:layout_marginBottom="@dimen/dimen_2dp"
                 android:fontFamily="@font/googlesans_bold"
                 android:maxLines="2"
                 android:text="Laboratory Number 1"
@@ -85,14 +85,16 @@
             app:cardBackgroundColor="@color/main_card_color"
             app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
             app:cardElevation="@dimen/dimen_3dp"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:layout_marginEnd="@dimen/dimen_15dp"
             app:cardUseCompatPadding="true"
             app:contentPadding="@dimen/single_day_layout_content_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_10dp"
-                android:layout_marginEnd="@dimen/dimen_10dp"
+                android:layout_marginStart="@dimen/dimen_15dp"
+                android:layout_marginEnd="@dimen/dimen_15dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -118,6 +120,8 @@
             app:cardBackgroundColor="@color/main_card_color"
             app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
             app:cardElevation="@dimen/single_day_layout_elevation"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:layout_marginEnd="@dimen/dimen_15dp"
             app:cardUseCompatPadding="true"
             app:contentPadding="@dimen/single_day_layout_content_padding">
 
@@ -156,7 +160,7 @@
                             android:text="18"
                             android:textAlignment="center"
                             android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25sp" />
+                            android:textSize="@dimen/dimen_22sp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -225,7 +229,7 @@
                             android:text="12"
                             android:textAlignment="center"
                             android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25dp" />
+                            android:textSize="@dimen/dimen_22sp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -297,9 +301,9 @@
                             android:gravity="center"
                             android:maxLines="1"
                             android:text="Opened"
-                            android:textAlignment="center"
+                            android:textAlignment="textStart"
                             android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25dp" />
+                            android:textSize="@dimen/dimen_21dp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -364,9 +368,9 @@
                             android:fontFamily="@font/googlesans_bold"
                             android:lines="1"
                             android:text="Closed"
-                            android:textAlignment="center"
+                            android:textAlignment="textStart"
                             android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25sp" />
+                            android:textSize="@dimen/dimen_21sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
