@@ -25,10 +25,4 @@ abstract class BaseFragment : Fragment() {
         fun setToolbarShareButton()
 
     }
-
-//
-//    abstract fun getStackCount(): Int
-//    abstract fun allowBackPressed(): Boolean
-//    abstract fun getPageTitle(context: Context): String
-
 }

@@ -422,11 +422,6 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
     }
 
 
-
-
-
-
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>, grantResults: IntArray
@@ -452,8 +447,6 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
                 }
                 return
             }
-
-
             // Add other 'when' lines to check for other
             // permissions this app might request.
             else -> {
