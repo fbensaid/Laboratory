@@ -57,7 +57,7 @@
                             android:layout_marginStart="@dimen/dimen_10dp"
                             android:layout_marginEnd="@dimen/dimen_10dp"
                             android:foregroundGravity="center"
-                            android:src="@drawable/laboratory"
+                            android:src="@drawable/lab_ic"
                             android:visibility="visible" />
 
 
