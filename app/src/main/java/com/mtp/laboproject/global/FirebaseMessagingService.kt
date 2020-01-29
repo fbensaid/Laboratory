@@ -41,7 +41,7 @@ class FirebaseMessagingService : FirebaseMessagingService() {
             Log.d(TAG, "Message data payload-->: screen " + remoteMessage.data["screen"])
             Log.d(TAG, "Message data payload-->: data " + remoteMessage.data["data"])
 
-            (LaboApplication.instance as MainActivity).showBadgeOnNavigationButtomView("4")
+            (LaboApplication.instance as MainActivity).showBadgeOnNavigationButtomView("3")
 
                 if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use WorkManager.

@@ -26,7 +26,6 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
     private var isFromLoginPassword: Boolean = false
     private lateinit var authViewModel: AuthViewModel
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)

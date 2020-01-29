@@ -3,7 +3,6 @@ package com.mtp.laboproject.view.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mtp.laboproject.data.model.labs.LabsListResponse
 import com.mtp.laboproject.data.model.statistics.StatisticsResponse
 import com.mtp.laboproject.data.remoteApi.Apifactory
 import com.mtp.laboproject.data.repository.LaboratoryRepository

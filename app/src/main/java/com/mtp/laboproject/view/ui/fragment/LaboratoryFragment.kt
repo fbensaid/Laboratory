@@ -7,10 +7,8 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.mtp.laboproject.R
-import com.mtp.laboproject.data.model.labs.LaboratoryResponse
+import com.mtp.laboproject.data.model.labs.LabsObjectResponse
 import com.mtp.laboproject.listener.LaboratoryClickListener
 import com.mtp.laboproject.view.adapter.LaboratoryAdapter
 import com.mtp.laboproject.view.factory.LabsViewModelFactory
@@ -23,9 +21,6 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
     private lateinit var labsViewModel: LabsViewModel
     private lateinit var laboAdapter: LaboratoryAdapter
     private lateinit var searchView: SearchView
-    private var mBottomSheetBehavior: BottomSheetBehavior<*>? = null
-    private var mBottomSheetBehaviourMarkerInfos: BottomSheetBehavior<*>? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +33,6 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
         super.onActivityCreated(savedInstanceState)
         setRepo()
         setHasOptionsMenu(true)
-        //  setBottomSheetBehaviour()
-        setBottomSheetMarkerBehaviour()
     }
 
     private fun setRepo() {
@@ -68,7 +61,6 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
                 laboAdapter.filter.filter(newText)
                 return false
             }
-
             override fun onQueryTextSubmit(query: String): Boolean {
                 laboAdapter.filter.filter(query)
                 return false
@@ -80,75 +72,16 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
         inflater.inflate(R.menu.menu, menu)
         searchView = menu.findItem(R.id.search_view).actionView as SearchView
         searchView.queryHint = getString(R.string.search_hint)
-        menu.findItem(R.id.search_view).setVisible(true)
-        menu.findItem(R.id.quit_view).setVisible(false)
+        menu.findItem(R.id.search_view).isVisible = true
+        menu.findItem(R.id.quit_view).isVisible = false
         super.onCreateOptionsMenu(menu, inflater)
     }
 
 
-    override fun onRecyclerViewItemClick(view: View, labo: LaboratoryResponse) {
-        DetailsLaboBottomSheet().show(fragmentManager!!, "tessst")
+    override fun onRecyclerViewItemClick(view: View, labo: LabsObjectResponse) {
+        DetailsLaboBottomSheet(labo).show(fragmentManager!!, "tessst")
     }
 
-    private fun setBottomSheetBehaviour() {
-        mBottomSheetBehavior = BottomSheetBehavior.from<View>(bottom_sheet_laboratory)
-        (mBottomSheetBehavior as BottomSheetBehavior<View>).setBottomSheetCallback(object :
-            BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
-                    (mBottomSheetBehavior as BottomSheetBehavior<View>).setState(BottomSheetBehavior.STATE_COLLAPSED)
-                }
-                when (newState) {
-                    BottomSheetBehavior.STATE_HIDDEN -> {
-                    }
-                    BottomSheetBehavior.STATE_EXPANDED -> {
-                    }
-                    BottomSheetBehavior.STATE_COLLAPSED -> {
-                    }
-                    BottomSheetBehavior.STATE_DRAGGING -> {
-                    }
-                    BottomSheetBehavior.STATE_SETTLING -> {
-                    }
-                }
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-        })
-        bottom_sheet_laboratory.setOnClickListener(this)
-    }
-
-    private fun setBottomSheetMarkerBehaviour() {
-        mBottomSheetBehaviourMarkerInfos =
-            BottomSheetBehavior.from<View>(bottom_sheet_laboratory)
-        BottomSheetBehavior.STATE_EXPANDED
-        (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setBottomSheetCallback(
-            object : BottomSheetCallback() {
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-                    if (newState == BottomSheetBehavior.STATE_DRAGGING) {
-                        (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setState(
-                            BottomSheetBehavior.STATE_EXPANDED
-                        )
-                    }
-                    when (newState) {
-                        BottomSheetBehavior.STATE_HIDDEN -> {
-
-                        }
-                        BottomSheetBehavior.STATE_EXPANDED -> {
-                        }
-                        BottomSheetBehavior.STATE_COLLAPSED -> {
-                        }
-                        BottomSheetBehavior.STATE_DRAGGING -> {
-                        }
-                        BottomSheetBehavior.STATE_SETTLING -> {
-                        }
-                    }
-                }
-
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-            })
-        bottom_sheet_laboratory.setOnClickListener(this)
-        (mBottomSheetBehaviourMarkerInfos as BottomSheetBehavior<View>).setState(BottomSheetBehavior.STATE_EXPANDED)
-    }
 
     override fun onClick(v: View?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

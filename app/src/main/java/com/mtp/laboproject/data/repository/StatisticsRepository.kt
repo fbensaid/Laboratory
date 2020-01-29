@@ -1,6 +1,5 @@
 package com.mtp.laboproject.data.repository
 
-import com.mtp.laboproject.data.model.labs.LabsListResponse
 import com.mtp.laboproject.data.model.statistics.StatisticsResponse
 import com.mtp.laboproject.data.remoteApi.ApiInterface
 

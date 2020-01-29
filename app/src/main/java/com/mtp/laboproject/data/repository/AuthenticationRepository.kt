@@ -27,7 +27,6 @@ class  AuthenticationRepository(private val api: ApiInterface)  : BaseRepository
             //await the result of deferred type
             call = { api.login(email,password).await() },
             error = "Error fetching news"
-            //convert to mutable list
         )
     }
 

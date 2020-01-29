@@ -3,7 +3,7 @@ package com.mtp.laboproject.data.remoteApi
 import com.mtp.laboproject.data.model.AlertsDetailsResponse
 import com.mtp.laboproject.data.model.ForgottenPasswordResponse
 import com.mtp.laboproject.global.Constants
-import com.mtp.laboproject.data.model.labs.LabsListResponse
+import com.mtp.laboproject.data.model.labs.LaboListResponse
 import com.mtp.laboproject.data.model.statistics.StatisticsResponse
 import com.mtp.laboproject.data.model.user.UserLoginResponse
 import com.mtp.laboproject.global.Constants.Variants.EMAIL
@@ -15,7 +15,7 @@ import retrofit2.http.*
 interface ApiInterface {
 
     @GET(Constants.EndPoints.LABORATORY_ENDPOINT)
-    fun getLaboList(): Deferred<Response<LabsListResponse>>
+    fun getLaboList(): Deferred<Response<LaboListResponse>>
 
 
     @GET(Constants.EndPoints.FORGOTTEN_PASSWORD_ENDPOINT)

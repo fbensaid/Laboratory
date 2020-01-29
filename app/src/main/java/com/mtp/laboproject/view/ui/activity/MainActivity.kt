@@ -47,10 +47,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        getSupportActionBar()!!.setDisplayShowHomeEnabled(true)
-        getSupportActionBar()!!.setLogo(R.drawable.logo_bleu_small);
-        getSupportActionBar()!!.setDisplayUseLogoEnabled(true);
-        supportActionBar!!.setTitle(" Watcher ")
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setLogo(R.drawable.logo_bleu_small)
+        supportActionBar!!.setDisplayUseLogoEnabled(true)
+        supportActionBar!!.title = getString(R.string.watcher)
 
 
         replaceMainLayout(homeFragment,0)
