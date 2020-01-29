@@ -2,7 +2,6 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <data>
         <import type="android.view.View" />
         <variable
@@ -10,153 +9,109 @@
             type="com.mtp.laboproject.data.model.labs.LabsObjectResponse" />
     </data>
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    android:background="@color/grey_bg">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/collapsing_toolbar_appbarlayout"
-        android:layout_width="match_parent"
-        android:background="@color/color_primary"
-        android:layout_height="@dimen/dimen_150dp">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:contentScrim="@color/black"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/dimen_80dp"
-                android:layout_marginTop="@dimen/dimen_20dp"
-                android:layout_marginEnd="@dimen/dimen_80dp"
-                android:layout_marginBottom="@dimen/dimen_20dp"
-                android:fontFamily="@font/googlesans_bold"
-                android:maxLines="2"
-                android:text="@{laboratoryResponseDetailsData.name}"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/dimen_30sp"
-                android:textStyle="normal" />
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/collapsing_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- app:layout_behavior attribute value settings make app tool bar appear while RecyclerView scroll. -->
-    <LinearLayout
-        android:id="@+id/collapsing_linear_layout"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:background="@color/grey_bg"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/collapsing_toolbar_recycler_view"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/collapsing_toolbar_appbarlayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_height="@dimen/dimen_120dp"
+            android:background="@color/color_primary">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_10dp"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:layout_marginEnd="@dimen/dimen_10dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-
-        </LinearLayout>
-
-        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_60dp"
-            app:cardBackgroundColor="@color/main_card_color"
-            app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
-            app:cardElevation="@dimen/dimen_3dp"
-            app:cardUseCompatPadding="true"
-            app:contentPadding="@dimen/single_day_layout_content_padding">
-
-            <LinearLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_10dp"
-                android:layout_marginEnd="@dimen/dimen_10dp"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:contentScrim="@color/black"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dimen_80dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginEnd="@dimen/dimen_80dp"
+                    android:layout_marginBottom="@dimen/dimen_20dp"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:maxLines="2"
+                    android:text="@{laboratoryResponseDetailsData.name}"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen_30sp"
+                    android:textStyle="normal" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- app:layout_behavior attribute value settings make app tool bar appear while RecyclerView scroll. -->
+        <LinearLayout
+            android:id="@+id/collapsing_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_80dp"
+                app:cardBackgroundColor="@color/main_card_color"
+                app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
+                app:cardElevation="@dimen/dimen_3dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="@dimen/single_day_layout_content_padding">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:fontFamily="@font/googlesans_bold"
-                    android:text="Status : STABLE"
+                    android:text="@{String.format(@string/last_update,laboratoryResponseDetailsData.sensors[0].id.data[0].date)}"
                     android:textAlignment="center"
                     android:textColor="@color/green"
-                    android:textSize="@dimen/dimen_20sp"
+                    android:textSize="@dimen/dimen_18sp"
                     android:textStyle="normal" />
 
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_180dp"
-            app:cardBackgroundColor="@color/main_card_color"
-            app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
-            app:cardElevation="@dimen/single_day_layout_elevation"
-            app:cardUseCompatPadding="true"
-            app:contentPadding="@dimen/single_day_layout_content_padding">
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal"
-                android:weightSum="4">
-
+                android:layout_height="@dimen/dimen_180dp"
+                app:cardBackgroundColor="@color/main_card_color"
+                app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
+                app:cardElevation="@dimen/single_day_layout_elevation"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="@dimen/single_day_layout_content_padding">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingEnd="@dimen/dimen_0dp">
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
 
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/dimen_10dp"
-                        android:layout_marginEnd="@dimen/dimen_10dp"
-                        android:orientation="vertical">
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingEnd="@dimen/dimen_0dp">
 
                         <TextView
                             android:id="@+id/humidite_details"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/dimen_35dp"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/googlesans_bold"
                             android:gravity="center"
@@ -164,110 +119,93 @@
                             android:text="@{laboratoryResponseDetailsData.sensors[0].id.data[0].humidite}"
                             android:textAlignment="center"
                             android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/dimen_10dp"
-                        android:layout_gravity="center_horizontal"
-                        android:orientation="horizontal">
+                            android:textSize="@dimen/dimen_20sp" />
 
                         <ImageView
                             android:layout_width="@dimen/dimen_30dp"
                             android:layout_height="@dimen/dimen_30dp"
-                            android:layout_marginEnd="@dimen/dimen_3dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/dimen_10dp"
+                            android:layout_marginEnd="@dimen/dimen_5dp"
                             android:background="@android:color/transparent"
-                            android:layout_gravity="start"
+                            android:foregroundGravity="center_horizontal"
                             android:src="@drawable/humidite"
                             android:visibility="visible" />
 
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-
-                    android:paddingEnd="@dimen/dimen_0dp">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
                         <TextView
-                            android:id="@+id/main_temp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/googlesans_bold"
-                            android:text="@{laboratoryResponseDetailsData.sensors[0].id.data[0].co2}"
-                            android:textAlignment="center"
-                            android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/dimen_10dp"
-                        android:layout_gravity="center_horizontal"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="@dimen/dimen_30dp"
-                            android:layout_height="@dimen/dimen_30dp"
-                            android:layout_marginStart="@dimen/dimen_5dp"
-                            android:background="@android:color/transparent"
-                            android:foregroundGravity="center_horizontal"
-                            android:src="@drawable/co2"
-                            android:visibility="visible" />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/googlesans_mediumitalic"
-                            android:maxLines="2"
-                            android:text="CO² Level"
-                            android:layout_marginStart="@dimen/dimen_4dp"
+                            android:gravity="center"
+                            android:text="@string/humidite_level"
+                            android:textAlignment="center"
                             android:textColor="@color/text_3"
                             android:textSize="@dimen/dimen_12sp" />
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingEnd="@dimen/dimen_0dp">
 
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="@dimen/dimen_5dp"
-                    android:paddingEnd="@dimen/dimen_0dp">
+                        <TextView
+                            android:id="@+id/main_temp"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_35dp"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/googlesans_bold"
+                            android:text="@{laboratoryResponseDetailsData.sensors[0].id.data[0].co2}"
+                            android:textAlignment="center"
+                            android:textColor="@color/color_primary"
+                            android:textSize="@dimen/dimen_20dp" />
 
+                        <ImageView
+                            android:layout_width="@dimen/dimen_30dp"
+                            android:layout_height="@dimen/dimen_30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/dimen_10dp"
+                            android:layout_marginEnd="@dimen/dimen_5dp"
+                            android:background="@android:color/transparent"
+                            android:foregroundGravity="center_horizontal"
+                            android:src="@drawable/co2"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dimen_4dp"
+                            android:fontFamily="@font/googlesans_mediumitalic"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:text="@string/co2_level"
+                            android:textAlignment="center"
+                            android:textColor="@color/text_3"
+                            android:textSize="@dimen/dimen_12sp" />
+
+
+                    </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:orientation="vertical">
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dimen_5dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingEnd="@dimen/dimen_0dp">
+
 
                         <TextView
                             android:id="@+id/fuel_level_tv3"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/dimen_35dp"
                             android:layout_gravity="start"
                             android:fontFamily="@font/googlesans_bold"
                             android:gravity="center"
@@ -275,129 +213,76 @@
                             android:text="@{laboratoryResponseDetailsData.sensors[1].id.data[0].open ?  @string/opened : @string/closed}"
                             android:textAlignment="center"
                             android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25dp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:fontFamily="@font/gotham_light"
-                            android:textAlignment="center"
-                            android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_13sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/dimen_10dp"
-                        android:layout_gravity="center_horizontal"
-                        android:orientation="horizontal">
+                            android:textSize="@dimen/dimen_20dp" />
 
                         <ImageView
                             android:layout_width="@dimen/dimen_30dp"
                             android:layout_height="@dimen/dimen_30dp"
-                            android:layout_marginEnd="@dimen/dimen_5dp"
+                            android:layout_gravity="center"
                             android:layout_marginStart="@dimen/dimen_10dp"
+                            android:layout_marginEnd="@dimen/dimen_5dp"
                             android:background="@android:color/transparent"
                             android:foregroundGravity="center_horizontal"
                             android:src="@drawable/valve_icon"
                             android:visibility="visible" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/googlesans_mediumitalic"
                             android:gravity=""
-                            android:text="Valve"
+                            android:text="@string/valve"
                             android:textAlignment="center"
                             android:textColor="@color/text_3"
                             android:textSize="@dimen/dimen_12sp" />
 
-
                     </LinearLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen_10dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dimen_10dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="@dimen/dimen_35dp"
                             android:layout_gravity="start"
                             android:fontFamily="@font/googlesans_bold"
                             android:lines="1"
                             android:text="@{laboratoryResponseDetailsData.sensors[2].id.data[0].open ?  @string/opened : @string/closed}"
                             android:textAlignment="center"
                             android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_25sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/gotham_light"
-                            android:lines="1"
-                            android:text="this"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/dimen_13sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="@dimen/dimen_10dp"
-                        android:layout_height="match_parent"
-                        android:weightSum="2">
+                            android:textSize="@dimen/dimen_20sp" />
 
                         <ImageView
                             android:layout_width="@dimen/dimen_30dp"
                             android:layout_height="@dimen/dimen_30dp"
+                            android:layout_gravity="center"
                             android:layout_marginStart="@dimen/dimen_10dp"
-                            android:layout_marginEnd="@dimen/dimen_2dp"
+                            android:layout_marginEnd="@dimen/dimen_5dp"
                             android:background="@android:color/transparent"
                             android:foregroundGravity="center_horizontal"
                             android:src="@drawable/door"
                             android:visibility="visible" />
 
-
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/googlesans_mediumitalic"
                             android:maxLines="1"
-                            android:text="Door"
+                            android:text="@string/door"
                             android:textAlignment="center"
                             android:textColor="@color/text_3"
                             android:textSize="@dimen/dimen_12sp" />
 
-
                     </LinearLayout>
-
                 </LinearLayout>
-
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-    </LinearLayout>
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
