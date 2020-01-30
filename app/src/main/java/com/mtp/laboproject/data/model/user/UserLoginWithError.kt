@@ -1,10 +1,10 @@
 package com.mtp.laboproject.data.model.user
 
-import com.mtp.laboproject.data.model.error.ErrorResponse
+import com.mtp.laboproject.data.model.error.ErrorServerResponse
 
 data class UserLoginWithError(
      var userLoginResponse: UserLoginResponse?,
-     var serverErrorResponse: ErrorResponse?
+     var serverErrorResponse: ErrorServerResponse?
 )
 
 

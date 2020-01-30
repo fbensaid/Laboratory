@@ -1,8 +1,7 @@
 package com.mtp.laboproject.data.repository
 
 import com.mtp.laboproject.LaboApplication
-import com.mtp.laboproject.data.model.error.ErrorResponse
-import com.mtp.laboproject.data.model.user.UserLoginWithError
+import com.mtp.laboproject.data.model.error.ErrorServerResponse
 import com.mtp.laboproject.data.remoteApi.Output
 import com.mtp.laboproject.global.SharedPreferences
 
@@ -39,7 +38,7 @@ open class BaseRepository {
         return if (response.isSuccessful)
             Output.Success(response.body()!!)
         else
-        Output.Error(ErrorResponse(response.code(),response.message()))
+        Output.Error(ErrorServerResponse(response.code(),response.message()))
 
     }
 }

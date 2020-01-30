@@ -97,9 +97,8 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
                     startActivity(intentFor<MainActivity>())
                     finish()
             }else {
-                Toast.makeText(this, "Error with auth",Toast.LENGTH_LONG).show()
+                Toast.makeText(this, userLogin.userLoginResponse!!.error!!.message,Toast.LENGTH_LONG).show()
             }
-
         })
 
     }

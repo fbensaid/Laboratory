@@ -3,7 +3,7 @@ package com.mtp.laboproject.view.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mtp.laboproject.data.model.error.ErrorResponse
+import com.mtp.laboproject.data.model.error.ErrorServerResponse
 import com.mtp.laboproject.data.model.user.UserLoginResponse
 import com.mtp.laboproject.data.model.user.UserLoginWithError
 import com.mtp.laboproject.data.remoteApi.Apifactory
@@ -26,7 +26,7 @@ class AuthViewModel : ViewModel() {
     fun setLogin(login:String,pass: String) {
         scope.launch(handler) {
             var loginResponse = authRepository.login(login,pass)
-            if(loginResponse is ErrorResponse){
+            if(loginResponse is ErrorServerResponse){
                 user!!.serverErrorResponse=loginResponse
             }else if(loginResponse is UserLoginResponse){
                 user!!.userLoginResponse=loginResponse
