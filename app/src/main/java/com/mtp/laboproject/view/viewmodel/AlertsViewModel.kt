@@ -28,7 +28,7 @@ class AlertsViewModel : ViewModel() {
             var latestAlerts = alertRepository.getAlerts()
             //latestAlerts = mutableListOf<AlertsDetailsResponse>()
             //post the value inside live data
-            alertsLiveData.postValue(latestAlerts)
+            alertsLiveData.postValue(latestAlerts as MutableList<AlertsDetailsResponse>)
 
         }
     }

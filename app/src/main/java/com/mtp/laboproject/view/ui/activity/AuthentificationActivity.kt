@@ -2,11 +2,13 @@ package com.mtp.laboproject.view.ui.activity
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mtp.laboproject.LaboApplication.Companion.auth
 import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.user.UserLoginResponse
+import com.mtp.laboproject.data.remoteApi.Output
 import com.mtp.laboproject.global.BiometricPrompt
 import com.mtp.laboproject.global.BiometricPromptListener
 import com.mtp.laboproject.global.checkBiometric
@@ -88,9 +90,16 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
         authViewModel.setLogin(email,password)
         authViewModel.loginLiveData.observe(this, Observer { userLogin ->
             ct_loading.visibility=View.GONE
-            storeUserData(userLogin)
-            startActivity(intentFor<MainActivity>())
-            finish()
+            if(userLogin.serverErrorResponse!=null){
+                Toast.makeText(this, userLogin.serverErrorResponse!!.message,Toast.LENGTH_LONG).show()
+            }else if(userLogin.userLoginResponse!!.success){
+                    storeUserData(userLogin.userLoginResponse)
+                    startActivity(intentFor<MainActivity>())
+                    finish()
+            }else {
+                Toast.makeText(this, "Error with auth",Toast.LENGTH_LONG).show()
+            }
+
         })
 
     }

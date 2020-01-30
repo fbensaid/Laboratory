@@ -7,7 +7,7 @@ import com.mtp.laboproject.data.remoteApi.ApiInterface
 class LaboratoryRepository(private val api: ApiInterface) : BaseRepository() {
 
     //get latest news using safe api call
-    suspend fun getLabs(): LaboListResponse? {
+    suspend fun getLabs(): Any? {
         return safeApiCall(
             //await the result of deferred type
             call = { api.getLaboList().await() },

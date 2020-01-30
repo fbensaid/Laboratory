@@ -31,7 +31,7 @@ class LabsViewModel : ViewModel() {
             //get latest news from news repo
             val latestNews = labsRepository.getLabs()
             //post the value inside live data
-            labsLiveData.postValue(latestNews)
+            labsLiveData.postValue(latestNews as LaboListResponse)
         }
     }
 

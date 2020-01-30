@@ -27,7 +27,7 @@ class ForgottenPasswordViewModel : ViewModel() {
             //get latest news from news repo
             val latestNews = forgotPasswordRepository.forgotPassword(email)
             //post the value inside live data
-            forgotPasswordLiveData.postValue(latestNews)
+            forgotPasswordLiveData.postValue(latestNews as ForgottenPasswordResponse)
 
         }
     }

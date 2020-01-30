@@ -11,11 +11,9 @@ class Constants {
     }
 
     inner class EndPointss {
-
         val LABORATORY: String = "movies"
         fun laboratory() = LABORATORY
     }
-
 
     object Urls {
         val CHART_HTML = "file:///android_asset/html/chart.html"
@@ -48,8 +46,6 @@ class Constants {
         const val ALERTS_ENDPOINT  = "alerts"
         const val LOGIN_ENDPOINT  = "users/login"
         const val STATISTICS_ENDPOINT  = "sensor/all_statistics"
-
-
     }
 
 

@@ -22,11 +22,11 @@ class  AuthenticationRepository(private val api: ApiInterface)  : BaseRepository
         }
      }
 
-    suspend fun login(email :String, password: String): UserLoginResponse? {
+    suspend fun login(email :String, password: String): Any? {
         return safeApiCall(
             //await the result of deferred type
             call = { api.login(email,password).await() },
-            error = "Error fetching news"
+            error = "Error with getting uri"
         )
     }
 

@@ -23,7 +23,7 @@ class HomeViewModel : ViewModel() {
     fun getStatistic() {
         scope.launch(handler) {
             val latestNews = statRepository.getStatistics()
-            statisticsLiveData.postValue(latestNews)
+            statisticsLiveData.postValue(latestNews as StatisticsResponse)
         }
     }
 
