@@ -7,9 +7,8 @@
         <import type="android.view.View" />
         <variable
             name="laboratoryResponseData"
-            type="com.mtp.laboproject.data.model.labs.LaboratoryResponse" />
+            type="com.mtp.laboproject.data.model.labs.LabsObjectResponse" />
     </data>
-
 
     <LinearLayout
         android:layout_width="match_parent"

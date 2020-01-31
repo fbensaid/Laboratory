@@ -9,13 +9,10 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -31,13 +28,10 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import com.google.firebase.auth.UserProfileChangeRequest
-import com.mtp.laboproject.LaboApplication.Companion.auth
 import com.mtp.laboproject.R
 import com.mtp.laboproject.global.Constants
 import com.mtp.laboproject.global.Constants.Requests.MY_PERMISSIONS_REQUEST_LOCATION
 import com.mtp.laboproject.global.Constants.Variants.RESULT_LOAD_IMG
-import com.mtp.laboproject.global.DebugLog
 import com.mtp.laboproject.global.bitmapToByte
 import com.mtp.laboproject.global.getRightAngleImage
 import com.mtp.laboproject.view.factory.ProfilViewModelFactory
@@ -54,18 +48,15 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
     GoogleMap.OnInfoWindowClickListener, DialogInterface.OnKeyListener,
     GoogleMap.OnMarkerClickListener {
 
-
     private lateinit var profilViewModel: ProfilViewModel
     private lateinit var mMap: GoogleMap
     private var mUserMarker: Marker? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private val REQUEST_CHECK_SETTINGS = 43
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_profil, container, false)
     }
 
@@ -95,77 +86,31 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
         profile_picture.setOnClickListener {
             showImagePickerWithPermissionCheck()
         }
-        edit_btn_name.setOnClickListener {
-            showDialogueWithEditText()
-        }
-
     }
 
     @NeedsPermission(Manifest.permission.ACCESS_FINE_LOCATION)
      fun askForLocationPermission() {
-        if (ContextCompat.checkSelfPermission(
-                activity!!,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            )
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-
-            // Permission is not granted
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    activity!!,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                )
-            ) {
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-            } else {
-                // No explanation needed, we can request the permission.
-                ActivityCompat.requestPermissions(
-                    activity!!,
-                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                    MY_PERMISSIONS_REQUEST_LOCATION
-                )
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
-            }
-        } else {
-            // Permission has already been granted
+        if (ContextCompat.checkSelfPermission(activity!!, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(activity!!, Manifest.permission.ACCESS_FINE_LOCATION))
+                ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), MY_PERMISSIONS_REQUEST_LOCATION)
         }
-    }
 
     fun getLastLocation() { // Get last known recent location using new Google Play Services SDK (v11+)
-        val locationClient =
-            LocationServices.getFusedLocationProviderClient(activity!!)
-        if (ActivityCompat.checkSelfPermission(
-                activity!!,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) !== PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                activity!!,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) !== PackageManager.PERMISSION_GRANTED
-        ) { // TODO: Consider calling
-//    ActivityCompat#requestPermissions
-// here to request the missing permissions, and then overriding
-//   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//                                          int[] grantResults)
-// to handle the case where the user grants the permission. See the documentation
-// for ActivityCompat#requestPermissions for more details.
+        val locationClient = LocationServices.getFusedLocationProviderClient(activity!!)
+        if (ActivityCompat.checkSelfPermission(activity!!, Manifest.permission.ACCESS_FINE_LOCATION)
+            !== PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity!!, Manifest.permission.ACCESS_COARSE_LOCATION)
+            !== PackageManager.PERMISSION_GRANTED
+        )
             return
-        }
+
         locationClient.lastLocation
             .addOnSuccessListener { location ->
                 // GPS location can be null if GPS is switched off
                 if (location != null) {
-                    //onLocationChanged(location)
                     setUserMarker(location, R.drawable.marker_ic)
                 }
             }
             .addOnFailureListener { e ->
-
                 e.printStackTrace()
             }
     }
@@ -174,7 +119,6 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
         (this.childFragmentManager.findFragmentById(R.id.map1) as SupportMapFragment?)?.let {
             it.getMapAsync(this)
         }
-
         getLastLocation()
     }
 
@@ -196,47 +140,23 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
             }
         }
     }
-    /*override fun onMapReady(googleMap: GoogleMap?) {
-        mMap = googleMap!!
-        // Add a marker in Sydney and move the camera
-        val iff = LatLng(getString(R.string.iff_lat).toDouble(), getString(R.string.iff_lang).toDouble())
-        //val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(iff).title("IFF"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(iff))
-    }*/
 
-    private fun showDialogueWithEditText() {
-        val input = EditText(context)
-        input.hint = auth.currentUser!!.displayName
-        input.layoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.MATCH_PARENT
-        )
-        AlertDialog.Builder(activity!!)
-            .setCancelable(false)
-            .setPositiveButton(R.string.OK) { _, _ ->
-                updateFireBaseUser(null, input.text.toString())
-                name.text = input.text.toString()
-            }
-            .setMessage("EditText")
-            .setView(input)
-            .show()
-    }
 
     private fun setupUserInfo() {
         switch_finger.isChecked = profilViewModel.getsharedPreference().fingerPrint!!
         switch_notif.isChecked = profilViewModel.getsharedPreference().notification!!
-        name.text = auth.currentUser!!.displayName
-        identifiant_txt.text = auth.currentUser!!.email
+        name.text = profilViewModel.getsharedPreference().userResponse.data.USERNAME
+        identifiant_txt.text = profilViewModel.getsharedPreference().userResponse.data.USR_MAIL
 
         profilViewModel.viewModelScope.launch(Dispatchers.Main.immediate) {
-            var bitmap =
-                getRightAngleImage(Uri.parse(profilViewModel.getsharedPreference()!!.userResponse.photoUrl!!))
+            if( profilViewModel.getsharedPreference()!!.userResponse.data.photoUrl!=null){
+            var bitmap = getRightAngleImage(Uri.parse(profilViewModel.getsharedPreference()!!.userResponse.data.photoUrl!!))
             if (bitmap != null)
-                Glide.with(context!!).load(bitmap?.let { bitmapToByte(it) }).into(profile_picture)
+                    Glide.with(context!!).load(bitmap?.let { bitmapToByte(it) }).into(profile_picture)
+            }else
+                Glide.with(context!!).load(R.drawable.user).into(profile_picture)
         }
     }
-
 
     override fun onMapReady(map: GoogleMap?) {
         mMap = map ?: return
@@ -245,56 +165,10 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
             mMap.uiSettings.isMyLocationButtonEnabled = true
             mMap.uiSettings.isZoomControlsEnabled = true
             getCurrentLocation()
-        } else {
-
-
         }
     }
-
-
-    private fun givePermission() {
-        if (ContextCompat.checkSelfPermission(
-                activity!!,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            )
-            !== PackageManager.PERMISSION_GRANTED
-        ) { // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    activity!!,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                )
-            ) {
-                android.app.AlertDialog.Builder(activity)
-                    .setTitle(R.string.location_perm_title)
-                    .setMessage(R.string.location_perm_string)
-                    .setPositiveButton(R.string.ok,
-                        DialogInterface.OnClickListener { dialogInterface, i ->
-                            //Prompt the user once explanation has been shown
-                            /* ActivityCompat.requestPermissions(
-                                 activity!!,
-                                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                                 MY_PERMISSIONS_REQUEST_LOCATION
-                             )*/
-                          //  showLocationDialog()
-
-                            //checkLocationPermission()
-                        })
-                    .create()
-                    .show()
-
-            } else { // No explanation needed, we can request the permission.
-                ActivityCompat.requestPermissions(
-                    activity!!,
-                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                    MY_PERMISSIONS_REQUEST_LOCATION
-                )
-            }
-        }
-    }
-
 
     private fun getCurrentLocation() {
-
         val locationRequest = LocationRequest()
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         locationRequest.interval = (10 * 1000).toLong()
@@ -331,9 +205,6 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
         }
     }
 
-
-
-
     private fun isPermissionGiven(): Boolean {
         return ActivityCompat.checkSelfPermission(
             activity!!,
@@ -341,62 +212,8 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    /*override fun onMapReady(map: GoogleMap?) {
-        mMap = map ?: return
-        mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
-        mMap.uiSettings.isCompassEnabled = false
-        mMap.uiSettings.isZoomControlsEnabled = false
-        mMap.uiSettings.setAllGesturesEnabled(true)
-        if (ActivityCompat.checkSelfPermission(
-                activity!!,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) !== PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                activity!!,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) !== PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
-        mMap.setMyLocationEnabled(true);
-        mMap.isMyLocationEnabled
-        mMap.setOnMapClickListener(this)
-        mMap.setOnInfoWindowClickListener(this)
-        mMap.setOnMarkerClickListener(this)
-
-        //Initialize Google Play Services
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(
-                    activity!!,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                )
-                === PackageManager.PERMISSION_GRANTED
-            ) { //Location Permission already granted
-                // buildGoogleApiClient()
-                //  mMap.setMyLocationEnabled(true);
-            } else { //Request Location Permission
-                checkLocationPermission()
-            }
-        } else {
-            checkLocationPermission()
-            //  buildGoogleApiClient()
-            //  mMap.setMyLocationEnabled(true);
-        }
-        // setMarkerExample(mMap, 36.833670, 10.234702, "Car Dealer", R.drawable.car_marker); //TODO : eliminate example markers
-    }*/
-
-    private fun updateFireBaseUser(uri: Uri?, name: String?) {
-        var profileUpdates = UserProfileChangeRequest.Builder().apply {
-            if (!name.isNullOrEmpty())
-                setDisplayName(name)
-            if (uri != null)
-                setPhotoUri(uri)
-        }.build()
-        auth.currentUser!!.updateProfile(profileUpdates).addOnCompleteListener { task ->
-            if (task.isSuccessful)
-                DebugLog.d(TAG, "Update User with SUCCESS")
-            else
-                DebugLog.d(TAG, "Update User with ERROR")
-        }
+    private fun updatePhotoUserUri(uri: Uri?) {
+        profilViewModel.getsharedPreference().userResponse.data.photoUrl= uri.toString()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -407,8 +224,7 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
                         ?.let { bitmapToByte(it) }).into(profile_picture)
             }
             if (data.data != null) {
-
-                updateFireBaseUser(data.data!!, null)
+                updatePhotoUserUri(data.data!!)
             }
         }
         when (requestCode) {
@@ -429,14 +245,6 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         onRequestPermissionsResult(requestCode, grantResults)
 
-        if( requestCode == MY_PERMISSIONS_REQUEST_LOCATION)
-        {
-            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                getCurrentLocation()
-            } else {
-                Toast.makeText(activity, R.string.permission_denied, Toast.LENGTH_LONG).show()
-            }
-        }
         when (requestCode) {
             MY_PERMISSIONS_REQUEST_LOCATION -> {
                 // If request is cancelled, the result arrays are empty.
@@ -446,12 +254,6 @@ class ProfilFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMapClickL
                     Toast.makeText(activity, R.string.permission_denied, Toast.LENGTH_LONG).show()
                 }
                 return
-            }
-            // Add other 'when' lines to check for other
-            // permissions this app might request.
-            else -> {
-                // Ignore all other requests.
-
             }
         }
 

@@ -120,17 +120,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <ImageView
-                android:id="@+id/edit_btn_name"
-                android:layout_width="@dimen/dimen_25dp"
-                android:layout_height="@dimen/dimen_25dp"
 
-                android:layout_alignParentBottom="true"
-                android:clickable="true"
-                android:src="@android:drawable/ic_menu_edit"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switch_notif"

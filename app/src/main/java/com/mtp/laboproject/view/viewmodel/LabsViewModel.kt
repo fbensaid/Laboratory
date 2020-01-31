@@ -3,7 +3,7 @@ package com.mtp.laboproject.view.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mtp.laboproject.data.model.labs.LabsListResponse
+import com.mtp.laboproject.data.model.labs.LaboListResponse
 import com.mtp.laboproject.data.remoteApi.Apifactory
 import com.mtp.laboproject.data.repository.LaboratoryRepository
 import kotlinx.coroutines.*
@@ -23,7 +23,7 @@ class LabsViewModel : ViewModel() {
     //initialize news repo
     private val labsRepository: LaboratoryRepository = LaboratoryRepository(Apifactory.Api)
     //live data that will be populated as news updates
-    val labsLiveData = MutableLiveData<LabsListResponse>()
+    val labsLiveData = MutableLiveData<LaboListResponse>()
 
     fun getLabs() {
         ///launch the coroutine scope
@@ -31,7 +31,7 @@ class LabsViewModel : ViewModel() {
             //get latest news from news repo
             val latestNews = labsRepository.getLabs()
             //post the value inside live data
-            labsLiveData.postValue(latestNews)
+            labsLiveData.postValue(latestNews as LaboListResponse)
         }
     }
 

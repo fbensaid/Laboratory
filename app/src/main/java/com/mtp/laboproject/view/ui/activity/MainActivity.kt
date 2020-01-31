@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.mtp.laboproject.view.ui.fragment.HomeFragment
-import com.mtp.laboproject.view.ui.fragment.LaboratoryFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.R
@@ -15,8 +13,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 import android.view.MenuItem
-import com.mtp.laboproject.view.ui.fragment.AlertFragment
-import com.mtp.laboproject.view.ui.fragment.ProfilFragment
+import com.mtp.laboproject.view.ui.fragment.*
 import org.jetbrains.anko.appcompat.v7.toolbar
 
 
@@ -27,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private var homeFragment= HomeFragment()
     private var profilFragment= ProfilFragment()
     private var alertFragment= AlertFragment()
+    private var chartFragment= ChartFragment()
 
 
 
@@ -47,10 +45,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        getSupportActionBar()!!.setDisplayShowHomeEnabled(true)
-        getSupportActionBar()!!.setLogo(R.drawable.logo_bleu_small);
-        getSupportActionBar()!!.setDisplayUseLogoEnabled(true);
-        supportActionBar!!.setTitle(" Watcher ")
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setLogo(R.drawable.logo_bleu_small)
+        supportActionBar!!.setDisplayUseLogoEnabled(true)
+        supportActionBar!!.title = getString(R.string.watcher)
 
 
         replaceMainLayout(homeFragment,0)
@@ -61,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.navigation_home -> replaceMainLayout(homeFragment,0)
                 R.id.navigation_labo -> replaceMainLayout(laboratoryFragment,1)
-                R.id.navigation_graph -> replaceMainLayout(laboratoryFragment,2)
+                R.id.navigation_graph -> replaceMainLayout(chartFragment,2)
                 R.id.navigation_alert -> replaceMainLayout(alertFragment,3)
                 R.id.navigation_parametres -> replaceMainLayout(profilFragment,4)
             }
@@ -106,7 +104,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-
         private const val TAG = "MainActivity"
     }
 

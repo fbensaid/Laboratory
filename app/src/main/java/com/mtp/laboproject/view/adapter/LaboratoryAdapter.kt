@@ -10,17 +10,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mtp.laboproject.R
 import com.mtp.laboproject.listener.LaboratoryClickListener
-import com.mtp.laboproject.data.model.labs.LaboratoryResponse
+import com.mtp.laboproject.data.model.labs.LabsObjectResponse
 import com.mtp.laboproject.databinding.RecycleviewLaboratoryBinding
 import com.squareup.picasso.Picasso
 
 class LaboratoryAdapter(
-    private val listofLaboratory: List<LaboratoryResponse>,
+    private val listofLaboratory: List<LabsObjectResponse>,
     private val listner: LaboratoryClickListener
 
 ) : RecyclerView.Adapter<LaboratoryAdapter.LaboratoryViewHolder>(), Filterable {
     private var filtredListofLaboratory = listofLaboratory
-    private var resultListOfSearch = arrayListOf<LaboratoryResponse>()
+    private var resultListOfSearch = arrayListOf<LabsObjectResponse>()
 
     override fun getFilter(): Filter {
         return object : Filter() {
@@ -42,7 +42,7 @@ class LaboratoryAdapter(
 
             override fun publishResults(p0: CharSequence?, filtredResult: FilterResults?) {
                 filtredListofLaboratory = listOf()
-                filtredListofLaboratory = filtredResult!!.values as List<LaboratoryResponse>
+                filtredListofLaboratory = filtredResult!!.values as List<LabsObjectResponse>
                 notifyDataSetChanged()
             }
         }

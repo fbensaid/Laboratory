@@ -1,6 +1,6 @@
 package com.mtp.laboproject.data.model.labs
 
-data class LabsListResponse(
-    val `data`: List<LaboratoryResponse>,
+data class LaboListResponse(
+    val data: List<LabsObjectResponse>,
     val success: Boolean
 )

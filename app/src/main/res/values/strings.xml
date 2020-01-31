@@ -40,5 +40,15 @@
     <string name="location_perm_title">Location Permission Needed</string>
     <string name="perm_denied_string">Permission Denied</string>
     <string name="test">this is point</string>
+    <string name="watcher">Watcher</string>
+    <string name="temp_degre_Text"> %s °C</string>
+    <string name="opened"> OPEN</string>
+    <string name="closed"> CLOSE</string>
+    <string name="humidite_level">Humidite Level</string>
+    <string name="co2_level">CO² Level</string>
+    <string name="valve">Valve opened</string>
+    <string name="door">Door opened</string>
+    <string name="last_update">Last updated on %s</string>
+
 
 </resources>

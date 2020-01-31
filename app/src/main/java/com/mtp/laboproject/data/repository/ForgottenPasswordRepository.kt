@@ -8,7 +8,7 @@ import com.mtp.laboproject.data.remoteApi.ApiInterface
 class ForgottenPasswordRepository(private val api: ApiInterface) : BaseRepository() {
 
     //get latest news using safe api call
-    suspend fun forgotPassword(email : String ) : ForgottenPasswordResponse?{
+    suspend fun forgotPassword(email : String ) : Any?{
         return safeApiCall(
             //await the result of deferred type
             call = {api.forgotPassword(email).await()},

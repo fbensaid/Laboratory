@@ -1,7 +1,10 @@
 package com.mtp.laboproject.data.model.user
 
+import com.mtp.laboproject.data.model.error.ErrorApiResponse
+
 data class UserLoginResponse(
-    val data: Data,
-    val success: Boolean,
-    val photoUrl:String
+    var data: UserResponseData,
+    var success: Boolean,
+    var error:ErrorApiResponse?
+
 )

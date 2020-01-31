@@ -14,7 +14,6 @@ class ProfilViewModel : ViewModel() {
         return authRepository.sharedPreferences
     }
 
-
         override fun onCleared() {
         super.onCleared()
     }
