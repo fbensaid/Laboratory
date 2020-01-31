@@ -7,6 +7,8 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.*
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.annotation.StringRes
@@ -19,7 +21,7 @@ import com.mtp.laboproject.view.ui.view.CustomProgressDialog
 import kotlinx.android.synthetic.main.dialog_layout.*
 
 open class BaseActivity : AppCompatActivity() {
-    private lateinit var  mProgressDialog: CustomProgressDialog
+    private lateinit var mProgressDialog: CustomProgressDialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +29,6 @@ open class BaseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_auth)
         LaboApplication.appComponent.inject(this)
     }
-
 
 
     private fun handleNotification(intent: Intent?) {
@@ -47,7 +48,6 @@ open class BaseActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
     fun quitApp() {
@@ -122,25 +122,28 @@ open class BaseActivity : AppCompatActivity() {
                 titleTextView.setVisibility(View.VISIBLE)
                 titleTextView.setText(getString(titleId))
             } else {
-                titleTextView.setVisibility(View.GONE)
+                if (titleTextView != null) {
+
+                    titleTextView.setVisibility(View.GONE)
+                }
             }
 
 
-            val contentTextView = findViewById<TextView>(R.id.tv_content)
+            val contentTextView = dialogView.findViewById(R.id.tv_content) as TextView
             if (message != null && !TextUtils.isEmpty(message)) {
                 contentTextView.setText(message)
             } else {
                 contentTextView.setText(getString(msgId))
             }
 
-            val okBtn = btn_ok
+            val okBtn = dialogView.findViewById(R.id.btn_ok) as Button
             okBtn.setText(btnText)
             okBtn.setOnClickListener(View.OnClickListener {
                 alertDialog.dismiss()
                 okAction?.run()
             })
 
-            val cancelBtn = btn_cancel
+            val cancelBtn = dialogView.findViewById(R.id.btn_cancel) as Button
             cancelBtn.setVisibility(View.GONE)
 
             alertDialog.show()
@@ -176,7 +179,7 @@ open class BaseActivity : AppCompatActivity() {
 
             contentTextView.setText(getString(msgId, textData))
 
-            val okBtn = btn_ok
+            val okBtn = dialogView.findViewById(R.id.btn_ok) as Button
             okBtn.setText(btnText)
             okBtn.setOnClickListener(View.OnClickListener {
                 alertDialog.dismiss()
@@ -243,7 +246,7 @@ open class BaseActivity : AppCompatActivity() {
             val contentTextView = tv_content
             contentTextView.setText(getString(msgId))
 
-            val okBtn = btn_ok
+            val okBtn = dialogView.findViewById(R.id.btn_ok) as Button
             okBtn.setVisibility(View.VISIBLE)
             okBtn.setText(okId)
             okBtn.setOnClickListener(View.OnClickListener {
@@ -251,7 +254,7 @@ open class BaseActivity : AppCompatActivity() {
                 okAction?.run()
             })
 
-            val cancelBtn =btn_cancel
+            val cancelBtn = btn_cancel
             cancelBtn.setVisibility(View.VISIBLE)
             cancelBtn.setText(cancelId)
             cancelBtn.setOnClickListener(View.OnClickListener {
@@ -287,7 +290,7 @@ open class BaseActivity : AppCompatActivity() {
             val contentTextView = tv_content
             contentTextView.setText(getString(msgId))
 
-            val okBtn = btn_ok
+            val okBtn = dialogView.findViewById(R.id.btn_ok) as Button
             okBtn.setVisibility(View.VISIBLE)
             okBtn.setText(okId)
             okBtn.setOnClickListener(View.OnClickListener {
@@ -306,7 +309,6 @@ open class BaseActivity : AppCompatActivity() {
             alertDialog.show()
         }
     }
-
 
 
     fun showProgressBar() {

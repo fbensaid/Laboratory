@@ -37,7 +37,7 @@
                 android:maxLines="1"
                 android:text="Dashboard "
                 android:textColor="@color/white"
-                android:textSize="@dimen/dimen_25sp"
+                android:textSize="@dimen/dimen_21sp"
                 android:textStyle="normal" />
 
         </LinearLayout>
@@ -75,7 +75,7 @@
                         android:fontFamily="@font/googlesans_bold"
                         android:text="Today"
                         android:textColor="@color/color_primary"
-                        android:textSize="@dimen/dimen_23sp" />
+                        android:textSize="@dimen/dimen_20sp" />
 
                     <TextView
                         android:id="@+id/txt_weather_info"
@@ -115,7 +115,7 @@
                             android:fontFamily="@font/google_sans"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/property_item_text_color"
-                            android:textSize="@dimen/dimen_35sp" />
+                            android:textSize="@dimen/dimen_30sp" />
 
                         <TextView
                             android:id="@+id/txt_chance_rain"
@@ -135,7 +135,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="94dp"
+                        android:layout_marginEnd="@dimen/dimen_90dp"
                         android:src="@drawable/clouds_blue_ic"
                         android:visibility="visible" />
 
@@ -204,7 +204,7 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="@dimen/dimen_10dp"
@@ -222,7 +222,7 @@
                                     android:visibility="visible" />
 
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginTop="@dimen/dimen_10dp"
@@ -230,7 +230,6 @@
                                     android:gravity="center"
                                     android:maxLines="2"
                                     android:text="Laboratories"
-                                    android:textAlignment="textStart"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/dimen_12sp" />
 
@@ -291,7 +290,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
+                                    android:layout_gravity="center"
                                     android:layout_marginTop="@dimen/dimen_10dp"
                                     android:fontFamily="@font/googlesans_medium"
                                     android:maxLines="2"
@@ -353,7 +352,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
+                                    android:layout_gravity="center"
                                     android:layout_marginTop="@dimen/dimen_10dp"
                                     android:fontFamily="@font/googlesans_medium"
                                     android:maxLines="2"
