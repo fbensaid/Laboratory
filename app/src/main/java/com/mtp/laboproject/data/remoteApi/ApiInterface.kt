@@ -4,6 +4,7 @@ import com.mtp.laboproject.data.model.ForgottenPasswordResponse
 import com.mtp.laboproject.data.model.alert.AlertsResponse
 import com.mtp.laboproject.global.Constants
 import com.mtp.laboproject.data.model.labs.LaboListResponse
+import com.mtp.laboproject.data.model.labs.UserLabsWithError
 import com.mtp.laboproject.data.model.statistics.StatisticsResponse
 import com.mtp.laboproject.data.model.user.UserLoginResponse
 import com.mtp.laboproject.global.Constants.Variants.EMAIL

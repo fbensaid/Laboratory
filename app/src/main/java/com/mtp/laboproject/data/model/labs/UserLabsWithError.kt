@@ -1,5 +1,6 @@
-package com.mtp.laboproject.data.model.user
+package com.mtp.laboproject.data.model.labs
 
+import com.mtp.laboproject.data.model.alert.AlertsDetailsResponse
 import com.mtp.laboproject.data.model.error.ErrorServerResponse
 import com.mtp.laboproject.data.model.labs.LaboListResponse
 

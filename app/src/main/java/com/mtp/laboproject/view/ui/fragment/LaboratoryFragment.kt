@@ -6,13 +6,13 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.labs.LabsObjectResponse
-import com.mtp.laboproject.view.listener.LaboratoryClickListener
 import com.mtp.laboproject.view.adapter.LaboratoryAdapter
 import com.mtp.laboproject.view.factory.LabsViewModelFactory
+import com.mtp.laboproject.view.listener.LaboratoryClickListener
 import com.mtp.laboproject.view.ui.DetailsLaboBottomSheet
 import com.mtp.laboproject.view.viewmodel.LabsViewModel
 import kotlinx.android.synthetic.main.fragment_laboratory.*
@@ -46,9 +46,9 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
         labsViewModel.labsLiveData.observe(viewLifecycleOwner, Observer { listLaboratoryResponse ->
             recycleview_laboratory.also {
                 if (listLaboratoryResponse != null) {
-                    it.layoutManager = GridLayoutManager(requireContext(), 2)
-                    it.setHasFixedSize(true)
-                    laboAdapter = LaboratoryAdapter(listLaboratoryResponse.data, this)
+                    it.layoutManager =
+                        LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                    laboAdapter = LaboratoryAdapter(listLaboratoryResponse.userLabsResponse!!.data, this)
                     it.adapter = laboAdapter
                     searchLaboratory()
                 } else {

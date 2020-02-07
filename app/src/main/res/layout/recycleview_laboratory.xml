@@ -18,10 +18,10 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_100dp"
+            android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/main_card_color"
             app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
-            app:cardElevation="@dimen/single_day_layout_elevation"
+            app:cardElevation="@dimen/dimen_2dp"
             app:cardUseCompatPadding="true"
             app:contentPadding="@dimen/single_day_layout_content_padding">
 
@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/dimen_10dp"
                 android:weightSum="4">
 
 
@@ -51,9 +52,10 @@
 
                         <ImageView
                             android:id="@+id/labo_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/dimen_45dp"
+                            android:layout_height="@dimen/dimen_45dp"
                             android:layout_gravity="center"
+                            android:padding="@dimen/dimen_7dp"
                             android:layout_marginStart="@dimen/dimen_10dp"
                             android:layout_marginEnd="@dimen/dimen_10dp"
                             android:foregroundGravity="center"
@@ -72,27 +74,29 @@
                         android:orientation="vertical">
 
                         <TextView
-
                             android:id="@+id/fuel_level_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/googlesans_bold"
-                            android:gravity="center"
+                            android:gravity="start"
                             android:maxLines="1"
                             android:text="@{laboratoryResponseData.name}"
-                            android:textAlignment="center"
-                            android:textColor="@color/color_primary"
-                            android:textSize="@dimen/dimen_22sp" />
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="@dimen/dimen_5dp"
+                            android:layout_marginTop="@dimen/dimen_5dp"
+                            android:textSize="@dimen/dimen_25sp" />
 
                         <TextView
                             android:id="@+id/lab_status"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="start"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/googlesans_mediumitalic"
                             android:text="@{laboratoryResponseData._id}"
-                            android:textAlignment="center"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text_3"
                             android:textSize="@dimen/dimen_13sp" />
                     </LinearLayout>

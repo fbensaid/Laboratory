@@ -3,15 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="alertsListResponseData"
             type="com.mtp.laboproject.data.model.alert.AlertsDetailsResponse" />
     </data>
 
     <LinearLayout
-        android:layout_width="match_parent"
         android:id="@+id/viewCard_alert"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/grey_bg">
 
@@ -20,10 +22,8 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_10dp"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:layout_marginEnd="@dimen/dimen_10dp"
-            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_marginBottom="@dimen/dimen_2dp"
             card_view:cardCornerRadius="5dp"
             card_view:cardElevation="@dimen/dimen_2dp">
 
@@ -62,23 +62,37 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/alert_title_tv"
+                            android:id="@+id/alert_category_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimen_15dp"
                             android:ellipsize="end"
-                            android:fontFamily="@font/googlesans_medium"
+                            android:fontFamily="@font/googlesans_bold"
+                            android:maxLines="2"
+                            android:padding="@dimen/dimen_5dp"
+                            android:text="@{alertsListResponseData.title}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/dimen_12sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/alert_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_4dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/googlesans_bold"
                             android:maxLines="2"
                             android:text="@{alertsListResponseData.title}"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/dimen_15sp"
+                            android:textSize="@dimen/dimen_20sp"
                             android:visibility="visible" />
 
                         <TextView
                             android:id="@+id/alert_state"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dimen_5dp"
+                            android:layout_marginTop="@dimen/dimen_0dp"
                             android:ellipsize="end"
                             android:fontFamily="@font/googlesans_medium"
                             android:maxLines="1"

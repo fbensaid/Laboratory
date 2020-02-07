@@ -5,9 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mtp.laboproject.data.model.error.ErrorServerResponse
 import com.mtp.laboproject.data.model.labs.LaboListResponse
-import com.mtp.laboproject.data.model.user.UserLabsWithError
-import com.mtp.laboproject.data.model.user.UserLoginResponse
-import com.mtp.laboproject.data.model.user.UserLoginWithError
+import com.mtp.laboproject.data.model.labs.UserLabsWithError
 import com.mtp.laboproject.data.remoteApi.Apifactory
 import com.mtp.laboproject.data.repository.LaboratoryRepository
 import kotlinx.coroutines.*
@@ -20,7 +18,7 @@ class LabsViewModel : ViewModel() {
     private val coroutineContext: CoroutineContext get() = parentJob + Dispatchers.Default
     //create a coroutine scope with the coroutine context
     private val scope = CoroutineScope(coroutineContext)
-    val loginLiveData = MutableLiveData<UserLabsWithError>()
+   // val loginLiveData = MutableLiveData<UserLabsWithError>()
     private var labsList = UserLabsWithError(null, null)
 
     private val handler = CoroutineExceptionHandler { _, exception ->
@@ -29,7 +27,7 @@ class LabsViewModel : ViewModel() {
     //initialize news repo
     private val labsRepository: LaboratoryRepository = LaboratoryRepository(Apifactory.Api)
     //live data that will be populated as news updates
-    val labsLiveData = MutableLiveData<LaboListResponse>()
+    val labsLiveData = MutableLiveData<UserLabsWithError>()
 
 
     fun getLabs() {
@@ -40,9 +38,19 @@ class LabsViewModel : ViewModel() {
             }else if(labsResponse is LaboListResponse){
                 labsList!!.userLabsResponse=labsResponse
             }
-            loginLiveData.postValue(labsList)
+            labsLiveData.postValue(labsList)
         }
+
     }
+    /*fun getLabs() {
+        ///launch the coroutine scope
+        scope.launch(handler) {
+            //get latest news from news repo
+            val latestNews = labsRepository.getLabs()
+            //post the value inside live data
+            labsLiveData.postValue(latestNews as LaboListResponse)
+        }
+    }*/
 
 
     fun cancelRequests() = coroutineContext.cancel()

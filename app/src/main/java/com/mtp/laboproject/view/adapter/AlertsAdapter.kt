@@ -81,6 +81,15 @@ class AlertsAdapter(
             )
         }
 
+        if (listofAlerts.get(position).type in 1..3 ) {
+            holder.recycleviewAlertsBinding.alertCategoryTv.setBackgroundResource(R.drawable.rounded_corner_background_blue_text)
+        } else if (listofAlerts.get(position).type in 4..6) {
+            holder.recycleviewAlertsBinding.alertCategoryTv.setBackgroundResource(R.drawable.rounded_corner_background_red)
+        } else if (listofAlerts.get(position).type in 7..10) {
+            holder.recycleviewAlertsBinding.alertCategoryTv.setBackgroundResource(R.drawable.rounded_corner_background_green)
+        }
+
+
     }
 
     fun removeItem(position: Int) {
