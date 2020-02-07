@@ -91,7 +91,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/googlesans_mediumitalic"
-                            android:text="Closed"
+                            android:text="@{laboratoryResponseData._id}"
                             android:textAlignment="center"
                             android:textColor="@color/text_3"
                             android:textSize="@dimen/dimen_13sp" />

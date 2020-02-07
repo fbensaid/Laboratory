@@ -22,6 +22,15 @@
         <item name="android:titleMarginStart" tools:targetApi="n">@dimen/dimen_10dp</item>
     </style>
 
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/white</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+
     <style name="CustomActionBarTheme" parent="@style/Theme.MaterialComponents.Light.Bridge">
         <item name="android:actionBarStyle"   tools:ignore="NewApi">@style/Widget.Styled.ActionBar</item>
         <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>

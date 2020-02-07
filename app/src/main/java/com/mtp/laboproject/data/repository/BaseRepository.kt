@@ -26,6 +26,7 @@ open class BaseRepository {
         when(result){
             is Output.Success ->
                 output = result.output
+
             is Output.Error -> {
                 output = result.exception
             }

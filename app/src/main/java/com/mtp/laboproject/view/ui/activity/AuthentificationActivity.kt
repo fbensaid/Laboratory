@@ -2,7 +2,6 @@ package com.mtp.laboproject.view.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -11,9 +10,6 @@ import com.mtp.laboproject.LaboApplication.Companion.auth
 import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.user.UserLoginResponse
 import com.mtp.laboproject.global.*
-import com.mtp.laboproject.data.remoteApi.Output
-import com.mtp.laboproject.global.BiometricPrompt
-import com.mtp.laboproject.global.BiometricPromptListener
 import com.mtp.laboproject.global.checkBiometric
 import com.mtp.laboproject.view.factory.AuthViewModelFactory
 import com.mtp.laboproject.view.viewmodel.AuthViewModel
@@ -96,52 +92,32 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
         }
     }
 
+
     private fun signIn(email: String, password: String) {
-        /*ct_loading.visibility = View.VISIBLE
-        authViewModel.getData(email, password)!!.observe(this, Observer { apiResponse ->
-            ct_loading.visibility = View.GONE
-
-            if (apiResponse == null) {
-                showSimpleOkDialog(apiResponse!!.error.toString())
-                return@Observer
-            } else if (apiResponse != null) {
-                if (apiResponse.user != null) {
-                    if (!apiResponse.user!!.success) { // call is successful
-                        Log.i(TAG, "Data response is " + apiResponse.user)
-                        showSimpleOkDialog(apiResponse.user!!.error!!.message)
-
-                    } else if (apiResponse!!.user!!.data != null) {
-                        storeUserData(apiResponse!!.user!!)
-                        startActivity(intentFor<MainActivity>())
-                        finish()
 
 
-                    } else { // call failed.
-                        val e: Throwable? = apiResponse.error
-                        showSimpleOkDialog(apiResponse.user!!.error!!.message)
-                        Toast.makeText(this, "Error is " + e?.message, Toast.LENGTH_SHORT)
-                            .show()
-                        Log.e(TAG, "Error is " + e?.localizedMessage)
-                    }
-                } else {
-                    showSimpleOkDialog(apiResponse!!.error.toString())
-                }*/
-
-        ct_loading.visibility=View.VISIBLE
-        authViewModel.setLogin(email,password)
-        authViewModel.loginLiveData.observe(this, Observer { userLogin ->
-            ct_loading.visibility=View.GONE
-            if(userLogin.serverErrorResponse!=null){
-                Toast.makeText(this, userLogin.serverErrorResponse!!.message,Toast.LENGTH_LONG).show()
-            }else if(userLogin.userLoginResponse!!.success){
+        if (AppUtils.isNetworkAvailable(this)) {
+            ct_loading.visibility = View.VISIBLE
+            authViewModel.setLogin(email, password)
+            authViewModel.loginLiveData.observe(this, Observer { userLogin ->
+                ct_loading.visibility = View.GONE
+                if (userLogin.serverErrorResponse != null) {
+                    Toast.makeText(this, userLogin.serverErrorResponse!!.message, Toast.LENGTH_LONG)
+                        .show()
+                } else if (userLogin.userLoginResponse!!.success) {
                     storeUserData(userLogin.userLoginResponse)
                     startActivity(intentFor<MainActivity>())
                     finish()
-            }else {
-                Toast.makeText(this, userLogin.userLoginResponse!!.error!!.message,Toast.LENGTH_LONG).show()
+                } else {
+                    showSimpleOkDialog(userLogin.userLoginResponse!!.error!!.message)
+                    // Toast.makeText(this, userLogin.userLoginResponse!!.error!!.message,Toast.LENGTH_LONG).show()
 
-            }
-        })
+                }
+            })
+
+        } else {
+            showSimpleOkDialog(getString(R.string.check_network))
+        }
 
 
     }

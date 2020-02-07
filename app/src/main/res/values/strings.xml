@@ -49,6 +49,7 @@
     <string name="valve">Valve opened</string>
     <string name="door">Door opened</string>
     <string name="last_update">Last updated on %s</string>
+    <string name="check_network">Check your Internet Connection</string>
 
 
 </resources>

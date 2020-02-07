@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_40dp"
                 android:textColorHint="@color/white"
+                app:backgroundTint="@color/white"
                 android:fontFamily="@font/google_sans">
 
                 <EditText
@@ -43,6 +44,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/google_sans"
                     android:hint="Email"
+                    android:textCursorDrawable="@color/white"
                     app:backgroundTint="@color/white"
                     android:inputType="textEmailAddress"
                     android:text="@string/test_username"
@@ -55,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/white"
+                app:backgroundTint="@color/white"
                 android:fontFamily="@font/google_sans">
 
                 <EditText
@@ -62,6 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:backgroundTint="@color/white"
+                    android:textCursorDrawable="@color/white"
                     android:fontFamily="@font/google_sans"
                     android:hint="Password"
                     android:inputType="textPassword"

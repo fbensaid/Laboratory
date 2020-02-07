@@ -20,6 +20,7 @@ class Constants {
         val CGU_HTML = "file:///android_asset/html/cgu.html"
         val REGULATIONS_HTML = "file:///android_asset/html/reglement.html"
         val APP_URL = "http://www.bingosino.fr/"
+        val HUMIDITY_URL ="http://192.168.2.110:8989/d-solo/IdULMpyWk/iffcharts?orgId=6&from=1580282366460&to=1580303966460&theme=light&panelId=4"
     }
 
     object Requests {

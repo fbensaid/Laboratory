@@ -6,46 +6,45 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/profile_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/color_primary"
-            android:elevation="@dimen/dimen_4dp"
-            >
+            android:elevation="@dimen/dimen_4dp">
 
             <RelativeLayout
                 android:id="@+id/image_layout"
                 android:layout_width="@dimen/dimen_120dp"
                 android:layout_height="@dimen/dimen_120dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:clickable="true"
-                    app:civ_border_width="@dimen/dimen_3dp"
-                    app:civ_border_color="@color/white"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_picture"
                     android:layout_width="@dimen/dimen_120dp"
                     android:layout_height="@dimen/dimen_120dp"
                     android:layout_marginTop="@dimen/dimen_5dp"
+                    android:clickable="true"
                     android:elevation="@dimen/changed_dimen_5dp"
                     android:padding="@dimen/dimen_10dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/user" />
+                    android:src="@drawable/user"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="@dimen/dimen_3dp" />
 
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/name"
-                android:layout_toRightOf="@+id/image_layout"
-                android:paddingLeft="@dimen/dimen_10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_40dp"
+                android:layout_toRightOf="@+id/image_layout"
+                android:fontFamily="@font/googlesans_bold"
+                android:paddingLeft="@dimen/dimen_10dp"
                 android:text="Farouk Ben said"
                 android:textColor="#fff"
                 android:textSize="@dimen/dimen_20sp"
@@ -53,14 +52,15 @@
 
 
             <TextView
-                android:layout_toRightOf="@+id/image_layout"
-                android:paddingLeft="@dimen/dimen_10dp"
                 android:id="@+id/designation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/name"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_toRightOf="@+id/image_layout"
+                android:fontFamily="@font/googlesans_medium"
+                android:paddingLeft="@dimen/dimen_10dp"
                 android:text="(chef de sécurité)"
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen_16sp" />
@@ -70,9 +70,9 @@
                 android:id="@+id/btn_disconnect"
                 android:layout_width="@dimen/dimen_30dp"
                 android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
                 android:layout_margin="@dimen/dimen_20dp"
                 android:clickable="true"
-                android:layout_alignParentRight="true"
                 android:src="@drawable/sign_out" />
 
         </RelativeLayout>
@@ -102,6 +102,7 @@
                 android:layout_marginLeft="@dimen/dimen_8dp"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 android:clickable="true"
+                android:fontFamily="@font/googlesans_medium"
                 android:text="Identifiant :  "
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -115,11 +116,10 @@
                 android:layout_marginLeft="@dimen/dimen_5dp"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 android:clickable="true"
+                android:fontFamily="@font/google_sans"
                 android:text="012345"
                 app:layout_constraintLeft_toRightOf="@+id/identifiant"
                 app:layout_constraintTop_toTopOf="parent" />
-
-
 
 
             <com.google.android.material.switchmaterial.SwitchMaterial
@@ -130,6 +130,7 @@
                 android:layout_marginTop="@dimen/dimen_20dp"
                 android:layout_marginEnd="@dimen/dimen_5dp"
                 android:checked="true"
+                android:fontFamily="@font/google_sans"
                 android:text="@string/switch_notification"
                 android:theme="@style/SwitchTheme"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -144,6 +145,7 @@
                 android:layout_marginTop="@dimen/dimen_20dp"
                 android:layout_marginEnd="@dimen/dimen_5dp"
                 android:checked="true"
+                android:fontFamily="@font/google_sans"
                 android:text="@string/switch_fingerprint"
                 android:theme="@style/SwitchTheme"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -159,6 +161,7 @@
                 android:layout_marginStart="@dimen/dimen_5dp"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 android:clickable="true"
+                android:fontFamily="@font/googlesans_medium"
                 android:paddingTop="@dimen/dimen_20dp"
                 android:text="Ou Somme Nous : "
                 android:textStyle="bold"
@@ -167,10 +170,12 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <include layout="@layout/layout_maps"
-            android:layout_below="@+id/setting_layout"
+
+        <include
+            layout="@layout/layout_maps"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_300dp"
+            android:layout_below="@+id/setting_layout"
             android:layout_marginBottom="@dimen/dimen_10dp"></include>
 
 

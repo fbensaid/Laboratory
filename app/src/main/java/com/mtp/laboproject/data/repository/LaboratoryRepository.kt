@@ -11,7 +11,9 @@ class LaboratoryRepository(private val api: ApiInterface) : BaseRepository() {
         return safeApiCall(
             //await the result of deferred type
             call = { api.getLaboList().await() },
-            error = "Error fetching news"
+            error = "Error fetching Labs"
         )
     }
+
+
 }
