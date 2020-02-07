@@ -1,27 +1,19 @@
 package com.mtp.laboproject.view.ui.fragment
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.lifecycle.Observer
 import com.mtp.laboproject.R
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.mtp.laboproject.data.model.AlertsDetailsResponse
-import com.mtp.laboproject.listener.AlertsClickListener
-import com.mtp.laboproject.view.adapter.AlertsAdapter
-import com.mtp.laboproject.view.factory.AlertsViewModelFactory
-import com.mtp.laboproject.view.viewmodel.AlertsViewModel
-import kotlinx.android.synthetic.main.fragment_alert.*
+import com.mtp.laboproject.global.Constants
 import kotlinx.android.synthetic.main.fragment_chart.*
 
 
 class ChartFragment : BaseFragment() {
 
-
+         private var actualGraphUrl:String=Constants.Urls.GRAPHANA_TEMP
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_chart, container, false)
@@ -29,6 +21,13 @@ class ChartFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        settupUrlGraphana()
+        settupWebView()
+
+        }
+
+    private fun settupWebView() {
         webview.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 view?.loadUrl(url)
@@ -36,8 +35,21 @@ class ChartFragment : BaseFragment() {
             }
         }
         webview.settings.javaScriptEnabled = true
-        webview.loadUrl("http://192.168.2.7:8989/d-solo/IdULMpyWk/iffcharts?orgId=6&from=1580282366460&to=1580303966460&theme=light&panelId=4")
+        webview.loadUrl(actualGraphUrl)
     }
+
+    private fun settupUrlGraphana() {
+        cardView1.setOnClickListener { actualGraphUrl=Constants.Urls.GRAPHANA_TEMP
+            settupWebView()}
+        cardView2.setOnClickListener { actualGraphUrl=Constants.Urls.GRAPHANA_CO2
+            settupWebView()}
+        cardView3.setOnClickListener { actualGraphUrl=Constants.Urls.GRAPHANA_HUM
+            settupWebView()}
+        cardView4.setOnClickListener { actualGraphUrl=Constants.Urls.GRAPHANA_VOC
+            settupWebView()}
+
     }
+
+}
 
 

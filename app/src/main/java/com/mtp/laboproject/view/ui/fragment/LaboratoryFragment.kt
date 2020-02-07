@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mtp.laboproject.R
 import com.mtp.laboproject.data.model.labs.LabsObjectResponse
-import com.mtp.laboproject.listener.LaboratoryClickListener
+import com.mtp.laboproject.view.listener.LaboratoryClickListener
 import com.mtp.laboproject.view.adapter.LaboratoryAdapter
 import com.mtp.laboproject.view.factory.LabsViewModelFactory
 import com.mtp.laboproject.view.ui.DetailsLaboBottomSheet

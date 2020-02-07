@@ -12,6 +12,7 @@ import com.mtp.laboproject.dagger.AppComponent
 import com.mtp.laboproject.dagger.AppModule
 import com.mtp.laboproject.dagger.RoomModule
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.messaging.FirebaseMessaging
 import com.mtp.laboproject.dagger.DaggerAppComponent
 import com.mtp.laboproject.dagger.PreferencesModule
 
@@ -28,6 +29,7 @@ class LaboApplication : Application() {
         super.onCreate()
         instance = this
         auth = FirebaseAuth.getInstance()
+        FirebaseMessaging.getInstance().subscribeToTopic("ALL")
         initDI()
     }
 

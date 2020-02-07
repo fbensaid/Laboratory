@@ -16,11 +16,29 @@ import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.R
 import com.mtp.laboproject.global.Constants
 import com.mtp.laboproject.view.ui.view.CustomProgressDialog
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_layout.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 open class BaseActivity : AppCompatActivity() {
     private lateinit var  mProgressDialog: CustomProgressDialog
 
+    private val parentJob = Job()
+    //create a coroutine context with the job and the dispatcher
+    private val coroutineContext: CoroutineContext get() = parentJob + Dispatchers.Default
+    //create a coroutine scope with the coroutine context
+    private val scope = CoroutineScope(coroutineContext)
+    private var menuNavigation = arrayOf(
+        R.id.navigation_home,
+        R.id.navigation_labo,
+        R.id.navigation_graph,
+        R.id.navigation_alert,
+        R.id.navigation_parametres
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +47,20 @@ open class BaseActivity : AppCompatActivity() {
     }
 
 
+    fun showBadgeOnNavigationButtomView(s: String?) {
+        scope.launch(Dispatchers.Main.immediate) {
+            bottomNavigationViewHome.getOrCreateBadge(menuNavigation[s!!.toInt()]).apply {
+                isVisible=true
+                number=1
+            }
+        }
+    }
+     fun refreshBadgeView(menu:Int) {
+        bottomNavigationViewHome.getOrCreateBadge(menuNavigation[menu]).apply {
+            isVisible=false
+            clearNumber()
+        }
+    }
 
     private fun handleNotification(intent: Intent?) {
         if (intent != null && intent.extras != null && intent.extras!!.containsKey(Constants.Parameters.PUSH_DATA_type) && intent.extras!!.containsKey(

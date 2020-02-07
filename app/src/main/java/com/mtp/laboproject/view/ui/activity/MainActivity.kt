@@ -1,45 +1,23 @@
 package com.mtp.laboproject.view.ui.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.R
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
-import android.view.MenuItem
 import com.mtp.laboproject.view.ui.fragment.*
-import org.jetbrains.anko.appcompat.v7.toolbar
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val fragmentManager = supportFragmentManager
     private var laboratoryFragment= LaboratoryFragment()
     private var homeFragment= HomeFragment()
     private var profilFragment= ProfilFragment()
-    private var alertFragment= AlertFragment()
+    private var alertFragment=
+        AlertFragment()
     private var chartFragment= ChartFragment()
-
-
-
-    private val parentJob = Job()
-    //create a coroutine context with the job and the dispatcher
-    private val coroutineContext: CoroutineContext get() = parentJob + Dispatchers.Default
-    //create a coroutine scope with the coroutine context
-    private val scope = CoroutineScope(coroutineContext)
-    private var menuNavigation = arrayOf(
-        R.id.navigation_home,
-        R.id.navigation_labo,
-        R.id.navigation_graph,
-        R.id.navigation_alert,
-        R.id.navigation_parametres
-    )
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,8 +27,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setLogo(R.drawable.logo_bleu_small)
         supportActionBar!!.setDisplayUseLogoEnabled(true)
         supportActionBar!!.title = getString(R.string.watcher)
-
-
+        
         replaceMainLayout(homeFragment,0)
         //define the activity context
         LaboApplication.instance=this
@@ -69,21 +46,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         finish()
-    }
-
-      fun showBadgeOnNavigationButtomView(s: String?) {
-          scope.launch(Dispatchers.Main.immediate) {
-              bottomNavigationViewHome.getOrCreateBadge(menuNavigation[s!!.toInt()]).apply {
-                  isVisible=true
-                  number=1
-              }
-          }
-    }
-    private fun refreshBadgeView(menu:Int) {
-        bottomNavigationViewHome.getOrCreateBadge(menuNavigation[menu]).apply {
-            isVisible=false
-            clearNumber()
-        }
     }
 
     private fun replaceMainLayout(fragment: Fragment,menu:Int) {

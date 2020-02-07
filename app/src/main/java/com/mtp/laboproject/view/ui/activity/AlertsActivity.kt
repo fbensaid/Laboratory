@@ -12,11 +12,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.mtp.laboproject.R
-import com.mtp.laboproject.data.model.AlertsDetailsResponse
-import com.mtp.laboproject.listener.AlertsClickListener
+import com.mtp.laboproject.data.model.alert.AlertsDetailsResponse
+import com.mtp.laboproject.view.listener.AlertsClickListener
 import com.mtp.laboproject.view.adapter.AlertsAdapter
 import com.mtp.laboproject.view.factory.AlertsViewModelFactory
-import com.mtp.laboproject.view.viewmodel.AlertsViewModel
 import kotlinx.android.synthetic.main.activity_alerts.*
 
 

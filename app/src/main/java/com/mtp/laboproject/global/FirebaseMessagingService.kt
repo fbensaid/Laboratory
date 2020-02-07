@@ -6,6 +6,7 @@ import androidx.work.WorkManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.mtp.laboproject.LaboApplication
+import com.mtp.laboproject.view.ui.activity.BaseActivity
 import com.mtp.laboproject.view.ui.activity.MainActivity
 
 
@@ -38,10 +39,15 @@ class FirebaseMessagingService : FirebaseMessagingService() {
         // Check if message contains a data payload.
         remoteMessage.data.isNotEmpty().let {
             Log.d(TAG, "Message data payload: " + remoteMessage.data)
-            Log.d(TAG, "Message data payload-->: screen " + remoteMessage.data["screen"])
+            Log.d(TAG, "Message data payload-->: screen " + remoteMessage.data["notification.title"])
             Log.d(TAG, "Message data payload-->: data " + remoteMessage.data["data"])
 
-            (LaboApplication.instance as MainActivity).showBadgeOnNavigationButtomView("3")
+            try {
+                (LaboApplication.instance as BaseActivity).showBadgeOnNavigationButtomView("3")
+            }catch (e:Exception){
+                Throwable("ERROR-->$e")
+            }
+
 
                 if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use WorkManager.
@@ -106,6 +112,7 @@ class FirebaseMessagingService : FirebaseMessagingService() {
      */
     private fun sendRegistrationToServer(token: String?) {
         // TODO: Implement this method to send token to your app server.
+        LaboApplication.appComponent.getPreferences().token=token
         Log.d(TAG, "sendRegistrationTokenToServer($token)")
     }
 

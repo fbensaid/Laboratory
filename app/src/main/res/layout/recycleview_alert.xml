@@ -3,18 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <import type="android.view.View" />
-
         <variable
             name="alertsListResponseData"
-            type="com.mtp.laboproject.data.model.AlertsDetailsResponse" />
+            type="com.mtp.laboproject.data.model.alert.AlertsDetailsResponse" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:id="@+id/viewCard_alert"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/grey_bg">
 
         <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -84,7 +82,7 @@
                             android:ellipsize="end"
                             android:fontFamily="@font/googlesans_medium"
                             android:maxLines="1"
-                            android:text="@{alertsListResponseData.state}"
+                            android:text="@{alertsListResponseData.title}"
                             android:textColor="@color/text_color"
                             android:textSize="@dimen/dimen_13sp"
                             android:visibility="visible" />
@@ -116,7 +114,7 @@
                         android:paddingTop="@dimen/dimen_5dp"
                         android:paddingEnd="@dimen/dimen_10dp"
                         android:paddingBottom="@dimen/dimen_5dp"
-                        android:text="@{alertsListResponseData.date}"
+                        android:text="@{alertsListResponseData.updatedAt}"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/dimen_11sp"
                         android:visibility="visible" />

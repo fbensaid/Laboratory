@@ -56,7 +56,6 @@ class AuthentificationActivity : BaseActivity(), BiometricPromptListener {
         }
     }
 
-
     private fun authWithFingerPrint() {
         if(cb_display_finger_print.isChecked&&authViewModel.getsharedPreference().isConnectedSuccessBefore){
             biometricPrompt.authenticateBiometric()
