@@ -1,11 +1,13 @@
 package com.mtp.laboproject.data.remoteApi
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.global.Constants
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.xml.datatype.DatatypeConstants.SECONDS
@@ -42,6 +44,16 @@ object Apifactory{
         .build()
 
 
+   fun retrofitRx() = Retrofit.Builder()
+    .baseUrl(Constants.BASE_URL)
+    .client(tmdbClient)
+    .addConverterFactory(GsonConverterFactory.create())
+    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+    .build()
+
+
     val Api : ApiInterface = retrofit().create(ApiInterface::class.java)
+    val ApiRx : ApiInterface = retrofitRx().create(ApiInterface::class.java)
+
 
 }

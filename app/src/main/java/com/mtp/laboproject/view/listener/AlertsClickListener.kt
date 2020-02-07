@@ -1,7 +1,7 @@
 package com.mtp.laboproject.view.listener
 
 import android.view.View
-import com.mtp.laboproject.data.model.AlertsDetailsResponse
+import com.mtp.laboproject.data.model.alert.AlertsDetailsResponse
 
 
 interface AlertsClickListener {

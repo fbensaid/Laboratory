@@ -9,9 +9,9 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mtp.laboproject.R
-import com.mtp.laboproject.data.model.AlertsDetailsResponse
+import com.mtp.laboproject.data.model.alert.AlertsDetailsResponse
 import com.mtp.laboproject.databinding.RecycleviewAlertBinding
-import com.mtp.laboproject.listener.AlertsClickListener
+import com.mtp.laboproject.view.listener.AlertsClickListener
 import com.squareup.picasso.Picasso
 
 

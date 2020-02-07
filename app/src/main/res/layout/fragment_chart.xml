@@ -58,42 +58,42 @@
 
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <WebView
-                android:id="@+id/webview"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp"></WebView>
+                android:orientation="vertical">
+
+                <WebView
+                    android:id="@+id/webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="8dp"></WebView>
 
 
-            <ProgressBar
-                android:id="@+id/progressBarView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:foregroundGravity="center"
-                android:indeterminateTint="@color/color_primary"></ProgressBar>
+                <ProgressBar
+                    android:id="@+id/progressBarView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:foregroundGravity="center"
+                    android:indeterminateTint="@color/color_primary"></ProgressBar>
 
-            <ImageView
-                android:id="@+id/errorView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:foregroundGravity="center"
-                android:src="@drawable/nodata_ic"
-                android:visibility="invisible"></ImageView>
+                <ImageView
+                    android:id="@+id/errorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/nodata_ic"
+                    android:visibility="invisible"></ImageView>
 
-        </RelativeLayout>
+            </RelativeLayout>
         </LinearLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -102,7 +102,6 @@
         android:layout_height="wrap_content"
         android:src="@drawable/change_ic"
         android:backgroundTint="@color/red"
-        android:background="@color/red"
         android:layout_margin="@dimen/dimen_17dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"

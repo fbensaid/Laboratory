@@ -1,5 +1,4 @@
 package com.mtp.laboproject.view.ui.fragment
-
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
@@ -15,13 +14,15 @@ import androidx.lifecycle.ViewModelProviders
 import com.mtp.laboproject.R
 import com.mtp.laboproject.view.factory.ChartViewModelFactory
 import com.mtp.laboproject.view.viewmodel.ChartsViewModel
+import android.webkit.WebViewClient
+import com.mtp.laboproject.global.Constants
 import kotlinx.android.synthetic.main.fragment_chart.*
 
 
 class ChartFragment : BaseFragment() {
     private lateinit var chartViewModel: ChartsViewModel
 
-
+         private var actualGraphUrl:String=Constants.Urls.GRAPHANA_TEMP
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -49,8 +50,37 @@ class ChartFragment : BaseFragment() {
         val errorImage : ImageView = view!!.findViewById(R.id.errorView)
         chartViewModel = ViewModelProviders.of(this, factory)!!.get(ChartsViewModel::class.java)
         chartViewModel.loadWebView(webview,progressBar,errorImage)
+
+        //settupUrlGraphana()
+        settupWebView()
+
+        }
+
+    private fun settupWebView() {
+        webview.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                view?.loadUrl(url)
+                return true
+            }
+        }
+        webview.settings.javaScriptEnabled = true
+        webview.loadUrl(actualGraphUrl)
     }
 
+    /*private fun settupUrlGraphana() {
+        cardView1.setOnClickListener { actualGraphUrl=Constants.Urls.GRAPHANA_TEMP
+            settupWebView()}
+        cardView2.setOnClickListener { actualGraphUrl=Constants.Urls.GRAPHANA_CO2
+            settupWebView()}
+        cardView3.setOnClickListener { actualGraphUrl=Constants.Urls.GRAPHANA_HUM
+            settupWebView()}
+        cardView4.setOnClickListener { actualGraphUrl=Constants.Urls.GRAPHANA_VOC
+            settupWebView()}
+
+    }*/
 
 }
+
+
+
 

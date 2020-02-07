@@ -21,6 +21,10 @@ class Constants {
         val REGULATIONS_HTML = "file:///android_asset/html/reglement.html"
         val APP_URL = "http://www.bingosino.fr/"
         val HUMIDITY_URL ="http://192.168.2.110:8989/d-solo/IdULMpyWk/iffcharts?orgId=6&from=1580282366460&to=1580303966460&theme=light&panelId=4"
+        const val GRAPHANA_TEMP="http://192.168.2.40:8989/d-solo/IdULMpyWk/iffcharts?orgId=6&from=1580283032498&to=1580304632498&theme=light&panelId=2"
+        const  val GRAPHANA_VOC="http://192.168.2.40:8989/d-solo/IdULMpyWk/iffcharts?orgId=6&from=1580283081858&to=1580304681858&theme=light&panelId=3"
+        const  val GRAPHANA_CO2="http://192.168.2.40:8989/d-solo/IdULMpyWk/iffcharts?orgId=6&from=1580283121113&to=1580304721113&theme=light&panelId=5"
+        const val GRAPHANA_HUM= "http://192.168.2.40:8989/d-solo/IdULMpyWk/iffcharts?orgId=6&from=1580282366460&to=1580303966460&theme=light&panelId=4"
     }
 
     object Requests {
@@ -44,7 +48,7 @@ class Constants {
     object EndPoints {
         const val LABORATORY_ENDPOINT  = "labs/all/last_data"
         const val FORGOTTEN_PASSWORD_ENDPOINT  = "forgot_password"
-        const val ALERTS_ENDPOINT  = "alerts"
+        const val ALERTS_ENDPOINT  = "notification/all"
         const val LOGIN_ENDPOINT  = "users/login"
         const val STATISTICS_ENDPOINT  = "sensor/all_statistics"
     }
@@ -58,6 +62,9 @@ class Constants {
         const val RESULT_LOAD_IMG: Int = 201
         const val EMAIL = "email"
         const val PASSWORD = "password"
+        const val FIREBASE_TOKEN = "firebase_token"
+
+
 
     }
 
