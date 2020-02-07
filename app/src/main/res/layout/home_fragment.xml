@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_voucher_color"
+    android:elevation="@dimen/dimen_10dp"
+    android:fillViewport="true"
+    app:cardElevation="10dp"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_180dp"
+            android:background="@color/color_primary">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_1dp"
+                android:layout_marginBottom="@dimen/dimen_60dp"
+                android:fontFamily="@font/googlesans_bold"
+                android:maxLines="1"
+                android:text="Dashboard "
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_21sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen_55dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_90dp"
+                android:layout_marginStart="@dimen/dimen_25dp"
+                android:layout_marginEnd="@dimen/dimen_25dp"
+                android:elevation="@dimen/dimen_10dp"
+                app:cardBackgroundColor="@color/main_card_color"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:cardElevation="@dimen/single_day_layout_elevation"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="@dimen/single_day_layout_content_padding">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="@dimen/dimen_15dp"
+                    android:layout_marginEnd="@dimen/dimen_15dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/txt_day_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="Today"
+                        android:textColor="@color/color_primary"
+                        android:textSize="@dimen/dimen_20sp" />
+
+                    <TextView
+                        android:id="@+id/txt_weather_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_day_name"
+                        android:fontFamily="@font/google_sans"
+                        android:text="Overcast"
+                        android:textColor="@color/property_item_hint_color"
+                        android:textSize="@dimen/changed_dimen_12sp" />
+
+                    <TextView
+                        android:id="@+id/txt_original_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="5dp"
+                        android:text="08/05"
+                        android:textColor="@color/property_item_text_color"
+                        android:textSize="@dimen/item_day_original_date_text_size"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="right"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_temp_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="23 °C"
+                            android:fontFamily="@font/google_sans"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/property_item_text_color"
+                            android:textSize="@dimen/dimen_30sp" />
+
+                        <TextView
+                            android:id="@+id/txt_chance_rain"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/google_sans"
+                            android:text="Chances of Rain : 10%"
+                            android:textColor="@color/property_item_hint_color"
+                            android:textSize="@dimen/item_day_chance_rain_text_size"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/image_weather"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/dimen_90dp"
+                        android:src="@drawable/clouds_blue_ic"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_marginStart="@dimen/dimen_25dp"
+                android:layout_marginEnd="@dimen/dimen_25dp"
+                android:elevation="@dimen/dimen_10dp"
+                app:cardBackgroundColor="@color/main_card_color"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:cardElevation="@dimen/single_day_layout_elevation"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="@dimen/dimen_15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="3"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_0dp"
+                        android:layout_weight="2.5"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="@dimen/dimen_5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingEnd="@dimen/dimen_0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimen_10dp"
+                                android:layout_marginEnd="@dimen/dimen_10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/fuel_level_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:fontFamily="@font/googlesans_bold"
+                                    android:gravity="center"
+                                    android:maxLines="1"
+                                    android:text="18"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/color_primary"
+                                    android:textSize="@dimen/dimen_35sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/dimen_10dp"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginEnd="@dimen/dimen_3dp"
+                                    android:background="@android:color/transparent"
+                                    android:foregroundGravity="center"
+                                    android:src="@drawable/lab_ic"
+                                    android:visibility="visible" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginTop="@dimen/dimen_10dp"
+                                    android:fontFamily="@font/googlesans_medium"
+                                    android:gravity="center"
+                                    android:maxLines="2"
+                                    android:text="Laboratories"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/dimen_12sp" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/dimen_5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingEnd="@dimen/dimen_0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/fuel_evel_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="start"
+                                    android:fontFamily="@font/googlesans_bold"
+                                    android:gravity="center"
+                                    android:maxLines="1"
+                                    android:text="2"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/color_primary"
+                                    android:textSize="@dimen/dimen_35sp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="@dimen/dimen_10dp"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginEnd="@dimen/dimen_5dp"
+                                    android:background="@android:color/transparent"
+                                    android:foregroundGravity="center_horizontal"
+                                    android:src="@drawable/valve_icon"
+                                    android:visibility="visible" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/dimen_10dp"
+                                    android:fontFamily="@font/googlesans_medium"
+                                    android:maxLines="2"
+                                    android:text="Opened Valves"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/dimen_12sp" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/dimen_10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start"
+                                    android:fontFamily="@font/googlesans_bold"
+                                    android:lines="1"
+                                    android:text="1"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/color_primary"
+                                    android:textSize="@dimen/dimen_35sp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/dimen_10dp"
+                                android:orientation="vertical"
+                                android:weightSum="2">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginEnd="@dimen/dimen_2dp"
+                                    android:background="@android:color/transparent"
+                                    android:foregroundGravity="center_horizontal"
+                                    android:src="@drawable/door_open"
+                                    android:visibility="visible" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/dimen_10dp"
+                                    android:fontFamily="@font/googlesans_medium"
+                                    android:maxLines="2"
+                                    android:text="Opened Doors"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/dimen_12sp" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_0dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.8"
+                        android:fontFamily="@font/google_sans"
+                        android:gravity="center"
+                        android:text="Last updated on 14/01/2020"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dimen_10sp" />
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <com.mtp.laboproject.view.ui.view.CustomButton
+                android:id="@+id/btn_login"
+                style="@style/BlueButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardView"
+                android:layout_marginStart="@dimen/dimen_35dp"
+                android:layout_marginTop="@dimen/dimen_60dp"
+                android:layout_marginEnd="@dimen/dimen_35dp"
+                android:layout_marginBottom="@dimen/dimen_24dp"
+                android:fontFamily="@font/googlesans_bold"
+                android:padding="@dimen/dimen_12dp"
+                android:textSize="@dimen/dimen_10sp"
+                android:text="More Details"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</ScrollView>
+
+
+
+
+
+
+
+
+
+

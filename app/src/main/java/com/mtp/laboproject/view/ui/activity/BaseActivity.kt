@@ -7,6 +7,8 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.*
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.annotation.StringRes
@@ -16,29 +18,11 @@ import com.mtp.laboproject.LaboApplication
 import com.mtp.laboproject.R
 import com.mtp.laboproject.global.Constants
 import com.mtp.laboproject.view.ui.view.CustomProgressDialog
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_layout.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 
 open class BaseActivity : AppCompatActivity() {
-    private lateinit var  mProgressDialog: CustomProgressDialog
+    private lateinit var mProgressDialog: CustomProgressDialog
 
-    private val parentJob = Job()
-    //create a coroutine context with the job and the dispatcher
-    private val coroutineContext: CoroutineContext get() = parentJob + Dispatchers.Default
-    //create a coroutine scope with the coroutine context
-    private val scope = CoroutineScope(coroutineContext)
-    private var menuNavigation = arrayOf(
-        R.id.navigation_home,
-        R.id.navigation_labo,
-        R.id.navigation_graph,
-        R.id.navigation_alert,
-        R.id.navigation_parametres
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,21 +30,6 @@ open class BaseActivity : AppCompatActivity() {
         LaboApplication.appComponent.inject(this)
     }
 
-
-    fun showBadgeOnNavigationButtomView(s: String?) {
-        scope.launch(Dispatchers.Main.immediate) {
-            bottomNavigationViewHome.getOrCreateBadge(menuNavigation[s!!.toInt()]).apply {
-                isVisible=true
-                number=1
-            }
-        }
-    }
-     fun refreshBadgeView(menu:Int) {
-        bottomNavigationViewHome.getOrCreateBadge(menuNavigation[menu]).apply {
-            isVisible=false
-            clearNumber()
-        }
-    }
 
     private fun handleNotification(intent: Intent?) {
         if (intent != null && intent.extras != null && intent.extras!!.containsKey(Constants.Parameters.PUSH_DATA_type) && intent.extras!!.containsKey(
@@ -79,7 +48,6 @@ open class BaseActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
     fun quitApp() {
@@ -154,25 +122,28 @@ open class BaseActivity : AppCompatActivity() {
                 titleTextView.setVisibility(View.VISIBLE)
                 titleTextView.setText(getString(titleId))
             } else {
-                titleTextView.setVisibility(View.GONE)
+                if (titleTextView != null) {
+
+                    titleTextView.setVisibility(View.GONE)
+                }
             }
 
 
-            val contentTextView = findViewById<TextView>(R.id.tv_content)
+            val contentTextView = dialogView.findViewById(R.id.tv_content) as TextView
             if (message != null && !TextUtils.isEmpty(message)) {
                 contentTextView.setText(message)
             } else {
                 contentTextView.setText(getString(msgId))
             }
 
-            val okBtn = btn_ok
+            val okBtn = dialogView.findViewById(R.id.btn_ok) as Button
             okBtn.setText(btnText)
             okBtn.setOnClickListener(View.OnClickListener {
                 alertDialog.dismiss()
                 okAction?.run()
             })
 
-            val cancelBtn = btn_cancel
+            val cancelBtn = dialogView.findViewById(R.id.btn_cancel) as Button
             cancelBtn.setVisibility(View.GONE)
 
             alertDialog.show()
@@ -208,7 +179,7 @@ open class BaseActivity : AppCompatActivity() {
 
             contentTextView.setText(getString(msgId, textData))
 
-            val okBtn = btn_ok
+            val okBtn = dialogView.findViewById(R.id.btn_ok) as Button
             okBtn.setText(btnText)
             okBtn.setOnClickListener(View.OnClickListener {
                 alertDialog.dismiss()
@@ -275,7 +246,7 @@ open class BaseActivity : AppCompatActivity() {
             val contentTextView = tv_content
             contentTextView.setText(getString(msgId))
 
-            val okBtn = btn_ok
+            val okBtn = dialogView.findViewById(R.id.btn_ok) as Button
             okBtn.setVisibility(View.VISIBLE)
             okBtn.setText(okId)
             okBtn.setOnClickListener(View.OnClickListener {
@@ -283,7 +254,7 @@ open class BaseActivity : AppCompatActivity() {
                 okAction?.run()
             })
 
-            val cancelBtn =btn_cancel
+            val cancelBtn = btn_cancel
             cancelBtn.setVisibility(View.VISIBLE)
             cancelBtn.setText(cancelId)
             cancelBtn.setOnClickListener(View.OnClickListener {
@@ -319,7 +290,7 @@ open class BaseActivity : AppCompatActivity() {
             val contentTextView = tv_content
             contentTextView.setText(getString(msgId))
 
-            val okBtn = btn_ok
+            val okBtn = dialogView.findViewById(R.id.btn_ok) as Button
             okBtn.setVisibility(View.VISIBLE)
             okBtn.setText(okId)
             okBtn.setOnClickListener(View.OnClickListener {
@@ -338,7 +309,6 @@ open class BaseActivity : AppCompatActivity() {
             alertDialog.show()
         }
     }
-
 
 
     fun showProgressBar() {

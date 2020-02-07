@@ -170,7 +170,7 @@
         <include layout="@layout/layout_maps"
             android:layout_below="@+id/setting_layout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_150dp"
+            android:layout_height="@dimen/dimen_300dp"
             android:layout_marginBottom="@dimen/dimen_10dp"></include>
 
 
