@@ -39,11 +39,14 @@
 
 
                     <ImageView
+                        android:id="@+id/back_btn"
                         android:layout_width="@dimen/dimen_25dp"
                         android:layout_height="@dimen/dimen_25dp"
                         android:layout_gravity="start"
                         android:layout_marginStart="@dimen/dimen_10dp"
                         android:layout_marginTop="@dimen/dimen_10dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:gravity="start"
                         android:src="@drawable/back_ic"
                         android:visibility="visible" />
@@ -51,8 +54,8 @@
                     <LinearLayout
                         android:id="@+id/title_layout"
                         android:layout_width="match_parent"
-                        android:layout_marginTop="@dimen/dimen_10dp"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dimen_10dp"
                         android:background="@color/color_primary"
                         android:orientation="horizontal">
 
@@ -130,7 +133,7 @@
                 android:layout_height="@dimen/dimen_180dp"
                 app:cardBackgroundColor="@color/main_card_color"
                 app:cardCornerRadius="@dimen/single_day_layout_corner_radius"
-                app:cardElevation="@dimen/single_day_layout_elevation"
+                app:cardElevation="@dimen/dimen_2dp"
                 app:cardUseCompatPadding="true"
                 app:contentPadding="@dimen/single_day_layout_content_padding">
 

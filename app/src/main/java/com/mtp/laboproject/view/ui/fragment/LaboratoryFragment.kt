@@ -2,6 +2,7 @@ package com.mtp.laboproject.view.ui.fragment
 
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_laboratory.*
 
 class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClickListener {
 
+    private lateinit var backBtn: ImageView
     private lateinit var labsViewModel: LabsViewModel
     private lateinit var laboAdapter: LaboratoryAdapter
     private lateinit var searchView: SearchView
@@ -29,6 +31,9 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val inputFragmentView: View =
+            inflater.inflate(R.layout.fragment_laboratory, container, false)
         return inflater.inflate(R.layout.fragment_laboratory, container, false)
     }
 
@@ -37,6 +42,11 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
         setRepo()
         setHasOptionsMenu(true)
         setBottomSheetMarkerBehaviour()
+        backBtn = view!!.findViewById(R.id.back_btn) as ImageView
+        backBtn.setOnClickListener {
+            mBottomSheetBehavior!!.setState(BottomSheetBehavior.STATE_HIDDEN)
+        }
+
     }
 
     private fun setRepo() {
@@ -48,7 +58,8 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
                 if (listLaboratoryResponse != null) {
                     it.layoutManager =
                         LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                    laboAdapter = LaboratoryAdapter(listLaboratoryResponse.userLabsResponse!!.data, this)
+                    laboAdapter =
+                        LaboratoryAdapter(listLaboratoryResponse.userLabsResponse!!.data, this)
                     it.adapter = laboAdapter
                     searchLaboratory()
                 } else {
@@ -98,6 +109,7 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
                 laboAdapter.filter.filter(newText)
                 return false
             }
+
             override fun onQueryTextSubmit(query: String): Boolean {
                 laboAdapter.filter.filter(query)
                 return false
@@ -119,11 +131,14 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
         DetailsLaboBottomSheet(labo).show(fragmentManager!!, "tessst")
     }
 
-
     override fun onClick(v: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+        when (view!!.id) {
+            R.id.back_btn -> mBottomSheetBehavior!!.setState(BottomSheetBehavior.STATE_HIDDEN)
 
+            else -> {
+            }
+        }
+    }
 
 }
 
