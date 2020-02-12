@@ -37,7 +37,6 @@ class ChartFragment : BaseFragment() {
         itemsswipetorefresh.setColorSchemeColors(Color.WHITE)
         itemsswipetorefresh.setOnRefreshListener {
             setWebViewBinding()
-
             itemsswipetorefresh.isRefreshing = false
         }
 
