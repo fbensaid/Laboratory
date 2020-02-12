@@ -37,6 +37,8 @@ class ChartsViewModel() : ViewModel() {
             super.onPageFinished(view, url)
             hideProgress = true
             progressBarView.setVisibility(View.GONE)
+            errorView.setVisibility(View.VISIBLE)
+            webViewLay.setVisibility(View.GONE)
             timeout = false
         }
 
@@ -58,6 +60,7 @@ class ChartsViewModel() : ViewModel() {
                     Handler(Looper.getMainLooper()).post(Runnable {
                         webViewLay.setVisibility(View.GONE)
                         errorView.setVisibility(View.VISIBLE)
+                        progressBarView.setVisibility(View.GONE)
                     })
                     // do what you want
                     // Toast.makeText(getContext(),"Error in loading graph",Toast.LENGTH_LONG).show()
