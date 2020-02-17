@@ -9,7 +9,7 @@
 
         <variable
             name="laboratoryResponseDetailsData"
-            type="com.mtp.laboproject.data.model.labs.LabsObjectResponse" />
+            type="com.mtp.laboproject.data.model.detailsLabsMqtt.DetailsResponse" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -80,7 +80,7 @@
                             android:layout_marginBottom="@dimen/dimen_20dp"
                             android:fontFamily="@font/googlesans_bold"
                             android:maxLines="2"
-                            android:text="@{laboratoryResponseDetailsData.name}"
+                            android:text="@{laboratoryResponseDetailsData.data.name}"
                             android:textAlignment="viewStart"
                             android:textColor="@color/white"
                             android:textSize="@dimen/dimen_30sp"
@@ -119,10 +119,10 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:fontFamily="@font/googlesans_bold"
-                    android:text="@{String.format(@string/last_update,laboratoryResponseDetailsData.sensors[0].id.data[0].date)}"
+                    android:text="@{String.format(@string/last_update,laboratoryResponseDetailsData.data.date)}"
                     android:textAlignment="center"
                     android:textColor="@color/green"
-                    android:textSize="@dimen/dimen_18sp"
+                    android:textSize="@dimen/dimen_16sp"
                     android:textStyle="normal" />
 
             </androidx.cardview.widget.CardView>
@@ -162,7 +162,7 @@
                             android:fontFamily="@font/googlesans_bold"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:text="@{laboratoryResponseDetailsData.sensors[0].id.data[0].humidite}"
+                            android:text="@{String.valueOf(laboratoryResponseDetailsData.data.humidity)}"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="@dimen/dimen_20sp" />
@@ -207,7 +207,7 @@
                             android:layout_gravity="center"
                             android:layout_marginBottom="@dimen/dimen_10dp"
                             android:fontFamily="@font/googlesans_bold"
-                            android:text="@{laboratoryResponseDetailsData.sensors[0].id.data[0].co2}"
+                            android:text="@{String.valueOf(laboratoryResponseDetailsData.data.co2)}"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="@dimen/dimen_20dp" />
@@ -258,7 +258,7 @@
                             android:fontFamily="@font/googlesans_bold"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:text="@{laboratoryResponseDetailsData.sensors[1].id.data[0].open ?  @string/opened : @string/closed}"
+                            android:text="@{laboratoryResponseDetailsData.data.clapets[0].state ?  @string/opened : @string/closed}"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="@dimen/dimen_20dp" />
@@ -302,7 +302,7 @@
                             android:layout_marginBottom="@dimen/dimen_10dp"
                             android:fontFamily="@font/googlesans_bold"
                             android:lines="1"
-                            android:text="@{laboratoryResponseDetailsData.sensors[2].id.data[0].open ?  @string/opened : @string/closed}"
+                            android:text="@{laboratoryResponseDetailsData.data.porte ?  @string/opened : @string/closed}"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="@dimen/dimen_20sp" />

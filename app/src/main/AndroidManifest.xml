@@ -22,6 +22,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         android:usesCleartextTraffic="true">
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
+
         <activity
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:name=".view.ui.activity.SplashActivity">

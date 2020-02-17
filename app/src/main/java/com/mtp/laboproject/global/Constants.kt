@@ -8,6 +8,7 @@ class Constants {
 
         const val CURRENT_POSITION_ZOOM = 15
         const val BASE_URL: String = "http://172.16.1.12:3000/api/"
+        const val MQTT_URL: String = "tcp://151.80.103.151:1883"
     }
 
     inner class EndPointss {
@@ -63,6 +64,8 @@ class Constants {
         const val EMAIL = "email"
         const val PASSWORD = "password"
         const val FIREBASE_TOKEN = "firebase_token"
+        const val TOPIC_DETAILS = "IFF/Lab1"
+        const val TOPIC_LIST = "Fullrama/Kotlin2"
 
 
 
