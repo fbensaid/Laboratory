@@ -54,8 +54,6 @@ class Constants {
         const val STATISTICS_ENDPOINT  = "sensor/all_statistics"
     }
 
-
-
     object Variants {
         const val CLICK_OPACITY = 0.75f
         // SPLASHSCREEN
@@ -64,11 +62,8 @@ class Constants {
         const val EMAIL = "email"
         const val PASSWORD = "password"
         const val FIREBASE_TOKEN = "firebase_token"
-        const val TOPIC_DETAILS = "IFF/Lab1"
+        const val TOPIC_DETAILS = "IFF/Lab"
         const val TOPIC_LIST = "Fullrama/Kotlin2"
-
-
-
     }
 
 }

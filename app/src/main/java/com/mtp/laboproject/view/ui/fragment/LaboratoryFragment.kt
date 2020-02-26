@@ -65,7 +65,6 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
                 } else {
                     Toast.makeText(activity, "No available data  !", Toast.LENGTH_SHORT).show()
                 }
-
             }
         })
     }
@@ -84,7 +83,6 @@ class LaboratoryFragment : BaseFragment(), LaboratoryClickListener, View.OnClick
                     }
                     when (newState) {
                         BottomSheetBehavior.STATE_HIDDEN -> {
-
                         }
                         BottomSheetBehavior.STATE_EXPANDED -> {
                         }

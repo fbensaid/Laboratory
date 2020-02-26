@@ -15,6 +15,7 @@ import com.mtp.laboproject.data.model.detailsLabsMqtt.DetailsResponse
 import com.mtp.laboproject.data.model.labs.LabsObjectResponse
 import com.mtp.laboproject.databinding.BottomsheetDetailsLaboBinding
 import com.mtp.laboproject.view.viewmodel.DetailsMqttViewModel
+import kotlinx.android.synthetic.main.bottomsheet_details_labo.*
 
 class DetailsLaboBottomSheet(private var laboratory: LabsObjectResponse) : BottomSheetDialogFragment() {
 
@@ -34,6 +35,9 @@ class DetailsLaboBottomSheet(private var laboratory: LabsObjectResponse) : Botto
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupAlertList()
+        back_btn.setOnClickListener {
+            this.dismiss()
+        }
     }
 
     private fun setupAlertList() {
